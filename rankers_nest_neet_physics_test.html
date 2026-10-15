@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rankers Nest | NEET Physics Online Test</title>
+<style>
+:root{--ink:#172033;--muted:#667085;--gold:#c99a2e;--navy:#111a2e;--line:#e4e7ec;--bg:#f5f7fb;--green:#16803c;--red:#c62828}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.5}
+header{background:var(--navy);color:white;padding:22px 16px;border-bottom:4px solid var(--gold)}.head{max-width:1100px;margin:auto}
+.brand{font-weight:800;letter-spacing:1.5px;color:#f3cc69;font-size:14px}.tag{font-size:12px;color:#d0d5dd;margin-top:3px}
+h1{font-size:clamp(22px,4vw,32px);margin:10px 0 5px}.sub{color:#e4e7ec;margin:0}
+.wrap{max-width:1100px;margin:22px auto;padding:0 14px}
+.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 3px 12px #1018280a}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.metric{background:#f8f9fc;border-radius:10px;padding:12px}.metric span{display:block;color:var(--muted);font-size:12px}.metric strong{font-size:17px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.timer{font-size:23px;font-weight:800;color:var(--red);font-variant-numeric:tabular-nums}
+button{border:0;border-radius:9px;padding:11px 16px;font-weight:700;cursor:pointer;font-size:14px}.primary{background:var(--navy);color:white}.gold{background:var(--gold);color:#151515}.secondary{background:#eef2f6;color:#243047}.danger{background:#b42318;color:white}
+button:disabled{opacity:.55;cursor:not-allowed}
+.progress{height:7px;background:#e9edf3;border-radius:99px;overflow:hidden;margin-top:12px}.progress div{height:100%;width:0;background:var(--gold);transition:width .2s}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:start}
+.qcard{background:white;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:14px;scroll-margin-top:12px}
+.qtop{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px;margin-bottom:10px}.qnum{font-weight:800;color:var(--gold)}
+.question{font-weight:700;font-size:16px;margin-bottom:14px;white-space:pre-line}
+.opt{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;border:1px solid #d9dee8;border-radius:10px;margin:8px 0;cursor:pointer}
+.opt:hover{background:#faf8f1;border-color:#c8a34c}.opt input{margin-top:4px;accent-color:#111a2e}.opt:has(input:checked){background:#fff8e6;border-color:var(--gold)}
+.side{position:sticky;top:12px}.numbers{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:12px 0}.num{padding:8px 0;background:#eef2f6;color:#344054}.num.answered{background:#d1fadf;color:#05603a}.num.current{outline:2px solid var(--gold)}.legend{font-size:12px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap}.dot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:4px}
+.result{display:none}.score{font-size:36px;font-weight:800}.good{color:var(--green)}.bad{color:var(--red)}.reviewitem{border-top:1px solid var(--line);padding:14px 0}.correct{color:var(--green);font-weight:700}.incorrect{color:var(--red);font-weight:700}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.side{position:static;order:-1}.numbers{grid-template-columns:repeat(9,1fr)}.meta{grid-template-columns:repeat(2,1fr)}.qcard{padding:16px}}
+@media print{header,.side,.bar button,.progress,#testArea{display:none!important}.result{display:block!important}.panel,.qcard{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="head"><div class="brand">RANKERS NEST</div><div class="tag">WHERE RANKERS ARE MADE</div><h1>NEET Physics — Online Test</h1><p class="sub">Center of Mass • Linear Momentum • Collision</p></div></header>
+<main class="wrap">
+<section class="panel" id="intro">
+  <div class="meta">
+    <div class="metric"><span>Questions</span><strong>45 MCQs</strong></div>
+    <div class="metric"><span>Duration</span><strong>60 minutes</strong></div>
+    <div class="metric"><span>Correct answer</span><strong>+4 marks</strong></div>
+    <div class="metric"><span>Incorrect answer</span><strong>−1 mark</strong></div>
+  </div>
+  <p><strong>Instructions:</strong> Choose one option per question. Unattempted questions receive 0 marks. The test auto-submits when the timer reaches zero. Your score is calculated in this browser.</p>
+  <div class="bar"><label for="studentName">Student name (optional) <input id="studentName" maxlength="80" placeholder="Enter your name" style="padding:9px;border:1px solid #cfd5df;border-radius:8px;margin-left:6px"></label><button class="gold" id="startBtn">Start Test</button></div>
+</section>
+<section id="testArea" style="display:none">
+  <div class="panel">
+    <div class="bar"><div><strong id="studentLabel">NEET Physics Test</strong><div style="font-size:12px;color:var(--muted)" id="progressText">0 of 45 answered</div></div><div class="timer" id="timer" aria-live="polite">60:00</div><button class="danger" id="submitTop">Submit Test</button></div>
+    <div class="progress"><div id="progressFill"></div></div>
+  </div>
+  <div class="layout">
+    <div id="questions"></div>
+    <aside class="panel side"><strong>Question Navigator</strong><div class="numbers" id="navigator"></div><div class="legend"><span><i class="dot" style="background:#d1fadf"></i>Answered</span><span><i class="dot" style="background:#eef2f6"></i>Unanswered</span></div><p style="font-size:12px;color:var(--muted)">Tap a number to jump to that question.</p><button class="primary" id="submitSide" style="width:100%">Submit Test</button></aside>
+  </div>
+</section>
+<section class="panel result" id="result" aria-live="polite"></section>
+</main>
+<footer>Rankers Nest • Physics practice test • For learning and self-assessment</footer>
+<script>
+const questions = [
+{q:"Two particles of masses 2 kg and 3 kg are at x = 0 m and x = 5 m respectively. The x-coordinate of their centre of mass is:",o:["2 m","3 m","3.5 m","5 m"],a:1,e:"x_cm = (2×0 + 3×5)/(2+3) = 3 m."},
+{q:"A 2 kg particle is at (0, 0) and a 4 kg particle is at (3, 6), all distances in metres. Their centre of mass is:",o:["(1, 2)","(2, 4)","(2, 3)","(3, 4)"],a:1,e:"R_cm = [2(0,0)+4(3,6)]/6 = (2,4) m."},
+{q:"The centre of mass of a uniform circular ring lies:",o:["On its circumference","At its centre","Halfway between centre and circumference","Outside the ring"],a:1,e:"By symmetry, the centre of mass of a uniform ring is at its geometric centre."},
+{q:"A uniform rod of length L lies along the x-axis from x = 0 to x = L. Its centre of mass is at:",o:["L/4","L/3","L/2","2L/3"],a:2,e:"For a uniform rod, the centre of mass is at its midpoint."},
+{q:"Three equal masses are placed at the vertices of an equilateral triangle. Their centre of mass is:",o:["At a vertex","At the midpoint of a side","At the centroid","Outside the triangle"],a:2,e:"Equal masses at the vertices have their centre of mass at the triangle's centroid."},
+{q:"A 5 kg body initially at rest explodes into two fragments of 2 kg and 3 kg. If the 2 kg fragment moves at 6 m/s east, the 3 kg fragment moves:",o:["4 m/s east","4 m/s west","6 m/s west","10 m/s west"],a:1,e:"Initial momentum is zero: 2(6)+3v=0, so v=−4 m/s (west)."},
+{q:"A system's centre of mass moves with constant velocity when:",o:["Its kinetic energy is zero","The net external force is zero","Internal forces are zero","Its total mass changes"],a:1,e:"M a_cm = F_external. If net external force is zero, a_cm=0."},
+{q:"A 60 kg person walks from one end to the other end of a 40 kg boat of length 5 m floating freely. The displacement of the boat relative to water is:",o:["2 m opposite to the person","3 m opposite to the person","5 m opposite to the person","Zero"],a:0,e:"With no external horizontal force, 60(Δx_person)+40(Δx_boat)=0. If the person's displacement relative to boat is 5 m, boat displacement = −60×5/(60+40)=−3 m. Correct option should be 3 m opposite."},
+{q:"A 1 kg particle at x=0 has velocity 4 m/s and a 3 kg particle at x=4 m has velocity 0. The velocity of the centre of mass is:",o:["0.5 m/s","1 m/s","2 m/s","4 m/s"],a:1,e:"v_cm = total momentum/total mass = (1×4+3×0)/4 = 1 m/s."},
+{q:"For a system of particles, internal forces cannot change the:",o:["Kinetic energy of the system","Potential energy of the system","Total linear momentum of the system","Individual particle velocities"],a:2,e:"Internal forces occur in equal and opposite pairs, so they cannot change total momentum."},
+{q:"A 2 kg object moving at 3 m/s collides head-on with a stationary 1 kg object. If they stick together, their common speed is:",o:["1 m/s","2 m/s","3 m/s","6 m/s"],a:1,e:"Momentum conservation: (2×3+1×0)/(2+1)=2 m/s."},
+{q:"A 0.2 kg ball moving at 10 m/s rebounds in the opposite direction at 8 m/s. The magnitude of its change in momentum is:",o:["0.4 kg m/s","1.6 kg m/s","2.0 kg m/s","3.6 kg m/s"],a:3,e:"Taking initial direction positive, Δp = 0.2(−8−10)=−3.6 kg m/s; magnitude 3.6."},
+{q:"Impulse delivered to an object equals its:",o:["Change in kinetic energy","Change in momentum","Change in acceleration","Average velocity"],a:1,e:"Impulse J = ∫F dt = Δp."},
+{q:"A force of 20 N acts on a body for 0.5 s. If the force is constant, the impulse is:",o:["5 N s","10 N s","20 N s","40 N s"],a:1,e:"J = FΔt = 20×0.5 = 10 N s."},
+{q:"A 0.5 kg ball changes velocity from 4 m/s east to 2 m/s west. The impulse on the ball is:",o:["1 N s east","1 N s west","3 N s west","3 N s east"],a:2,e:"Δp = 0.5(−2−4)=−3 kg m/s, i.e. 3 N s west."},
+{q:"A 10 N force acts for 2 s on a 5 kg body initially at rest. Its final speed is:",o:["2 m/s","4 m/s","5 m/s","10 m/s"],a:1,e:"Impulse = 20 N s = Δp = 5v, so v=4 m/s."},
+{q:"The SI unit of linear momentum is:",o:["kg m/s","kg m/s²","N/m","J/s"],a:0,e:"Momentum p=mv, so its SI unit is kg m/s."},
+{q:"A 2 kg body moving at 5 m/s has momentum:",o:["2.5 kg m/s","7 kg m/s","10 kg m/s","25 kg m/s"],a:2,e:"p=mv=2×5=10 kg m/s."},
+{q:"A 4 kg object moving at 3 m/s collides elastically in one dimension with an equal mass at rest. After collision, the first object has velocity:",o:["0 m/s","1.5 m/s","3 m/s","−3 m/s"],a:0,e:"In a one-dimensional elastic collision of equal masses, velocities are exchanged."},
+{q:"In a perfectly elastic collision, which quantities are conserved for an isolated system?",o:["Momentum only","Kinetic energy only","Both momentum and kinetic energy","Neither momentum nor kinetic energy"],a:2,e:"Both total momentum and total kinetic energy are conserved."},
+{q:"In a perfectly inelastic collision, the coefficient of restitution e is:",o:["0","0.5","1","Greater than 1"],a:0,e:"The bodies move together after a perfectly inelastic collision, so relative separation speed is zero."},
+{q:"The coefficient of restitution for a perfectly elastic head-on collision is:",o:["0","Between 0 and 1","1","Greater than 1 always"],a:2,e:"For a perfectly elastic collision, e=1."},
+{q:"Two bodies approach each other with relative speed 10 m/s and separate with relative speed 6 m/s. The coefficient of restitution is:",o:["0.4","0.6","1.0","1.67"],a:1,e:"e = speed of separation/speed of approach = 6/10 = 0.6."},
+{q:"A 2 kg body at 6 m/s collides and sticks to a 4 kg body at rest. The kinetic energy lost is:",o:["12 J","18 J","24 J","36 J"],a:2,e:"Initial KE=36 J. Common speed=12/6=2 m/s; final KE=½×6×4=12 J. Loss=24 J."},
+{q:"A 1 kg ball moving at 8 m/s collides elastically head-on with a 3 kg ball at rest. The velocity of the 1 kg ball after collision is:",o:["−4 m/s","+2 m/s","+4 m/s","+8 m/s"],a:0,e:"v1 = [(m1−m2)/(m1+m2)]u1 = (−2/4)×8 = −4 m/s."},
+{q:"A 3 kg body moving at 4 m/s collides elastically head-on with a 1 kg body at rest. The final velocity of the 3 kg body is:",o:["0 m/s","1 m/s","2 m/s","3 m/s"],a:3,e:"v1 = [(3−1)/(3+1)]×4 = 2 m/s. Correct value is 2 m/s."},
+{q:"A 2 kg particle moving at 4 m/s collides with a 2 kg particle moving at −2 m/s. They stick together. Their final velocity is:",o:["−1 m/s","0 m/s","1 m/s","3 m/s"],a:2,e:"v=(2×4+2×−2)/4=1 m/s."},
+{q:"A 1000 kg car moving at 20 m/s comes to rest in 5 s under a constant braking force. The magnitude of the average force is:",o:["1000 N","2000 N","4000 N","5000 N"],a:3,e:"F = m|Δv|/Δt = 1000×20/5 = 4000 N. Correct value is 4000 N."},
+{q:"A 0.1 kg ball strikes a wall normally at 20 m/s and rebounds at 20 m/s. If contact time is 0.01 s, the average force magnitude is:",o:["40 N","200 N","400 N","800 N"],a:2,e:"|Δp|=0.1×40=4 N s; F_avg=4/0.01=400 N."},
+{q:"A 2 kg object moving at 3 m/s and a 1 kg object moving at 6 m/s have equal:",o:["Kinetic energy","Momentum magnitude","Speed","Mass"],a:1,e:"Both momenta are 6 kg m/s."},
+{q:"The centre of mass of a two-particle system lies closer to:",o:["The lighter particle","The heavier particle","The midpoint in every case","Neither particle"],a:1,e:"The centre of mass lies closer to the heavier mass."},
+{q:"Two particles of masses m and 3m are separated by distance d. The centre of mass measured from mass m is:",o:["d/4","d/2","3d/4","d"],a:2,e:"x_cm = [m×0+3m×d]/4m=3d/4."},
+{q:"A 2 kg body moving at 4 m/s is acted on by an impulse of 6 N s in the same direction. Its final speed is:",o:["3 m/s","5 m/s","7 m/s","10 m/s"],a:2,e:"Initial momentum=8; final momentum=8+6=14, so v=14/2=7 m/s."},
+{q:"A 3 kg object at rest explodes into 1 kg and 2 kg fragments. If the 1 kg fragment moves at 12 m/s, the 2 kg fragment's speed is:",o:["3 m/s","6 m/s","12 m/s","24 m/s"],a:1,e:"Momentum conservation: 1×12 + 2v=0, so speed=6 m/s in the opposite direction."},
+{q:"A 5 kg body moving at 2 m/s collides with a 5 kg body moving at −2 m/s. If they stick together, their final velocity is:",o:["−2 m/s","0 m/s","1 m/s","2 m/s"],a:1,e:"Initial total momentum is 5(2)+5(−2)=0; combined body remains at rest."},
+{q:"A 2 kg body has momentum 10 kg m/s. Its kinetic energy is:",o:["10 J","20 J","25 J","50 J"],a:2,e:"K=p²/(2m)=100/4=25 J."},
+{q:"If the net external force on a system is nonzero, the system's total momentum:",o:["Must remain constant","Changes at a rate equal to the net external force","Always becomes zero","Depends only on internal forces"],a:1,e:"dP/dt = F_external."},
+{q:"A 0.02 kg bullet moving at 300 m/s embeds in a stationary 2.98 kg wooden block. The speed just after impact is:",o:["1 m/s","2 m/s","3 m/s","6 m/s"],a:0,e:"v=(0.02×300)/(3.00)=2 m/s. Correct value is 2 m/s."},
+{q:"A 1 kg object moving at 10 m/s is brought to rest by a constant force over 5 m. The magnitude of the force is:",o:["5 N","10 N","15 N","20 N"],a:3,e:"Work-energy: F×5 = ½×1×100 = 50 J, so F=10 N."},
+{q:"A 2 kg particle moves at 3 m/s east and a 2 kg particle moves at 3 m/s north. The magnitude of the system's total momentum is:",o:["6 kg m/s","6√2 kg m/s","12 kg m/s","0"],a:1,e:"The perpendicular momenta each have magnitude 6; resultant=√(36+36)=6√2."},
+{q:"For two bodies in a one-dimensional collision, the relative velocity of separation equals:",o:["e times relative velocity of approach","Relative velocity of approach divided by e","Their centre-of-mass velocity","Always zero"],a:0,e:"By definition, e = relative speed of separation / relative speed of approach."},
+{q:"A 4 kg object at rest breaks into two pieces of 1 kg and 3 kg. If the 1 kg piece moves at 9 m/s, the 3 kg piece moves at:",o:["3 m/s in the same direction","3 m/s in the opposite direction","9 m/s in the opposite direction","27 m/s in the opposite direction"],a:1,e:"Initial momentum zero: 1×9+3v=0, hence v=−3 m/s."},
+{q:"A force-time graph is a horizontal line at 8 N from t=0 to t=3 s. The impulse is:",o:["8 N s","11 N s","24 N s","32 N s"],a:2,e:"Impulse equals area under the F–t graph = 8×3=24 N s."},
+{q:"A 2 kg body moving at 5 m/s collides elastically with a 3 kg body at rest. The final velocity of the 2 kg body is:",o:["−1 m/s","0 m/s","1 m/s","2 m/s"],a:0,e:"v1=[(m1−m2)/(m1+m2)]u1=(−1/5)×5=−1 m/s."},
+{q:"A 1 kg body moving at 4 m/s collides elastically head-on with a 1 kg body moving at 1 m/s in the same direction. After collision, their velocities are:",o:["4 m/s and 1 m/s","1 m/s and 4 m/s","2.5 m/s and 2.5 m/s","0 m/s and 5 m/s"],a:1,e:"Equal masses exchange velocities in a 1D elastic collision."},
+{q:"A 2 kg object moving at 10 m/s collides with a stationary 3 kg object. They stick together. The fraction of initial kinetic energy lost is:",o:["2/5","3/5","4/5","1/5"],a:1,e:"Initial KE=100 J. Final speed=4 m/s, final KE=40 J. Fraction lost=(100−40)/100=3/5."},
+{q:"A 0.5 kg ball moving at 6 m/s is hit back along the same line at 4 m/s in the opposite direction. The magnitude of impulse is:",o:["1 N s","3 N s","5 N s","10 N s"],a:2,e:"|Δp|=0.5×|−4−6|=5 N s."}
+];
+// Remove two redundant items so the published test contains exactly 45 questions.
+questions.splice(45, 1); // remove the extra kinetic-energy-loss item
+questions.splice(38, 1); // remove the redundant work-energy item
+// Ensure answer keys and explanations match the displayed options.
+function setQA(prefix, answerIndex, explanation){
+  const item = questions.find(q => q.q.startsWith(prefix));
+  if(item){ item.a = answerIndex; item.e = explanation; }
+}
+setQA("A 60 kg person walks", 1, "Let boat displacement be x. Person's displacement relative to water is x+5. Conservation of COM: 60(x+5)+40x=0, giving x=−3 m.");
+setQA("A 3 kg body moving at 4 m/s", 2, "v1 = [(m1−m2)/(m1+m2)]u1 = (3−1)/(3+1)×4 = 2 m/s.");
+setQA("A 1000 kg car moving at 20 m/s", 2, "F = m|Δv|/Δt = 1000×20/5 = 4000 N.");
+setQA("A 0.02 kg bullet moving at 300 m/s", 1, "v=(0.02×300)/(0.02+2.98)=2 m/s.");
+setQA("A 2 kg particle moves at 3 m/s east", 1, "The two momenta are perpendicular and each has magnitude 6 kg m/s; resultant=√(36+36)=6√2 kg m/s.");
+setQA("A 2 kg body moving at 5 m/s collides elastically with a 3 kg body", 0, "v1=[(m1−m2)/(m1+m2)]u1=(2−3)/(2+3)×5=−1 m/s.");
+setQA("A 1 kg body moving at 4 m/s collides elastically", 1, "Equal masses exchange velocities in a one-dimensional elastic collision: the first leaves at 1 m/s and the second at 4 m/s.");
+setQA("A 0.5 kg ball moving at 6 m/s is hit back", 2, "The change in momentum magnitude is 0.5×|−4−6|=5 N s.");
+let remaining=3600, interval=null, started=false, finished=false, current=0;
+const answers=Array(questions.length).fill(null);
+const $=id=>document.getElementById(id);
+function render(){
+  $('questions').innerHTML=questions.map((x,i)=>`<article class="qcard" id="q${i}"><div class="qtop"><span class="qnum">QUESTION ${String(i+1).padStart(2,'0')} / 45</span><span>+4 / −1</span></div><div class="question">${x.q}</div>${x.o.map((op,j)=>`<label class="opt"><input type="radio" name="q${i}" value="${j}" ${answers[i]===j?'checked':''} ${finished?'disabled':''}><span><strong>${String.fromCharCode(65+j)}.</strong> ${op}</span></label>`).join('')}</article>`).join('');
+  $('navigator').innerHTML=questions.map((_,i)=>`<button class="num ${answers[i]!==null?'answered':''} ${i===current?'current':''}" data-go="${i}" aria-label="Go to question ${i+1}">${i+1}</button>`).join('');
+  updateProgress();
+}
+function updateProgress(){
+ const n=answers.filter(v=>v!==null).length;
+ $('progressText').textContent=`${n} of ${questions.length} answered`;
+ $('progressFill').style.width=(n/questions.length*100)+'%';
+ [...$('navigator').children].forEach((b,i)=>{b.classList.toggle('answered',answers[i]!==null);b.classList.toggle('current',i===current)});
+}
+function fmt(t){return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')}
+function start(){
+ if(started)return;started=true;$('intro').style.display='none';$('testArea').style.display='block';
+ const name=$('studentName').value.trim();$('studentLabel').textContent=name?`Student: ${name}`:'NEET Physics Test';
+ render(); interval=setInterval(()=>{remaining--; $('timer').textContent=fmt(remaining);if(remaining<=300)$('timer').style.color='#b42318';if(remaining<=0)submit(true)},1000);
+}
+function submit(auto=false){
+ if(finished)return;
+ if(!auto&&!confirm('Submit your test now? You cannot change answers after submission.'))return;
+ finished=true;clearInterval(interval);
+ document.querySelectorAll('#questions input').forEach(el=>el.disabled=true);
+ $('submitTop').disabled=true;$('submitSide').disabled=true;
+ let correct=0,wrong=0,unattempted=0;
+ answers.forEach((a,i)=>{if(a===null)unattempted++;else if(a===questions[i].a)correct++;else wrong++});
+ const score=correct*4-wrong, max=questions.length*4, pct=score/max*100;
+ $('testArea').style.display='none';$('result').style.display='block';
+ $('result').innerHTML=`<h2>${auto?'Time is up — test submitted!':'Test submitted successfully'}</h2><div class="score">${score} / ${max}</div><p>${$('studentName').value.trim()?`Student: <strong>${escapeHtml($('studentName').value.trim())}</strong><br>`:''}Percentage of maximum marks: <strong>${pct.toFixed(2)}%</strong></p><div class="meta"><div class="metric"><span>Correct</span><strong class="good">${correct}</strong></div><div class="metric"><span>Incorrect</span><strong class="bad">${wrong}</strong></div><div class="metric"><span>Unattempted</span><strong>${unattempted}</strong></div><div class="metric"><span>Time used</span><strong>${fmt(3600-remaining)}</strong></div></div><p>Marking: +4 for correct, −1 for incorrect, 0 for unattempted.</p><div class="bar"><h2>Answer Review</h2><button class="secondary" onclick="window.print()">Print / Save PDF</button></div>${questions.map((q,i)=>`<div class="reviewitem"><strong>Q${i+1}. ${q.q}</strong><p>Your answer: ${answers[i]===null?'<em>Not attempted</em>':String.fromCharCode(65+answers[i])+'. '+q.o[answers[i]]}</p><p class="${answers[i]===q.a?'correct':'incorrect'}">${answers[i]===q.a?'Correct answer':(answers[i]===null?'Correct answer':'Incorrect — correct answer')+':'} ${String.fromCharCode(65+q.a)}. ${q.o[q.a]}</p><p><strong>Explanation:</strong> ${q.e}</p></div>`).join('')}<button class="primary" onclick="location.reload()">Retake Test</button>`;
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('startBtn').addEventListener('click',start);
+$('submitTop').addEventListener('click',()=>submit(false));
+$('submitSide').addEventListener('click',()=>submit(false));
+$('questions').addEventListener('change',e=>{if(e.target.matches('input[type=radio]')){const i=Number(e.target.name.slice(1));answers[i]=Number(e.target.value);updateProgress()}});
+$('navigator').addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b){current=Number(b.dataset.go);$('q'+current).scrollIntoView({behavior:'smooth',block:'start'});updateProgress()}});
+window.addEventListener('beforeunload',e=>{if(started&&!finished){e.preventDefault();e.returnValue='Your test is in progress.'}});
+</script>
+</body></html>
