@@ -195,7 +195,29 @@
     <p id="registration-message" role="status"></p>
   </form>
 </section>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAbq6uqAZkq4f3fmORjIReufbgP5-PPT1M",
+    authDomain: "rankets-nest.firebaseapp.com",
+    projectId: "rankets-nest",
+    storageBucket: "rankets-nest.firebasestorage.app",
+    messagingSenderId: "703058556884",
+    appId: "1:703058556884:web:001203e8e9f2c0ffbe8841",
+    measurementId: "G-TQHGGPEZXJ"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 <script>
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
