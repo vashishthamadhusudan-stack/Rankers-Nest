@@ -147,7 +147,14 @@
     Start Online Test
   </a>
 </section>
-
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("service-worker.js")
+        .catch(error => console.error(error));
+    });
+  }
+</script>
 </body>
 </html>
 
