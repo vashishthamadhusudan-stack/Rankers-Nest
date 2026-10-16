@@ -147,6 +147,55 @@
     Start Online Test
   </a>
 </section>
+  
+<section id="student-registration" style="padding:24px 16px;max-width:600px;margin:auto;background:#181818;color:white;border-radius:16px;">
+  <h2>Student Registration</h2>
+  <p>Register for Rankers Nest JEE / NEET Online Tests.</p>
+
+  <form id="registration-form">
+    <label for="student-name">Full Name</label>
+    <input id="student-name" name="name" type="text" required
+      placeholder="Enter your full name"
+      style="display:block;width:100%;padding:12px;margin:8px 0 16px;box-sizing:border-box;">
+
+    <label for="student-email">Email</label>
+    <input id="student-email" name="email" type="email" required
+      placeholder="Enter your email"
+      style="display:block;width:100%;padding:12px;margin:8px 0 16px;box-sizing:border-box;">
+
+    <label for="student-mobile">Mobile Number</label>
+    <input id="student-mobile" name="mobile" type="tel" required
+      pattern="[0-9]{10}" maxlength="10" inputmode="numeric"
+      placeholder="10-digit mobile number"
+      style="display:block;width:100%;padding:12px;margin:8px 0 16px;box-sizing:border-box;">
+
+    <label for="student-class">Class</label>
+    <select id="student-class" name="class" required
+      style="display:block;width:100%;padding:12px;margin:8px 0 16px;box-sizing:border-box;">
+      <option value="">Select Class</option>
+      <option value="9">Class 9</option>
+      <option value="10">Class 10</option>
+      <option value="11">Class 11</option>
+      <option value="12">Class 12</option>
+      <option value="Dropper">Dropper</option>
+    </select>
+
+    <label for="student-exam">Exam</label>
+    <select id="student-exam" name="exam" required
+      style="display:block;width:100%;padding:12px;margin:8px 0 16px;box-sizing:border-box;">
+      <option value="">Select Exam</option>
+      <option value="JEE">JEE Main / Advanced</option>
+      <option value="NEET">NEET UG</option>
+    </select>
+
+    <button type="submit"
+      style="width:100%;padding:14px;background:#d6ad55;color:#111;border:0;border-radius:8px;font-weight:bold;">
+      Register Now
+    </button>
+    <p id="registration-message" role="status"></p>
+  </form>
+</section>
+
 <script>
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
