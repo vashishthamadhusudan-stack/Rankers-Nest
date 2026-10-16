@@ -247,10 +247,11 @@ registrationForm.addEventListener("submit", async (event) => {
   };
 const password = document.getElementById("student-password").value;
   try {await createUserWithEmailAndPassword(auth, student.email, password);
-    const docRef = await addDoc(collection(db, "students"), student);
+    
+const docRef = await addDoc(collection(db, "students"), student);
 message.textContent = "Registration successful! ID: " + docRef.id;
-    message.textContent = "Registration successful!";
-    registrationForm.reset();
+registrationForm.reset();
+
   } catch (error) {
     console.error("Registration error:", error);
     message.textContent =
