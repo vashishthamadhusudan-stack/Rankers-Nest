@@ -1,8 +1,7 @@
-
 {
   "id": "/Rankers-Nest/",
   "name": "Rankers Nest Physics",
-  "short_name": "Rankers",
+  "short_name": "Rankers Nest",
   "description": "JEE Main, JEE Advanced and NEET Physics Learning App",
   "start_url": "/Rankers-Nest/",
   "scope": "/Rankers-Nest/",
@@ -11,6 +10,13 @@
   "background_color": "#0B0B0B",
   "theme_color": "#0B0B0B",
   "categories": ["education"],
-  "lang": "en-IN"
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }
-  
