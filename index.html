@@ -245,8 +245,8 @@ registrationForm.addEventListener("submit", async (event) => {
     exam: document.getElementById("student-exam").value,
     registeredAt: new Date().toISOString()
   };
-
-  try {
+const password = document.getElementById("student-password").value;
+  try {await createUserWithEmailAndPassword(auth, student.email, password);
     await addDoc(collection(db, "students"), student);
     message.textContent = "Registration successful!";
     registrationForm.reset();
