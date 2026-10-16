@@ -253,7 +253,7 @@ const password = document.getElementById("student-password").value;
   } catch (error) {
     console.error("Registration error:", error);
     message.textContent =
-      "Registration failed. Please try again.";
+      "Registration failed: " + error.message;
   }
 });
 
