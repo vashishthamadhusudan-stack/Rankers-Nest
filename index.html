@@ -219,6 +219,34 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const db = getFirestore(app);
+  
+const registrationForm = document.getElementById("registration-form");
+
+registrationForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const message = document.getElementById("registration-message");
+
+  const student = {
+    name: document.getElementById("student-name").value.trim(),
+    email: document.getElementById("student-email").value.trim(),
+    mobile: document.getElementById("student-mobile").value.trim(),
+    studentClass: document.getElementById("student-class").value,
+    exam: document.getElementById("student-exam").value,
+    registeredAt: new Date().toISOString()
+  };
+
+  try {
+    await addDoc(collection(db, "students"), student);
+    message.textContent = "Registration successful!";
+    registrationForm.reset();
+  } catch (error) {
+    console.error("Registration error:", error);
+    message.textContent =
+      "Registration failed. Please try again.";
+  }
+});
+
 </script>
 <script>
   if ("serviceWorker" in navigator) {
