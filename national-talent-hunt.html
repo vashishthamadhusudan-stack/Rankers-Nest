@@ -203,10 +203,28 @@ footer {
 </footer>
 
 <script>
+
 document.getElementById("exam-form").addEventListener("submit", function(event) {
   event.preventDefault();
+
+  if (!this.reportValidity()) return;
+
+  const name = document.getElementById("name").value.trim();
+  const amount = "200.00";
+  const upiId = "9731236981@ibl";
+  const note = "RN-AIPTSE 2026 Registration - " + name;
+
+  const upiLink =
+    "upi://pay?pa=" + encodeURIComponent(upiId) +
+    "&pn=" + encodeURIComponent("Rankers Nest") +
+    "&am=" + amount +
+    "&cu=INR" +
+    "&tn=" + encodeURIComponent(note);
+
   document.getElementById("message").textContent =
-    "Preview only: registration saving and verified payment are not active yet.";
+    "Please complete the ₹200 payment in your UPI app. Your registration is not confirmed until payment is verified.";
+
+  window.location.href = upiLink;
 });
 </script>
 </body>
