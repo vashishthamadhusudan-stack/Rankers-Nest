@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hidden Thermodynamics | Rankers Nest Physics Test</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2d;--gold:#f2c66d;--text:#edf2ff;--muted:#aab5cc;--line:#293550}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#080c18,#111a2d);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{padding:30px 18px;text-align:center;border-bottom:1px solid var(--line);background:#0b1020}
+.brand{color:var(--gold);font-weight:800;letter-spacing:2px;font-size:.9rem}h1{margin:8px 0;font-size:clamp(1.6rem,4vw,2.4rem)}.sub{color:var(--muted);margin:0}
+main{max-width:850px;margin:24px auto;padding:0 14px 44px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.92rem}.pill{border:1px solid #66542c;color:var(--gold);padding:4px 10px;border-radius:99px}
+#timer{font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums}
+.question{padding:18px 0;border-bottom:1px solid var(--line)}.question:last-child{border-bottom:0}.question h3{font-size:1.02rem;margin:0 0 12px}.options{display:grid;gap:8px}.options label{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);padding:10px 12px;border-radius:10px;cursor:pointer}.options label:has(input:checked){border-color:var(--gold);background:#292538}
+input[type=radio]{margin-top:5px;accent-color:var(--gold)}button{border:0;border-radius:10px;padding:12px 17px;font-weight:750;cursor:pointer;margin:5px 8px 5px 0} .primary{background:var(--gold);color:#16120a}.secondary{background:#25314a;color:var(--text)}#result{display:none}.answer{padding:10px 0;border-bottom:1px solid var(--line)}.correct{color:#8ee0ad}.wrong{color:#ff9b9b}.small{font-size:.9rem;color:var(--muted)}footer{text-align:center;color:var(--muted);padding:22px}
+</style>
+</head>
+<body>
+<header><div class="brand">RANKERS NEST · PHYSICS</div><h1>Hidden Thermodynamics</h1><p class="sub">Concept Check · JEE / NEET Practice</p></header>
+<main>
+<section class="panel"><div class="meta"><span class="pill">10 MCQs</span><span class="pill">20 minutes</span><span class="pill">Single correct option</span><span>Time left: <span id="timer">20:00</span></span></div><p>Choose the most appropriate answer for each question. Each question carries 4 marks; there is no negative marking in this practice set.</p></section>
+<form id="quiz" class="panel">
+<div class="question"><h3>1. For an ideal gas undergoing an isothermal process, which quantity is necessarily zero?</h3><div class="options">
+<label><input type="radio" name="q1" value="A"> Work done</label><label><input type="radio" name="q1" value="B"> Change in internal energy</label><label><input type="radio" name="q1" value="C"> Heat supplied</label><label><input type="radio" name="q1" value="D"> Change in volume</label></div></div>
+<div class="question"><h3>2. One mole of an ideal gas expands isobarically from volume V to 2V. The work done by the gas is:</h3><div class="options">
+<label><input type="radio" name="q2" value="A"> 0</label><label><input type="radio" name="q2" value="B"> RT</label><label><input type="radio" name="q2" value="C"> 2RT</label><label><input type="radio" name="q2" value="D"> RT/2</label></div></div>
+<div class="question"><h3>3. The first law of thermodynamics, using W as work done by the system, is:</h3><div class="options">
+<label><input type="radio" name="q3" value="A"> Q = ΔU − W</label><label><input type="radio" name="q3" value="B"> ΔU = Q + W</label><label><input type="radio" name="q3" value="C"> Q = ΔU + W</label><label><input type="radio" name="q3" value="D"> ΔU = W − Q</label></div></div>
+<div class="question"><h3>4. During an adiabatic process, which statement is correct?</h3><div class="options">
+<label><input type="radio" name="q4" value="A"> Temperature is always constant</label><label><input type="radio" name="q4" value="B"> Pressure is always constant</label><label><input type="radio" name="q4" value="C"> No heat is exchanged with the surroundings</label><label><input type="radio" name="q4" value="D"> Internal energy is always constant</label></div></div>
+<div class="question"><h3>5. The molar heat capacity at constant pressure (Cₚ) and constant volume (Cᵥ) for an ideal gas satisfy:</h3><div class="options">
+<label><input type="radio" name="q5" value="A"> Cₚ = Cᵥ</label><label><input type="radio" name="q5" value="B"> Cₚ − Cᵥ = R</label><label><input type="radio" name="q5" value="C"> Cᵥ − Cₚ = R</label><label><input type="radio" name="q5" value="D"> Cₚ/Cᵥ = R</label></div></div>
+<div class="question"><h3>6. In a complete cyclic process, the net change in internal energy is:</h3><div class="options">
+<label><input type="radio" name="q6" value="A"> Positive</label><label><input type="radio" name="q6" value="B"> Negative</label><label><input type="radio" name="q6" value="C"> Zero</label><label><input type="radio" name="q6" value="D"> Equal to the net heat only for an isothermal cycle</label></div></div>
+<div class="question"><h3>7. An ideal gas is compressed adiabatically. The work done on the gas is positive. Its internal energy:</h3><div class="options">
+<label><input type="radio" name="q7" value="A"> Increases</label><label><input type="radio" name="q7" value="B"> Decreases</label><label><input type="radio" name="q7" value="C"> Remains unchanged</label><label><input type="radio" name="q7" value="D"> Must become zero</label></div></div>
+<div class="question"><h3>8. The efficiency of a Carnot engine operating between hot and cold reservoirs at temperatures Tₕ and T꜀ (in kelvin) is:</h3><div class="options">
+<label><input type="radio" name="q8" value="A"> T꜀/Tₕ</label><label><input type="radio" name="q8" value="B"> 1 − Tₕ/T꜀</label><label><input type="radio" name="q8" value="C"> 1 − T꜀/Tₕ</label><label><input type="radio" name="q8" value="D"> (Tₕ − T꜀)/T꜀</label></div></div>
+<div class="question"><h3>9. For an ideal gas, internal energy depends only on:</h3><div class="options">
+<label><input type="radio" name="q9" value="A"> Pressure</label><label><input type="radio" name="q9" value="B"> Volume</label><label><input type="radio" name="q9" value="C"> Temperature</label><label><input type="radio" name="q9" value="D"> Pressure and volume independently</label></div></div>
+<div class="question"><h3>10. A gas absorbs 500 J of heat and does 180 J of work on its surroundings. Its change in internal energy is:</h3><div class="options">
+<label><input type="radio" name="q10" value="A"> 680 J</label><label><input type="radio" name="q10" value="B"> 320 J</label><label><input type="radio" name="q10" value="C"> −320 J</label><label><input type="radio" name="q10" value="D"> −680 J</label></div></div>
+<button class="primary" type="submit">Submit Test</button><button class="secondary" type="button" id="reset">Reset Test</button>
+</form>
+<section class="panel" id="result" aria-live="polite"><h2>Your Result</h2><p id="score"></p><div id="review"></div><button class="secondary" id="toggleKey" type="button">Show Answer Key</button><div id="key" hidden></div></section>
+<footer>Rankers Nest · Where Rankers Are Made</footer>
+</main>
+<script>
+const answers={q1:"B",q2:"B",q3:"C",q4:"C",q5:"B",q6:"C",q7:"A",q8:"C",q9:"C",q10:"B"};
+const explanations={q1:"For an ideal gas, internal energy depends only on temperature; constant temperature means ΔU = 0.",q2:"At constant pressure, W = PΔV = nRΔT. Doubling volume at fixed pressure gives ΔV = V and PV = RT, so W = RT.",q3:"With work done by the gas taken as positive, Q = ΔU + W.",q4:"Adiabatic means Q = 0: no heat is exchanged.",q5:"Mayer's relation for an ideal gas is Cₚ − Cᵥ = R.",q6:"Internal energy is a state function; after a cycle the system returns to its initial state.",q7:"For adiabatic compression, Q = 0 and work is done on the gas, so its internal energy rises.",q8:"Carnot efficiency is η = 1 − T꜀/Tₕ, with temperatures in kelvin.",q9:"The internal energy of an ideal gas is a function of temperature alone.",q10:"ΔU = Q − W = 500 − 180 = 320 J."};
+const form=document.getElementById("quiz");let seconds=1200,finished=false;
+const clock=setInterval(()=>{if(finished)return;seconds--;document.getElementById("timer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");if(seconds<=0){finishTest();}},1000);
+function finishTest(){if(finished)return;finished=true;clearInterval(clock);let score=0,review="";for(let i=1;i<=10;i++){const q="q"+i,chosen=form.querySelector('input[name="'+q+'"]:checked');const ok=chosen&&chosen.value===answers[q];if(ok)score+=4;review+='<div class="answer"><strong>Q'+i+': </strong><span class="'+(ok?"correct":"wrong")+'">'+(ok?"Correct":("Your answer: "+(chosen?chosen.value:"Not answered"))+" · Correct answer: "+answers[q])+'</span><div class="small">'+explanations[q]+'</div></div>';}document.getElementById("score").textContent="Score: "+score+" / 40 ("+(score/40*100).toFixed(0)+"%)";document.getElementById("review").innerHTML=review;document.getElementById("result").style.display="block";document.getElementById("result").scrollIntoView({behavior:"smooth"});form.querySelectorAll("input,button").forEach(el=>el.disabled=true);}
+form.addEventListener("submit",e=>{e.preventDefault();finishTest();});
+document.getElementById("reset").addEventListener("click",()=>location.reload());
+document.getElementById("toggleKey").addEventListener("click",()=>{const k=document.getElementById("key");k.hidden=!k.hidden;document.getElementById("toggleKey").textContent=k.hidden?"Show Answer Key":"Hide Answer Key";if(!k.dataset.ready){k.innerHTML=Object.keys(answers).map((q,i)=>'<div class="answer"><strong>Q'+(i+1)+': '+answers[q]+'</strong><div class="small">'+explanations[q]+'</div></div>').join("");k.dataset.ready="1";}});
+</script>
+</body></html>
