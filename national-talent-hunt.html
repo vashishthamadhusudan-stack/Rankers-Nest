@@ -293,30 +293,81 @@ footer {
   © 2026 Rankers Nest · All India Physics Talent Search Examination
 </footer>
 
-<script>
 
-document.getElementById("exam-form").addEventListener("submit", function(event) {
-  event.preventDefault();
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
 
-  if (!this.reportValidity()) return;
+  const firebaseConfig = {
+    apiKey: "AIzaSyAbq6uqAZkq4f3fmORjIReufbgP5-PPT1M",
+    authDomain: "rankets-nest.firebaseapp.com",
+    projectId: "rankets-nest",
+    storageBucket: "rankets-nest.firebasestorage.app",
+    messagingSenderId: "703058556884",
+    appId: "1:703058556884:web:001203e8e9f2c0ffbe8841",
+    measurementId: "G-TQHGGPEZXJ"
+  };
 
-  const name = document.getElementById("name").value.trim();
-  const amount = "200.00";
-  const upiId = "9731236981@ibl";
-  const note = "RN-AIPTSE 2026 Registration - " + name;
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const form = document.getElementById("exam-form");
+  const message = document.getElementById("message");
 
-  const upiLink =
-    "upi://pay?pa=" + encodeURIComponent(upiId) +
-    "&pn=" + encodeURIComponent("Rankers Nest") +
-    "&am=" + amount +
-    "&cu=INR" +
-    "&tn=" + encodeURIComponent(note);
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
 
-  document.getElementById("message").textContent =
-    "Please complete the ₹200 payment in your UPI app. Your registration is not confirmed until payment is verified.";
+    const studentClass = document.getElementById("class").value;
+    const category = ["Class 9", "Class 10"].includes(studentClass)
+      ? "Foundation"
+      : "Senior";
 
-  window.location.href = upiLink;
-});
+    const registration = {
+      name: document.getElementById("name").value.trim(),
+      father: document.getElementById("father").value.trim(),
+      mother: document.getElementById("mother").value.trim(),
+      dob: document.getElementById("dob").value.trim(),
+      mobile: document.getElementById("mobile").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      school: document.getElementById("school").value.trim(),
+      studentClass,
+      exam: document.getElementById("exam").value,
+      category,
+      feeAmount: 200,
+      paymentStatus: "Pending Payment",
+      registrationStatus: "Pending",
+      registeredAt: serverTimestamp()
+    };
+
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    message.textContent = "Submitting registration...";
+
+    try {
+      const docRef = await addDoc(
+        collection(db, "aiptse_registrations"),
+        registration
+      );
+
+      message.textContent =
+        "Application saved. Reference ID: " + docRef.id +
+        ". Payment is pending; registration is not confirmed yet.";
+
+      form.reset();
+    } catch (error) {
+      console.error("Registration error:", error);
+      message.textContent =
+        "Registration could not be saved. Please try again later.";
+    } finally {
+      button.disabled = false;
+    }
+  });
 </script>
+
 </body>
 </html>
