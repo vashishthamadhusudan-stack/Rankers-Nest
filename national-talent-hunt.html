@@ -354,8 +354,10 @@ footer {
       );
 
             message.textContent =
+        
+      message.textContent =
         "Application saved. Reference ID: " + docRef.id +
-        ". Opening UPI payment...";
+        ". Payment is pending. Tap below to pay ₹200.";
 
       const upiId = "9731236981@ibl";
       const upiLink =
@@ -366,7 +368,21 @@ footer {
           "RN-AIPTSE 2026 " + docRef.id
         );
 
-      window.location.href = upiLink;
+      const paymentLink = document.createElement("a");
+      paymentLink.href = upiLink;
+      paymentLink.textContent = "OPEN UPI APP & PAY ₹200";
+      paymentLink.style.display = "inline-block";
+      paymentLink.style.marginTop = "12px";
+      paymentLink.style.color = "#101010";
+      paymentLink.style.background = "#e5b94f";
+      paymentLink.style.padding = "12px";
+      paymentLink.style.borderRadius = "8px";
+      paymentLink.style.fontWeight = "bold";
+      paymentLink.style.textDecoration = "none";
+
+      message.appendChild(document.createElement("br"));
+      message.appendChild(paymentLink);
+
     } catch (error) {
       console.error("Registration error:", error);
       message.textContent =
