@@ -353,11 +353,20 @@ footer {
         registration
       );
 
-      message.textContent =
+            message.textContent =
         "Application saved. Reference ID: " + docRef.id +
-        ". Payment is pending; registration is not confirmed yet.";
+        ". Opening UPI payment...";
 
-      form.reset();
+      const upiId = "9731236981@ibl";
+      const upiLink =
+        "upi://pay?pa=" + encodeURIComponent(upiId) +
+        "&pn=" + encodeURIComponent("Rankers Nest") +
+        "&am=200.00&cu=INR" +
+        "&tn=" + encodeURIComponent(
+          "RN-AIPTSE 2026 " + docRef.id
+        );
+
+      window.location.href = upiLink;
     } catch (error) {
       console.error("Registration error:", error);
       message.textContent =
