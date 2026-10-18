@@ -3,51 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101010">
-<title>Thermodynamics PYQ Practice | Rankers Nest</title>
-<meta name="description" content="Rankers Nest native Thermodynamics PYQ practice page.">
+<title>Thermodynamics Practice Test | Rankers Nest</title>
 <style>
-:root{--gold:#e8bd52;--bg:#101010;--panel:#191919;--text:#f5f2ea;--muted:#c4c0b6;--line:#4b422c}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Arial,sans-serif}
-header{background:#171717;border-bottom:2px solid var(--gold);padding:24px 16px}.head,main{max-width:1050px;margin:auto}main{padding:20px 14px 40px}.brand{color:var(--gold);font-weight:800;letter-spacing:1.6px}.tag{color:var(--muted);font-size:12px}h1{font-size:clamp(25px,4vw,37px);line-height:1.2;margin:10px 0}.sub,.muted{color:var(--muted)}
-.panel{background:var(--panel);border:1px solid #5b4a23;border-radius:14px;padding:18px;margin:16px 0}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.stat{background:#242424;border-radius:9px;padding:12px}.stat small{display:block;color:var(--muted)}.stat strong{color:var(--gold);font-size:19px}
-.topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.topic{border:1px solid var(--line);border-radius:10px;padding:13px;background:#202020}.topic strong{color:var(--gold)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.btn{display:inline-block;background:var(--gold);color:#161616;text-decoration:none;font-weight:800;padding:12px 16px;border-radius:8px}.btn.secondary{background:#303030;color:var(--text);border:1px solid #61542f}
-iframe{width:100%;height:1250px;border:1px solid #554722;border-radius:10px;background:#fff}.source-note{font-size:14px;color:var(--muted)}footer{text-align:center;color:var(--muted);padding:24px 12px}.back{color:var(--gold)}@media(max-width:650px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.topics{grid-template-columns:1fr}iframe{height:900px}}
+:root{--bg:#0b1020;--panel:#121a2d;--gold:#f2c66d;--text:#edf2ff;--muted:#aab5cc;--line:#293550}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#080c18,#111a2d);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{padding:30px 18px;text-align:center;border-bottom:1px solid var(--line);background:#0b1020}
+.brand{color:var(--gold);font-weight:800;letter-spacing:2px;font-size:.9rem}h1{margin:8px 0;font-size:clamp(1.6rem,4vw,2.4rem)}.sub{color:var(--muted);margin:0}
+main{max-width:850px;margin:24px auto;padding:0 14px 44px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.92rem}.pill{border:1px solid #66542c;color:var(--gold);padding:4px 10px;border-radius:99px}
+#timer{font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums}
+.question{padding:18px 0;border-bottom:1px solid var(--line)}.question:last-child{border-bottom:0}.question h3{font-size:1.02rem;margin:0 0 12px}.options{display:grid;gap:8px}.options label{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);padding:10px 12px;border-radius:10px;cursor:pointer}.options label:has(input:checked){border-color:var(--gold);background:#292538}
+input[type=radio]{margin-top:5px;accent-color:var(--gold)}button{border:0;border-radius:10px;padding:12px 17px;font-weight:750;cursor:pointer;margin:5px 8px 5px 0} .primary{background:var(--gold);color:#16120a}.secondary{background:#25314a;color:var(--text)}#result{display:none}.answer{padding:10px 0;border-bottom:1px solid var(--line)}.correct{color:#8ee0ad}.wrong{color:#ff9b9b}.small{font-size:.9rem;color:var(--muted)}footer{text-align:center;color:var(--muted);padding:22px}
 </style>
 </head>
 <body>
-<header><div class="head"><div class="brand">RANKERS NEST</div><div class="tag">WHERE RANKERS ARE MADE</div><h1>Heat &amp; Thermodynamics — PYQ Practice</h1><p class="sub">NEET / AIPMT Physics · Rankers Nest practice</p></div></header>
+<header><div class="brand">RANKERS NEST · PHYSICS</div><h1>Thermodynamics Practice Test</h1><p class="sub">Concept Check · JEE / NEET Practice</p></header>
 <main>
-<section class="panel">
-<div class="stats">
-<div class="stat"><small>Question bank</small><strong>Native page</strong></div>
-<div class="stat"><small>Topics</small><strong>5 groups</strong></div>
-<div class="stat"><small>Format</small><strong>On-site</strong></div>
-<div class="stat"><small>Branding</small><strong>Rankers Nest</strong></div>
-</div>
-<p>This is the Rankers Nest Thermodynamics page. External exam-site links and embeds have been removed. Only verified previous-year questions will be labelled as PYQs.</p>
-</section>
-<section class="panel" id="topics"><h2>Five topics covered</h2><p class="muted">These are the five topic groups for this combined chapter. Open the full PYQ bank below and use the topic headings to practise the relevant questions.</p>
-<div class="topics">
-<div class="topic"><strong>1. Kinetic Theory of Gases</strong><br>RMS speed, gas pressure, molecular kinetic energy, degrees of freedom, mean free path and gas mixtures.</div>
-<div class="topic"><strong>2. Calorimetry</strong><br>Heat exchange, latent heat, thermal equilibrium and mixture problems.</div>
-<div class="topic"><strong>3. Specific Heat &amp; Heat Capacity</strong><br>Specific heat, molar heat capacities, Cₚ, Cᵥ and calorimetric calculations.</div>
-<div class="topic"><strong>4. Laws of Thermodynamics</strong><br>First law, thermodynamic processes, work, internal energy, heat engines and refrigerators.</div>
-<div class="topic"><strong>5. Heat Transfer</strong><br>Conduction, composite rods, insulation, radiation and Newton’s law of cooling.</div>
-</div></section>
-<section class="panel" id="questions"><h2>Thermodynamics PYQ Practice</h2>
-<p class="muted">यह Rankers Nest का अपना पेज है। यहाँ किसी बाहरी exam website का link, logo या embedded page नहीं है। पाँचों topic groups ऊपर दिए गए हैं। Verified original PYQs को इसी पेज पर native MCQ format में जोड़ना बाकी है; इसलिए अभी 93 सवालों को वेबसाइट पर उपलब्ध बताना सही नहीं होगा।</p>
-<div class="topics">
-<div class="topic"><strong>1. Kinetic Theory of Gases</strong><br>Gas laws, RMS speed, molecular kinetic energy and degrees of freedom.</div>
-<div class="topic"><strong>2. Calorimetry</strong><br>Heat exchange, latent heat and thermal equilibrium.</div>
-<div class="topic"><strong>3. Specific Heat &amp; Heat Capacity</strong><br>Specific heat, molar heat capacities, Cₚ and Cᵥ.</div>
-<div class="topic"><strong>4. Laws of Thermodynamics</strong><br>First law, thermodynamic processes, work and heat engines.</div>
-<div class="topic"><strong>5. Heat Transfer</strong><br>Conduction, radiation and Newton's law of cooling.</div>
-</div>
-<p class="source-note">Rankers Nest · Native question bank section</p>
-</section>
-<p><a class="back" href="neet-physics.html">← Back to NEET Physics PYQ Solutions</a> · <a class="back" href="pyq-solutions.html">All PYQ Solutions</a> · <a class="back" href="index.html">Home</a></p>
-</main>
+<section class="panel"><div class="meta"><span class="pill">19 MCQs</span><span class="pill">38 minutes</span><span class="pill">Single correct option</span><span>Time left: <span id="timer">38:00</span></span></div><p>Choose the most appropriate answer for each question. Each question carries 4 marks; there is no negative marking in this practice set.</p></section>
+<form id="quiz" class="panel">
+<div class="question"><h3>1. For an ideal gas undergoing an isothermal process, which quantity is necessarily zero?</h3><div class="options">
+<label><input type="radio" name="q1" value="A"> Work done</label><label><input type="radio" name="q1" value="B"> Change in internal energy</label><label><input type="radio" name="q1" value="C"> Heat supplied</label><label><input type="radio" name="q1" value="D"> Change in volume</label></div></div>
+<div class="question"><h3>2. One mole of an ideal gas expands isobarically from volume V to 2V. The work done by the gas is:</h3><div class="options">
+<label><input type="radio" name="q2" value="A"> 0</label><label><input type="radio" name="q2" value="B"> RT</label><label><input type="radio" name="q2" value="C"> 2RT</label><label><input type="radio" name="q2" value="D"> RT/2</label></div></div>
+<div class="question"><h3>3. The first law of thermodynamics, using W as work done by the system, is:</h3><div class="options">
+<label><input type="radio" name="q3" value="A"> Q = ΔU − W</label><label><input type="radio" name="q3" value="B"> ΔU = Q + W</label><label><input type="radio" name="q3" value="C"> Q = ΔU + W</label><label><input type="radio" name="q3" value="D"> ΔU = W − Q</label></div></div>
+<div class="question"><h3>4. During an adiabatic process, which statement is correct?</h3><div class="options">
+<label><input type="radio" name="q4" value="A"> Temperature is always constant</label><label><input type="radio" name="q4" value="B"> Pressure is always constant</label><label><input type="radio" name="q4" value="C"> No heat is exchanged with the surroundings</label><label><input type="radio" name="q4" value="D"> Internal energy is always constant</label></div></div>
+<div class="question"><h3>5. The molar heat capacity at constant pressure (Cₚ) and constant volume (Cᵥ) for an ideal gas satisfy:</h3><div class="options">
+<label><input type="radio" name="q5" value="A"> Cₚ = Cᵥ</label><label><input type="radio" name="q5" value="B"> Cₚ − Cᵥ = R</label><label><input type="radio" name="q5" value="C"> Cᵥ − Cₚ = R</label><label><input type="radio" name="q5" value="D"> Cₚ/Cᵥ = R</label></div></div>
+<div class="question"><h3>6. In a complete cyclic process, the net change in internal energy is:</h3><div class="options">
+<label><input type="radio" name="q6" value="A"> Positive</label><label><input type="radio" name="q6" value="B"> Negative</label><label><input type="radio" name="q6" value="C"> Zero</label><label><input type="radio" name="q6" value="D"> Equal to the net heat only for an isothermal cycle</label></div></div>
+<div class="question"><h3>7. An ideal gas is compressed adiabatically. The work done on the gas is positive. Its internal energy:</h3><div class="options">
+<label><input type="radio" name="q7" value="A"> Increases</label><label><input type="radio" name="q7" value="B"> Decreases</label><label><input type="radio" name="q7" value="C"> Remains unchanged</label><label><input type="radio" name="q7" value="D"> Must become zero</label></div></div>
+<div class="question"><h3>8. The efficiency of a Carnot engine operating between hot and cold reservoirs at temperatures Tₕ and T꜀ (in kelvin) is:</h3><div class="options">
+<label><input type="radio" name="q8" value="A"> T꜀/Tₕ</label><label><input type="radio" name="q8" value="B"> 1 − Tₕ/T꜀</label><label><input type="radio" name="q8" value="C"> 1 − T꜀/Tₕ</label><label><input type="radio" name="q8" value="D"> (Tₕ − T꜀)/T꜀</label></div></div>
+<div class="question"><h3>9. For an ideal gas, internal energy depends only on:</h3><div class="options">
+<label><input type="radio" name="q9" value="A"> Pressure</label><label><input type="radio" name="q9" value="B"> Volume</label><label><input type="radio" name="q9" value="C"> Temperature</label><label><input type="radio" name="q9" value="D"> Pressure and volume independently</label></div></div>
+<div class="question"><h3>10. A gas absorbs 500 J of heat and does 180 J of work on its surroundings. Its change in internal energy is:</h3><div class="options">
+<label><input type="radio" name="q10" value="A"> 680 J</label><label><input type="radio" name="q10" value="B"> 320 J</label><label><input type="radio" name="q10" value="C"> −320 J</label><label><input type="radio" name="q10" value="D"> −680 J</label></div></div>
+
+<div class="question"><h3>11. According to kinetic theory, the average translational kinetic energy per molecule of an ideal gas at temperature T is:</h3><div class="options">
+<label><input type="radio" name="q11" value="A"> kT</label><label><input type="radio" name="q11" value="B"> 3kT/2</label><label><input type="radio" name="q11" value="C"> 2kT/3</label><label><input type="radio" name="q11" value="D"> 5kT/2</label></div></div>
+<div class="question"><h3>12. If the absolute temperature of an ideal gas becomes four times its initial value, its RMS speed becomes:</h3><div class="options">
+<label><input type="radio" name="q12" value="A"> Four times</label><label><input type="radio" name="q12" value="B"> Half</label><label><input type="radio" name="q12" value="C"> Twice</label><label><input type="radio" name="q12" value="D"> Unchanged</label></div></div>
+<div class="question"><h3>13. Equal masses of water at 20°C and 60°C are mixed in an insulated vessel. The final temperature is:</h3><div class="options">
+<label><input type="radio" name="q13" value="A"> 40°C</label><label><input type="radio" name="q13" value="B"> 30°C</label><label><input type="radio" name="q13" value="C"> 50°C</label><label><input type="radio" name="q13" value="D"> 60°C</label></div></div>
+<div class="question"><h3>14. How much heat is required to raise 0.2 kg of water from 20°C to 30°C? Take c = 4200 J kg⁻¹ K⁻¹.</h3><div class="options">
+<label><input type="radio" name="q14" value="A"> 840 J</label><label><input type="radio" name="q14" value="B"> 4200 J</label><label><input type="radio" name="q14" value="C"> 8400 J</label><label><input type="radio" name="q14" value="D"> 42,000 J</label></div></div>
+<div class="question"><h3>15. Two rods of equal length and cross-sectional area, with thermal conductivities k and 2k, are connected in parallel between the same temperatures. Their equivalent thermal conductance is proportional to:</h3><div class="options">
+<label><input type="radio" name="q15" value="A"> kA/3L</label><label><input type="radio" name="q15" value="B"> kA/L</label><label><input type="radio" name="q15" value="C"> 2kA/L</label><label><input type="radio" name="q15" value="D"> 3kA/L</label></div></div>
+<div class="question"><h3>16. For a small temperature difference between a body and its surroundings, Newton’s law of cooling states that the rate of cooling is proportional to:</h3><div class="options">
+<label><input type="radio" name="q16" value="A"> The square of the temperature excess</label><label><input type="radio" name="q16" value="B"> The temperature excess over the surroundings</label><label><input type="radio" name="q16" value="C"> The mass only</label><label><input type="radio" name="q16" value="D"> The absolute zero temperature</label></div></div>
+<div class="question"><h3>17. The total power radiated by an ideal blackbody at absolute temperature T is proportional to:</h3><div class="options">
+<label><input type="radio" name="q17" value="A"> T</label><label><input type="radio" name="q17" value="B"> T²</label><label><input type="radio" name="q17" value="C"> T⁴</label><label><input type="radio" name="q17" value="D"> 1/T</label></div></div>
+<div class="question"><h3>18. An ideal gas is heated in a rigid, sealed container. The work done by the gas is:</h3><div class="options">
+<label><input type="radio" name="q18" value="A"> Zero</label><label><input type="radio" name="q18" value="B"> Positive</label><label><input type="radio" name="q18" value="C"> Negative</label><label><input type="radio" name="q18" value="D"> Equal to the heat supplied</label></div></div>
+<div class="question"><h3>19. The molar heat capacity at constant volume for a monatomic ideal gas is:</h3><div class="options">
+<label><input type="radio" name="q19" value="A"> R/2</label><label><input type="radio" name="q19" value="B"> R</label><label><input type="radio" name="q19" value="C"> 5R/2</label><label><input type="radio" name="q19" value="D"> 3R/2</label></div></div>
+<button class="primary" type="submit">Submit Test</button><button class="secondary" type="button" id="reset">Reset Test</button>
+</form>
+<section class="panel" id="result" aria-live="polite"><h2>Your Result</h2><p id="score"></p><div id="review"></div><button class="secondary" id="toggleKey" type="button">Show Answer Key</button><div id="key" hidden></div></section>
 <footer>Rankers Nest · Where Rankers Are Made</footer>
-</body>
-</html>
+</main>
+<script>
+const answers={q1:"B",q2:"B",q3:"C",q4:"C",q5:"B",q6:"C",q7:"A",q8:"C",q9:"C",q10:"B",q11:"B",q12:"C",q13:"A",q14:"C",q15:"D",q16:"B",q17:"C",q18:"A",q19:"D"};
+const explanations={q1:"For an ideal gas, internal energy depends only on temperature; constant temperature means ΔU = 0.",q2:"At constant pressure, W = PΔV = nRΔT. Doubling volume at fixed pressure gives ΔV = V and PV = RT, so W = RT.",q3:"With work done by the gas taken as positive, Q = ΔU + W.",q4:"Adiabatic means Q = 0: no heat is exchanged.",q5:"Mayer's relation for an ideal gas is Cₚ − Cᵥ = R.",q6:"Internal energy is a state function; after a cycle the system returns to its initial state.",q7:"For adiabatic compression, Q = 0 and work is done on the gas, so its internal energy rises.",q8:"Carnot efficiency is η = 1 − T꜀/Tₕ, with temperatures in kelvin.",q9:"The internal energy of an ideal gas is a function of temperature alone.",q10:"ΔU = Q − W = 500 − 180 = 320 J.",q11:"Equipartition gives average translational kinetic energy = (3/2)kT per molecule.",q12:"RMS speed is proportional to √T; quadrupling T doubles the speed.",q13:"For equal masses of the same substance with no heat loss, final temperature is the mean: (20 + 60)/2 = 40°C.",q14:"Q = mcΔT = 0.2 × 4200 × 10 = 8400 J.",q15:"For parallel rods, conductances add: kA/L + 2kA/L = 3kA/L.",q16:"For a small temperature difference, the cooling rate is proportional to the body–surroundings temperature difference.",q17:"Stefan–Boltzmann law: emitted power per unit area is proportional to T⁴.",q18:"The container volume is fixed, so ΔV = 0 and W = ∫P dV = 0.",q19:"For a monatomic ideal gas, Cᵥ = (f/2)R with f = 3, so Cᵥ = 3R/2."};
+const form=document.getElementById("quiz");let seconds=2280,finished=false;
+const clock=setInterval(()=>{if(finished)return;seconds--;document.getElementById("timer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");if(seconds<=0){finishTest();}},1000);
+function finishTest(){if(finished)return;finished=true;clearInterval(clock);let score=0,review="";for(let i=1;i<=19;i++){const q="q"+i,chosen=form.querySelector('input[name="'+q+'"]:checked');const ok=chosen&&chosen.value===answers[q];if(ok)score+=4;review+='<div class="answer"><strong>Q'+i+': </strong><span class="'+(ok?"correct":"wrong")+'">'+(ok?"Correct":("Your answer: "+(chosen?chosen.value:"Not answered"))+" · Correct answer: "+answers[q])+'</span><div class="small">'+explanations[q]+'</div></div>';}document.getElementById("score").textContent="Score: "+score+" / 76 ("+(score/76*100).toFixed(0)+"%)";document.getElementById("review").innerHTML=review;document.getElementById("result").style.display="block";document.getElementById("result").scrollIntoView({behavior:"smooth"});form.querySelectorAll("input,button").forEach(el=>el.disabled=true);}
+form.addEventListener("submit",e=>{e.preventDefault();finishTest();});
+document.getElementById("reset").addEventListener("click",()=>location.reload());
+document.getElementById("toggleKey").addEventListener("click",()=>{const k=document.getElementById("key");k.hidden=!k.hidden;document.getElementById("toggleKey").textContent=k.hidden?"Show Answer Key":"Hide Answer Key";if(!k.dataset.ready){k.innerHTML=Object.keys(answers).map((q,i)=>'<div class="answer"><strong>Q'+(i+1)+': '+answers[q]+'</strong><div class="small">'+explanations[q]+'</div></div>').join("");k.dataset.ready="1";}});
+</script>
+</body></html>
