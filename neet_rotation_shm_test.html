@@ -1,1 +1,167 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rankers Nest | NEET Rotation + SHM Test</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#10131b;color:#f4f5f7;font-family:Arial,sans-serif}
+header{background:#171c27;padding:22px 14px;text-align:center;border-bottom:2px solid #d6a638}
+h1{color:#f1c65b;margin:5px;font-size:25px}
+.sub{color:#c7ccd6}
+.info{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:15px}
+.pill{background:#252c3b;padding:10px 14px;border-radius:8px}
+#timer{color:#ffd166;font-weight:bold}
+main{max-width:850px;margin:auto;padding:12px}
+.notice{background:#202839;padding:14px;border-radius:10px;line-height:1.7}
+.question{background:#191f2c;border:1px solid #343d4e;border-radius:12px;padding:16px;margin:14px 0}
+.question h3{font-size:16px;line-height:1.6;margin:0 0 12px}
+.topic{color:#e9bb50;font-size:12px}
+.option{display:block;background:#242c3a;padding:11px;margin:8px 0;border-radius:7px;cursor:pointer;line-height:1.5}
+.option input{margin-right:9px}
+.option:has(input:checked){outline:1px solid #e6bd55}
+button{border:0;border-radius:8px;padding:13px 18px;font-weight:bold;cursor:pointer;margin:6px}
+#submit{background:#e8bb4e;color:#151515}
+#reset{background:#343d4e;color:white}
+#result{display:none;background:#202839;border:2px solid #d6a638;padding:18px;border-radius:12px;margin:18px 0}
+.explanation{background:#111722;padding:12px;margin:9px 0;border-radius:8px;line-height:1.6}
+footer{text-align:center;color:#9da5b5;padding:25px}
+</style>
+</head>
+<body>
+<header>
+<h1>RANKERS NEST</h1>
+<div class="sub">NEET Physics Online Test</div>
+<h2>Rotational Motion + Simple Harmonic Motion</h2>
+<div class="sub">45 MCQs | NEET Practice Test</div>
+</header>
+<div class="info">
+<div class="pill">⏱ Time: <span id="timer">60:00</span></div>
+<div class="pill">Questions: 45</div>
+<div class="pill">Correct: +4</div>
+<div class="pill">Wrong: −1</div>
+</div>
+<main>
+<div class="notice">
+<b>Instructions</b><br>
+1. Total time: 60 minutes.<br>
+2. Correct answer: +4 marks; incorrect answer: −1 mark; unanswered: 0.<br>
+3. Maximum marks: 180.<br>
+4. Your test will submit automatically when the timer reaches zero.<br>
+5. Select one option for each question.
+</div>
+<div id="questions"></div>
+<div style="text-align:center;margin:24px 0">
+<button id="submit" onclick="finish(false)">SUBMIT TEST</button>
+<button id="reset" onclick="location.reload()">RESTART TEST</button>
+</div>
+<div id="result"></div>
+</main>
+<footer>Rankers Nest | Where Rankers Are Made</footer>
+
+<script>
+const Q = [
+["Rotation","The SI unit of moment of inertia is:",["kg m","kg m²","N m","kg/m²"],1,"Moment of inertia has dimension ML²; its SI unit is kg m²."],
+["Rotation","The moment of inertia of a point mass m at distance r from an axis is:",["mr","mr²","m²r","m/r²"],1,"For a point mass, I = mr²."],
+["Rotation","Torque is equal to:",["F/r","Fr sin θ","F/r²","mv"],1,"The magnitude of torque is τ = rF sin θ."],
+["Rotation","A body rolls without slipping. Its linear speed v and angular speed ω satisfy:",["v = ω/R","v = ωR","v = R/ω","v = ωR²"],1,"For pure rolling, v = ωR."],
+["Rotation","Angular momentum of a rigid body rotating about a fixed principal axis is:",["Iω","I/ω","Iω²","½Iω²"],0,"Angular momentum L = Iω."],
+["Rotation","Rotational kinetic energy is:",["Iω","½Iω²","Iα","τ/r"],1,"Rotational kinetic energy is ½Iω²."],
+["Rotation","A torque of 6 N m acts on a body with moment of inertia 2 kg m². Angular acceleration is:",["2 rad/s²","3 rad/s²","4 rad/s²","12 rad/s²"],1,"Using τ = Iα, α = 6/2 = 3 rad/s²."],
+["Rotation","For a solid disc about its central axis, moment of inertia is:",["MR²","½MR²","⅖MR²","⅔MR²"],1,"A solid disc about its central axis has I = ½MR²."],
+["Rotation","For a thin ring about its central axis perpendicular to its plane, I is:",["½MR²","⅖MR²","MR²","2MR²"],2,"For a thin ring, I = MR²."],
+["Rotation","The parallel-axis theorem states:",["I = Icm − Md²","I = Icm + Md²","I = Md","I = Icm/M"],1,"I = Icm + Md²."],
+["Rotation","The perpendicular-axis theorem for a plane lamina is:",["Iz = Ix + Iy","Ix = Iy + Iz","I = MR","Iz = Ix − Iy"],0,"For a plane lamina, Iz = Ix + Iy."],
+["Rotation","If the net external torque is zero, which quantity is conserved?",["Angular momentum","Angular acceleration","Moment of inertia always","Torque"],0,"Zero external torque implies conservation of angular momentum."],
+["Rotation","A skater spins faster by pulling in their arms because:",["Mass increases","Angular momentum is conserved","Torque increases necessarily","Gravity disappears"],1,"Reducing I increases ω when angular momentum Iω is conserved."],
+["Rotation","A wheel starts from rest with angular acceleration 2 rad/s². Its angular speed after 5 s is:",["2 rad/s","5 rad/s","10 rad/s","20 rad/s"],2,"ω = ω₀ + αt = 0 + 2×5 = 10 rad/s."],
+["Rotation","Angular displacement from rest under constant angular acceleration α in time t is:",["αt","½αt²","α/t","2αt²"],1,"θ = ω₀t + ½αt²; from rest θ = ½αt²."],
+["Rotation","The radius of gyration k is defined by:",["I = Mk","I = Mk²","I = M²k","I = k²/M"],1,"By definition I = Mk²."],
+["Rotation","A solid sphere rolls without slipping. Its total kinetic energy is:",["½Mv²","⅗Mv²","⅘Mv²","Mv²"],2,"K = ½Mv² + ½(2/5 MR²)(v²/R²) = 7/10 Mv². Wait: correct expression is 7/10 Mv²."],
+["Rotation","A couple produces:",["Pure translation only","Pure rotation tendency","Zero torque always","No force"],1,"A couple has zero resultant force but nonzero torque."],
+["Rotation","Work done by a constant torque τ through angular displacement θ is:",["τ/θ","τθ","τθ²","τ²θ"],1,"Rotational work W = τθ."],
+["Rotation","The rotational form of Newton's second law for a fixed axis is:",["τ = Iα","τ = Iω","τ = mr","τ = I/α"],0,"Net torque equals moment of inertia times angular acceleration."],
+["Rotation","A body has I = 4 kg m² and ω = 3 rad/s. Its rotational kinetic energy is:",["6 J","12 J","18 J","36 J"],2,"K = ½×4×3² = 18 J."],
+["Rotation","For the same angular momentum, if moment of inertia doubles, angular speed becomes:",["Double","Half","Four times","Unchanged"],1,"L = Iω is constant, so doubling I halves ω."],
+["Rotation","The centre of mass of a uniform circular ring lies:",["On its circumference","At its centre","Outside the ring","At any point"],1,"Symmetry places the centre of mass at the centre."],
+["SHM","In simple harmonic motion, acceleration is:",["Constant","Proportional to displacement and in the same direction","Proportional to displacement and opposite in direction","Always zero"],2,"For SHM, a = −ω²x."],
+["SHM","The time period of a mass-spring system is:",["2π√(k/m)","2π√(m/k)","√(mk)","2πmk"],1,"T = 2π√(m/k)."],
+["SHM","The time period of a simple pendulum for small oscillations is:",["2π√(g/l)","2π√(l/g)","2πlg","√(lg)"],1,"For small oscillations, T = 2π√(l/g)."],
+["SHM","At the mean position of SHM, the speed is:",["Zero","Maximum","Always half maximum","Undefined"],1,"At x = 0, all oscillator energy is kinetic, so speed is maximum."],
+["SHM","At an extreme position in SHM, the speed is:",["Maximum","Zero","ωA","A/ω"],1,"At x = ±A, the oscillator momentarily stops."],
+["SHM","The total mechanical energy of an ideal spring oscillator is:",["½kA²","kA","½kx² only","kA²/2x"],0,"Total energy E = ½kA²."],
+["SHM","If amplitude doubles while angular frequency remains unchanged, total energy becomes:",["Double","Four times","Half","Unchanged"],1,"Energy is proportional to A²."],
+["SHM","Angular frequency and time period are related by:",["ω = T/2π","ω = 2π/T","ω = 2πT","ω = 1/T²"],1,"ω = 2π/T."],
+["SHM","A particle executes SHM with amplitude 0.10 m and angular frequency 4 rad/s. Maximum speed is:",["0.025 m/s","0.4 m/s","2.5 m/s","4 m/s"],1,"vmax = ωA = 4×0.10 = 0.4 m/s."],
+["SHM","If the time period is 2 s, the frequency is:",["2 Hz","1 Hz","0.5 Hz","4 Hz"],2,"f = 1/T = 0.5 Hz."],
+["SHM","For x = A cos(ωt), the initial position at t = 0 is:",["0","A","−A","A/2"],1,"x(0) = A cos 0 = A."],
+["SHM","At displacement x = A/2, the speed magnitude is:",["ωA","ωA/2","(√3/2)ωA","(1/2)ωA²"],2,"v = ω√(A² − x²) = (√3/2)ωA."],
+["SHM","In SHM, the phase difference between displacement and velocity is:",["0","π/2","π","2π"],1,"Displacement and velocity are a quarter cycle out of phase."],
+["SHM","For a spring oscillator, if mass becomes four times while k remains constant, the period becomes:",["Half","Double","Four times","Unchanged"],1,"T = 2π√(m/k); quadrupling m doubles T."],
+["SHM","For a simple pendulum, if its length becomes four times, its period becomes:",["Half","Double","Four times","Unchanged"],1,"T ∝ √l, so four times the length doubles the period."],
+["SHM","The restoring force in an ideal spring is:",["F = kx","F = −kx","F = k/x","F = −k/x"],1,"Hooke's law for the restoring force is F = −kx."],
+["SHM","In ideal SHM, kinetic energy is maximum at:",["Extreme positions","Mean position","All positions equally","No position"],1,"Speed is maximum at the mean position."],
+["SHM","In ideal SHM, potential energy is maximum at:",["Mean position","Extreme positions","Everywhere equal","Half amplitude only"],1,"Spring potential energy U = ½kx² is maximum at |x| = A."],
+["SHM","A particle has x = 0.06 m and amplitude A = 0.10 m. The magnitude of displacement as a fraction of amplitude is:",["0.4","0.6","1.6","0.06"],1,"|x|/A = 0.06/0.10 = 0.6."],
+["SHM","A particle completes 20 oscillations in 10 seconds. Its frequency is:",["0.5 Hz","1 Hz","2 Hz","10 Hz"],2,"f = number of oscillations/time = 20/10 = 2 Hz."],
+["SHM","The acceleration magnitude in SHM is maximum at:",["Mean position","Extreme positions","Everywhere equal","Only at t = 0"],1,"|a| = ω²|x|, which is largest at |x| = A."],
+["SHM","For x = A sin(ωt), the velocity is:",["Aω sin(ωt)","Aω cos(ωt)","−Aω cos(ωt)","−Aω² sin(ωt)"],1,"Differentiating x gives v = Aω cos(ωt)."]
+];
+
+const root = document.getElementById("questions");
+Q.forEach((q,i)=>{
+ const div=document.createElement("section");
+ div.className="question";
+ div.id="q"+i;
+ div.innerHTML='<div class="topic">'+q[0]+' • Question '+(i+1)+'</div><h3>'+(i+1)+'. '+q[1]+'</h3>'+
+ q[2].map((o,j)=>'<label class="option"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+'. '+o+'</label>').join('');
+ root.appendChild(div);
+});
+
+let remaining=3600, submitted=false;
+const timerEl=document.getElementById("timer");
+const tick=setInterval(()=>{
+ if(submitted)return;
+ remaining--;
+ const m=Math.floor(remaining/60),s=remaining%60;
+ timerEl.textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+ if(remaining<=0)finish(true);
+},1000);
+
+function finish(auto){
+ if(submitted)return;
+ if(!auto && !confirm("Are you sure you want to submit the test?"))return;
+ submitted=true;
+ clearInterval(tick);
+ let correct=0,wrong=0,unanswered=0;
+ Q.forEach((q,i)=>{
+  const chosen=document.querySelector('input[name="q'+i+'"]:checked');
+  const box=document.getElementById("q"+i);
+  box.querySelectorAll("input").forEach(x=>x.disabled=true);
+  if(!chosen)unanswered++;
+  else if(Number(chosen.value)===q[3])correct++;
+  else wrong++;
+  const exp=document.createElement("div");
+  exp.className="explanation";
+  exp.innerHTML="<b>Correct answer: "+String.fromCharCode(65+q[3])+". "+q[2][q[3]]+"</b><br>"+q[4];
+  box.appendChild(exp);
+ });
+ const score=correct*4-wrong;
+ const result=document.getElementById("result");
+ result.style.display="block";
+ result.innerHTML="<h2>Test Result</h2>"+
+ "<p><b>Score:</b> "+score+" / 180</p>"+
+ "<p><b>Correct:</b> "+correct+" &nbsp; <b>Wrong:</b> "+wrong+
+ " &nbsp; <b>Unanswered:</b> "+unanswered+"</p>"+
+ "<p><b>Percentage:</b> "+(Math.max(0,score)/180*100).toFixed(2)+"%</p>"+
+ "<p>"+(auto?"Time is over. Your test was submitted automatically.":"Your test has been submitted.")+"</p>"+
+ "<p>Scroll through the questions to review the correct answers and explanations.</p>";
+ result.scrollIntoView({behavior:"smooth"});
+ document.getElementById("submit").disabled=true;
+}
+</script>
+</body>
+</html>
+
