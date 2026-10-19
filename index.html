@@ -401,7 +401,7 @@ footer a:hover{color:var(--gold)}
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
   import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-analytics.js";
-  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
   // TODO: Add SDKs for Firebase products that you want to use
   import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -427,28 +427,57 @@ const registrationForm = document.getElementById("registration-form");
 
 registrationForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+  if (!registrationForm.reportValidity()) return;
 
   const message = document.getElementById("registration-message");
-
+  const button = registrationForm.querySelector('button[type="submit"]');
   const student = {
     name: document.getElementById("student-name").value.trim(),
-    email: document.getElementById("student-email").value.trim(),
+    email: document.getElementById("student-email").value.trim().toLowerCase(),
     mobile: document.getElementById("student-mobile").value.trim(),
     studentClass: document.getElementById("student-class").value,
-    exam: document.getElementById("student-exam").value,
-    registeredAt: new Date().toISOString()
+    exam: document.getElementById("student-exam").value
   };
-const password = document.getElementById("student-password").value;
-  try {await createUserWithEmailAndPassword(auth, student.email, password);
-    
-const docRef = await addDoc(collection(db, "students"), student);
-message.textContent = "Registration successful! ID: " + docRef.id;
-registrationForm.reset();
+  const password = document.getElementById("student-password").value;
+  button.disabled = true;
+  button.textContent = "Registering…";
+  message.textContent = "Creating your account and saving your registration…";
 
+  try {
+    let credential;
+    try {
+      credential = await createUserWithEmailAndPassword(auth, student.email, password);
+    } catch (authError) {
+      if (authError.code === "auth/email-already-in-use") {
+        credential = await signInWithEmailAndPassword(auth, student.email, password);
+      } else {
+        throw authError;
+      }
+    }
+
+    const docRef = await addDoc(collection(db, "students"), {
+      ...student,
+      uid: credential.user.uid,
+      registeredAt: new Date().toISOString()
+    });
+    message.textContent = "Registration saved successfully. Reference ID: " + docRef.id + ". Keep this reference for support.";
+    registrationForm.reset();
   } catch (error) {
-    console.error("Registration error:", error);
-    message.textContent =
-      "Registration failed: " + error.message;
+    console.error("Registration error code:", error.code || "unknown");
+    if (error.code === "auth/invalid-credential" || error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
+      message.textContent = "This email may already have an account. Please check the email/password or use the account recovery option in Firebase Authentication.";
+    } else if (error.code === "auth/weak-password") {
+      message.textContent = "Please choose a password with at least 6 characters.";
+    } else if (error.code === "auth/invalid-email") {
+      message.textContent = "Please enter a valid email address.";
+    } else if (error.code === "permission-denied" || error.code === "firestore/permission-denied") {
+      message.textContent = "Your account may have been created, but the registration record could not be saved. Please contact Rankers Nest and share the email used; do not send your password.";
+    } else {
+      message.textContent = "Registration could not be completed. Please check your connection and try again. If it continues, contact Rankers Nest.";
+    }
+  } finally {
+    button.disabled = false;
+    button.textContent = "Register Now";
   }
 });
 
