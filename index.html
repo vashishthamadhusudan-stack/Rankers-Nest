@@ -475,7 +475,7 @@ footer a:hover{color:var(--gold)}
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
   import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-analytics.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
   // TODO: Add SDKs for Firebase products that you want to use
   import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -519,15 +519,7 @@ registrationForm.addEventListener("submit", async (event) => {
 
   try {
     let credential;
-    try {
-      credential = await createUserWithEmailAndPassword(auth, student.email, password);
-    } catch (authError) {
-      if (authError.code === "auth/email-already-in-use") {
-        credential = await signInWithEmailAndPassword(auth, student.email, password);
-      } else {
-        throw authError;
-      }
-    }
+    credential = await createUserWithEmailAndPassword(auth, student.email, password);
 
     const docRef = await addDoc(collection(db, "students"), {
       ...student,
@@ -538,8 +530,10 @@ registrationForm.addEventListener("submit", async (event) => {
     registrationForm.reset();
   } catch (error) {
     console.error("Registration error code:", error.code || "unknown");
-    if (error.code === "auth/invalid-credential" || error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
-      message.textContent = "This email may already have an account. Please check the email/password or use the account recovery option in Firebase Authentication.";
+    if (error.code === "auth/email-already-in-use") {
+      message.textContent = "An account already exists with this email. Please use your existing account or contact Rankers Nest for help; no duplicate registration was created.";
+    } else if (error.code === "auth/invalid-credential" || error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
+      message.textContent = "Please check the account details or use the account recovery option in Firebase Authentication.";
     } else if (error.code === "auth/weak-password") {
       message.textContent = "Please choose a password with at least 6 characters.";
     } else if (error.code === "auth/invalid-email") {
