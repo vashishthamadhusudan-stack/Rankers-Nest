@@ -83,6 +83,53 @@ footer{border-top:1px solid #263d5a;padding:30px 0 38px;color:var(--muted);font-
 @media(max-width:800px){.hero,.about{grid-template-columns:1fr}.hero{padding:46px 0 36px;gap:28px}.hero-card{max-width:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.links{display:none}.cta{align-items:flex-start;flex-direction:column}.hero h1{letter-spacing:-1.6px}.trust-strip{grid-template-columns:1fr}.trust-item{padding:13px 16px}section{padding:48px 0}}
 @media(max-width:520px){.wrap{width:min(100% - 32px,1160px)}.brand{font-size:14px;gap:10px}.mark{width:43px;height:43px}.brand small{font-size:9px;letter-spacing:1.6px}.hero{padding-top:38px}.hero h1{font-size:clamp(39px,12vw,54px);line-height:1.04;margin:15px 0}.hero p{font-size:16px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}.actions .btn{font-size:13px;padding:12px 10px;min-height:48px}.actions .btn:first-child{grid-column:1/-1}.hero-card{padding:24px}.grid{grid-template-columns:1fr}.card{padding:21px}.section-head{margin-bottom:22px}.section-head h2{font-size:31px}#online-tests{padding:22px!important}#online-tests a{width:100%;margin:8px 0 0!important}.foot{flex-direction:column;align-items:flex-start;gap:12px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+/* Premium navigation, resource finder and content hierarchy */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(7,21,45,.94);backdrop-filter:blur(14px);border-bottom:1px solid #263d5e}
+.site-header .nav{border-bottom:0}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.nav-cta{min-height:40px;padding:9px 14px;font-size:12px}
+.menu-toggle{display:none;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid #405574;border-radius:10px;background:#0c1e38;color:var(--text);font-size:22px;cursor:pointer}
+.mobile-links{display:none}
+.resource-finder{padding:26px;border:1px solid #314968;border-radius:22px;background:linear-gradient(145deg,#102544,#0b1b33);margin-top:26px}
+.finder-row{display:flex;gap:10px;align-items:center;margin:16px 0 20px}
+.finder-row input{width:100%;min-height:50px;padding:13px 16px;border-radius:11px;border:1px solid #405574;background:#07162c;color:#fff;font:inherit}
+.finder-row input::placeholder{color:#92a5bf}
+.finder-row input:focus{outline:2px solid var(--gold);outline-offset:2px}
+.resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.resource-card{display:block;padding:20px;border:1px solid #2b4260;border-radius:15px;background:#0a1b33;transition:transform .18s,border-color .18s}
+.resource-card:hover{transform:translateY(-3px);border-color:var(--gold)}
+.resource-icon{display:grid;place-items:center;width:38px;height:38px;margin-bottom:12px;border-radius:11px;background:#26354b;color:var(--gold);font-size:19px}
+.resource-card strong{display:block;font-size:15px;margin-bottom:5px}
+.resource-card span{display:block;color:var(--muted);font-size:12px;line-height:1.5}
+#resource-search-status{min-height:20px;color:var(--gold2);font-size:12px;margin:8px 0 0}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,#2d4564,transparent);margin:8px auto}
+#videos .video-frame{max-width:360px;margin:22px auto}
+#videos iframe{width:100%;aspect-ratio:9/16;height:auto;min-height:430px}
+#student-registration{scroll-margin-top:100px}
+#contact{padding-top:48px}
+footer a:hover{color:var(--gold)}
+@media(max-width:800px){
+ .site-header{position:sticky}
+ .nav-actions>.links{display:none}
+ .menu-toggle{display:inline-flex}
+ .nav-cta{display:none}
+ .mobile-links{display:none;flex-direction:column;gap:0;padding:4px 0 14px;border-top:1px solid #263d5e}
+ .mobile-links.open{display:flex}
+ .mobile-links a{padding:12px 8px;border-bottom:1px solid #203653;color:var(--muted);font-weight:700;font-size:14px}
+ .mobile-links a:last-child{border-bottom:0}
+ .resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:520px){
+ .resource-finder{padding:19px}
+ .resource-grid{grid-template-columns:1fr}
+ .resource-card{display:flex;gap:13px;align-items:flex-start;padding:16px}
+ .resource-icon{flex:0 0 38px;margin:0}
+ .resource-card strong{margin-bottom:3px}
+ .finder-row{margin-bottom:14px}
+ #videos iframe{min-height:380px}
+}
+
 </style>
   <script type="application/ld+json">
   {
@@ -96,14 +143,21 @@ footer{border-top:1px solid #263d5a;padding:30px 0 38px;color:var(--muted);font-
   </script>
 </head>
 <body>
-  <header class="wrap">
+  <header class="site-header"><div class="wrap">
     <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="#home" aria-label="Rankers Nest home">
         <span class="mark">RN</span><span>RANKERS NEST<small>WHERE RANKERS ARE MADE</small></span>
       </a>
-      <div class="links"><a href="#courses">Courses</a><a href="#approach">Our Approach</a><a href="#faculty">Faculty</a><a href="#contact">Contact</a></div>
+      <div class="nav-actions">
+        <div class="links"><a href="#courses">Courses</a><a href="#resources">Resources</a><a href="#faculty">Faculty</a><a href="#contact">Contact</a></div>
+        <a class="btn nav-cta" href="#contact">Enquire Now →</a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-links">☰</button>
+      </div>
     </nav>
-  </header>
+    <div class="mobile-links" id="mobile-links">
+      <a href="#courses">Explore Courses</a><a href="#resources">PYQ, Videos &amp; Study Resources</a><a href="#approach">Our Approach</a><a href="#faculty">Meet the Faculty</a><a href="#online-tests">Online Tests</a><a href="#student-registration">Student Registration</a><a href="#contact">Contact / Class Enquiry</a>
+    </div>
+  </div></header>
   <main>
     <section class="wrap hero" id="home">
       <div>
@@ -112,13 +166,10 @@ footer{border-top:1px solid #263d5a;padding:30px 0 38px;color:var(--muted);font-
         <p>Concept-focused online Physics coaching for JEE Main, JEE Advanced and NEET aspirants in Class 11, Class 12 and dropper batches.</p>
        
 <div class="actions dashboard">
-  <a class="btn" href="#contact">Book a Free Demo Class <span aria-hidden="true">→</span></a>
+  <a class="btn" href="#contact">Enquire About Classes <span aria-hidden="true">→</span></a>
   <a class="btn secondary" href="#courses">Explore Courses</a>
   <a class="btn secondary" href="pyq-solutions.html">PYQ Solutions</a>
-  <a class="btn secondary" href="#videos">Video Lectures</a>
   <a class="btn secondary" href="#online-tests">Tests &amp; Practice</a>
-  <a class="btn secondary" href="https://chatgpt.com/share/6ad1f650-fbd0-83ee-9321-b01e4527a158" target="_blank" rel="noopener noreferrer">✦ Rankers Nest AI ChatGPT</a>
-  <a class="btn" href="national-talent-hunt.html">RN-AIPTSE 2026 – Register Now</a>
 </div>
 
         
@@ -151,7 +202,29 @@ footer{border-top:1px solid #263d5a;padding:30px 0 38px;color:var(--muted);font-
       </div>
     </section>
 
-    <section class="wrap" id="approach">
+    
+<section class="wrap" id="resources">
+  <div class="section-head">
+    <div class="eyebrow">Student resource centre</div>
+    <h2>What do you want to learn today?</h2>
+    <p>Find PYQ solutions, video lessons, practice tests and exam resources from one place.</p>
+  </div>
+  <div class="resource-finder">
+    <label for="resource-search"><strong>Quick find</strong></label>
+    <div class="finder-row"><input id="resource-search" type="search" placeholder="Search courses, PYQs, tests, videos…" autocomplete="off" aria-describedby="resource-search-status"></div>
+    <div class="resource-grid" id="resource-grid">
+      <a class="resource-card" href="pyq-solutions.html" data-search="pyq previous year questions solutions question answers jee neet physics"><span class="resource-icon" aria-hidden="true">↗</span><span><strong>PYQ Solutions</strong><span>Previous-year Physics questions and solutions</span></span></a>
+      <a class="resource-card" href="#videos" data-search="video lectures youtube lessons class physics concepts"><span class="resource-icon" aria-hidden="true">▶</span><span><strong>Video Lectures</strong><span>Learn Physics through video lessons</span></span></a>
+      <a class="resource-card" href="#online-tests" data-search="online tests practice mcq neet physics jee test"><span class="resource-icon" aria-hidden="true">✓</span><span><strong>Tests &amp; Practice</strong><span>Open available topic-wise practice tests</span></span></a>
+      <a class="resource-card" href="national-talent-hunt.html" data-search="rn-aiptse 2026 national talent hunt exam register scholarship"><span class="resource-icon" aria-hidden="true">★</span><span><strong>RN-AIPTSE 2026</strong><span>Open the national talent hunt exam page</span></span></a>
+      <a class="resource-card" href="https://chatgpt.com/share/6ad1f650-fbd0-83ee-9321-b01e4527a158" target="_blank" rel="noopener noreferrer" data-search="ai chatgpt assistant ask questions study help"><span class="resource-icon" aria-hidden="true">✦</span><span><strong>Rankers Nest AI</strong><span>Open the Rankers Nest AI learning assistant</span></span></a>
+      <a class="resource-card" href="#student-registration" data-search="student registration sign up online tests account"><span class="resource-icon" aria-hidden="true">＋</span><span><strong>Student Registration</strong><span>Create an account for online test access</span></span></a>
+    </div>
+    <p id="resource-search-status" role="status" aria-live="polite">6 resources available. Type to filter.</p>
+  </div>
+</section>
+
+<section class="wrap" id="approach">
       <div class="section-head"><div class="eyebrow">Our approach</div><h2>Physics is more than memorising formulas</h2><p>Our learning approach is designed to help students understand why a method works, when to use it and how to apply it accurately.</p></div>
       <div class="grid">
         <article class="card"><div class="num">01</div><h3>Concept clarity</h3><p>Understand principles, assumptions, diagrams and the physical meaning behind equations.</p></article>
@@ -173,10 +246,11 @@ footer{border-top:1px solid #263d5a;padding:30px 0 38px;color:var(--muted);font-
     <h2>Physics Video Lectures</h2>
     <p>Learn Physics with Madhusudan Vashishtha</p>
   </div>
-  <div style="max-width:360px;margin:20px auto;">
+  <div class="video-frame">
     <iframe
       width="100%"
       height="560"
+      loading="lazy"
       src="https://www.youtube.com/embed/tK8nOG4Z69g"
       title="Rankers Nest Physics Lecture"
       style="border:0;border-radius:12px;"
@@ -185,7 +259,7 @@ footer{border-top:1px solid #263d5a;padding:30px 0 38px;color:var(--muted);font-
   </div>
 </section>
 
-<section id="online-tests" style="padding:20px;text-align:center;background:#181818;color:white;border-radius:12px;margin:20px 0;">
+<section class="wrap" id="online-tests" style="padding:20px;text-align:center;background:#181818;color:white;border-radius:12px;margin:20px 0;">
 
   <h2>Rankers Nest Online Test</h2>
   <p>NEET Physics: Center of Mass, Momentum and Collision</p>
@@ -206,7 +280,7 @@ footer{border-top:1px solid #263d5a;padding:30px 0 38px;color:var(--muted);font-
 
 </section>
   
-<section id="student-registration" style="padding:24px 16px;max-width:600px;margin:auto;background:#181818;color:white;border-radius:16px;">
+<section class="wrap" id="student-registration" style="padding:24px 16px;max-width:600px;margin:auto;background:#181818;color:white;border-radius:16px;">
   <h2>Student Registration</h2>
   <p>Register for Rankers Nest JEE / NEET Online Tests.</p>
 
@@ -273,6 +347,46 @@ footer{border-top:1px solid #263d5a;padding:30px 0 38px;color:var(--muted);font-
   </main>
   <footer><div class="wrap foot"><div><strong style="color:var(--text)">RANKERS NEST</strong><br>Where Rankers Are Made</div><div>Online Physics Coaching · JEE Main · JEE Advanced · NEET</div><div>© <span id="year">2026</span> Rankers Nest. All rights reserved.</div></div></footer>
 
+
+
+<script>
+(function(){
+  const toggle=document.getElementById('menu-toggle');
+  const menu=document.getElementById('mobile-links');
+  if(toggle&&menu){
+    toggle.addEventListener('click',function(){
+      const open=menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded',String(open));
+      toggle.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');
+      toggle.textContent=open?'×':'☰';
+    });
+    menu.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click',function(){
+        menu.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+        toggle.setAttribute('aria-label','Open navigation menu');
+        toggle.textContent='☰';
+      });
+    });
+  }
+  const search=document.getElementById('resource-search');
+  const cards=Array.from(document.querySelectorAll('#resource-grid .resource-card'));
+  const status=document.getElementById('resource-search-status');
+  if(search&&status){
+    search.addEventListener('input',function(){
+      const query=search.value.trim().toLowerCase();
+      let count=0;
+      cards.forEach(function(card){
+        const text=(card.innerText+' '+(card.dataset.search||'')).toLowerCase();
+        const match=!query||text.includes(query);
+        card.hidden=!match;
+        if(match)count++;
+      });
+      status.textContent=query?(count+' matching resource'+(count===1?'':'s')+' found.'):cards.length+' resources available. Type to filter.';
+    });
+  }
+})();
+</script>
 
 <script type="module">
   // Import the functions you need from the SDKs you need
