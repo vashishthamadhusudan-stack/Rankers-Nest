@@ -1,4 +1,4 @@
-const CACHE_NAME = "rankers-nest-v7";
+const CACHE_NAME = "rankers-nest-v8";
 const FILES = [
   "./",
   "./index.html",
@@ -21,6 +21,12 @@ const FILES = [
   "./neet-rotational-dynamics-pyq.html",
   "./current-electricity-neet-pyq.html",
   "./national-talent-hunt.html",
+  "./rankers_nest_neet_physics_test.html",
+  "./neet_rotation_shm_test.html",
+  "./jee_main_conservation_of_momentum.html",
+  "./online-physics-classes.html",
+  "./jee-physics-online-classes.html",
+  "./neet-physics-online-classes.html",
   "./premium.css?v=20261020",
   "./icon.svg"
 ];
