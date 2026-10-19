@@ -45,3 +45,34 @@ fieldset{min-width:0}
 label{cursor:pointer}
 @media(max-width:650px){.rn-links,.nav-links{gap:10px;flex-wrap:wrap}.rn-header,.site-header{position:sticky;top:0}.rn-grid,.grid,.cards,.chapters,.chapter-grid,.topics-grid,.faq{grid-template-columns:1fr!important}.rn-card,.card{min-width:0}.question img{display:block;margin-inline:auto}.actions{gap:9px}}
 @media(prefers-contrast:more){:root{--rn-line:#6b7f99;--rn-muted:#d5dfed}}
+
+
+/* Site-wide visual polish — consistent across all Rankers Nest pages */
+:root{--rn-radius:18px;--rn-shadow:0 14px 36px rgba(0,0,0,.18);--rn-focus:#ffe08a}
+body{min-height:100vh;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+main{width:min(1160px,92%);padding-inline:0}
+header{background:rgba(7,21,45,.96);backdrop-filter:blur(12px)}
+header a,nav a{text-decoration:none}
+nav a:hover,header a:hover{color:var(--rn-gold2)}
+section{scroll-margin-top:100px}
+article,.card,.exam,.question,.question-card,.chapter-card,.topic-card,.test-card,.resource-card,.panel,.box,.content-card,.subject-card,.chapter,.test-section,.quiz-container{box-shadow:0 8px 24px rgba(0,0,0,.10);transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+article:hover,.card:hover,.question-card:hover,.chapter-card:hover,.topic-card:hover,.test-card:hover,.resource-card:hover{box-shadow:var(--rn-shadow)}
+button:active,.btn:active,input[type=submit]:active{transform:translateY(0)}
+button:focus-visible,.btn:focus-visible,a:focus-visible{outline:3px solid var(--rn-focus)!important;outline-offset:3px}
+:is(input,select,textarea){width:auto;max-width:100%}
+:is(input,select,textarea):disabled{opacity:.65;cursor:not-allowed}
+:is(.options,.answers,.choices,.option-list){display:grid;gap:10px}
+:is(.option,.answer-option,.choice){border:1px solid var(--rn-line);border-radius:12px;padding:12px 14px;background:#0b1b33;color:var(--rn-text)}
+:is(.option,.answer-option,.choice):hover{border-color:var(--rn-gold)}
+:is(.solution,.explanation,.answer-explanation){border-left:3px solid var(--rn-gold);border-radius:0 12px 12px 0;padding:14px 16px;background:rgba(244,200,75,.06)}
+:is(.question,.question-card,.test-section){margin-block:14px}
+:is(.question p,.question-card p){overflow-wrap:anywhere}
+:is(.badge,.tag){display:inline-flex;align-items:center;gap:6px;border:1px solid #5a5036;border-radius:999px;padding:4px 9px;font-size:.8rem;font-weight:750}
+footer a{color:var(--rn-gold2)}
+@media(max-width:650px){
+ main{width:calc(100% - 28px);padding-inline:0}
+ section{padding-block:32px}
+ :is(.card,.question,.question-card,.chapter-card,.topic-card,.test-card,.resource-card,.panel,.content-card){border-radius:15px}
+ table{font-size:14px}
+ :is(button,.btn,input[type=submit],input[type=button]){min-height:44px}
+}
