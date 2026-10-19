@@ -1,7 +1,10 @@
-const CACHE_NAME = "rankers-nest-v5";
+const CACHE_NAME = "rankers-nest-v6";
 const FILES = [
   "./",
   "./index.html",
+  "./neet-physics-online-classes.html",
+  "./jee-physics-online-classes.html",
+  "./online-physics-classes.html",
   "./manifest.json",
   "./student-dashboard.html",
   "./daily-practice.html",
