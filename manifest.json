@@ -7,16 +7,9 @@
   "scope": "/Rankers-Nest/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0B0B0B",
-  "theme_color": "#0B0B0B",
+  "background_color": "#07152d",
+  "theme_color": "#07152d",
   "categories": ["education"],
   "lang": "en-IN",
-  "icons": [
-    {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ]
+  "icons": [{"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]
 }
