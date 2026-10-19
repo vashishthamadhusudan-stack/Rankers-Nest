@@ -162,6 +162,9 @@ function startTest(){
  },1000);
 }
 document.getElementById("start-test").addEventListener("click",startTest);
+window.addEventListener("beforeunload",e=>{
+ if(started&&!submitted){e.preventDefault();e.returnValue="Your test is in progress.";}
+});
 
 function finish(auto){
  if(submitted)return;
