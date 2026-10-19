@@ -24,6 +24,25 @@ label{display:block;margin:14px 0 6px;font-size:13px;font-weight:800;color:#dce6
 input,select{width:100%;min-height:49px;padding:12px 13px;border-radius:10px;border:1px solid #405574;background:#07162c;color:#fff;font:inherit}input::placeholder{color:#879bb6}input:focus,select:focus{outline:2px solid var(--gold);outline-offset:2px}
 #exam-form .btn{width:100%;margin-top:18px}#message{overflow-wrap:anywhere}.payment-note{margin:18px 0;padding:17px;border:1px solid #66552c;border-radius:14px;background:#151f2e}.payment-note strong{color:var(--gold2)}
 footer{margin-top:45px;border-top:1px solid #263d5a;background:#061126;padding:26px 0 35px;color:var(--muted);font-size:12px;text-align:center}
+/* Premium registration experience */
+#register{position:relative;overflow:hidden;border-color:#806c35;background:radial-gradient(ellipse at 100% 0%,#273e60 0,transparent 42%),linear-gradient(145deg,#102544,#08172d);box-shadow:0 24px 65px #0004}
+#register:before{content:"RN-AIPTSE 2026";display:inline-block;color:#ffe08a;background:#192f4d;border:1px solid #6d5a2e;border-radius:999px;padding:6px 12px;font-size:10px;font-weight:900;letter-spacing:1.6px;margin-bottom:12px}
+#register .tag{margin-top:4px}#register h2{font-size:clamp(28px,4vw,38px);margin-bottom:8px}
+.register-intro{max-width:720px;margin-bottom:22px}
+.form-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:22px 0}
+.form-step{padding:13px;border:1px solid #314967;border-radius:13px;background:#0a1a31;color:#b8c5d9;font-size:12px}
+.form-step b{display:block;color:#ffe08a;font-size:13px;margin-bottom:3px}
+#exam-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:18px;row-gap:2px;margin-top:20px}
+#exam-form .field{min-width:0}#exam-form .field.full,#exam-form .form-disclaimer,#exam-form #message,#exam-form button{grid-column:1/-1}
+#exam-form label{margin:12px 0 7px;font-size:12px;letter-spacing:.2px}
+#exam-form input,#exam-form select{min-height:54px;border-radius:12px;border-color:#3b5272;background:#07152a;transition:border-color .15s,box-shadow .15s}
+#exam-form input:focus,#exam-form select:focus{border-color:#f4c84b;box-shadow:0 0 0 3px #f4c84b22}
+#exam-form .btn{min-height:56px;border-radius:13px;font-size:14px;letter-spacing:.2px;margin-top:16px}
+#register .payment-note{border-color:#705e31;background:linear-gradient(120deg,#1b2a3d,#121f31);border-radius:15px}
+#register .payment-note p{margin:8px 0}#register .payment-note a{color:#ffe08a;text-decoration:underline}
+.form-disclaimer{font-size:11px!important;line-height:1.6;margin:14px 0 0}
+#message{padding:0 2px;font-size:13px}
+@media(max-width:620px){#exam-form{grid-template-columns:1fr}.form-steps{grid-template-columns:1fr}.form-step{display:flex;gap:10px;align-items:center}.form-step b{margin:0;min-width:88px}}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @media(max-width:760px){header .nav{align-items:flex-start;padding:12px 0;flex-direction:column}.nav-links{flex-wrap:wrap;gap:12px}.hero{padding-top:35px}.stats{grid-template-columns:1fr}.stat{padding:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left}.stat strong{margin:0;text-align:right}.panel{padding:20px}}
 @media(max-width:520px){.wrap{width:calc(100% - 30px)}h1{font-size:clamp(36px,11vw,49px);letter-spacing:-1.3px}.hero>p:not(.note){font-size:15px}.hero .btn{width:100%}.prize{gap:12px}.prize span,.prize strong{font-size:13px}}
@@ -162,34 +181,44 @@ footer{margin-top:45px;border-top:1px solid #263d5a;background:#061126;padding:2
   </p>
 </section>
 <section class="panel" id="register">
-  <div class="tag">Step 1 · Application</div><h2 class="gold">STUDENT REGISTRATION</h2>
-  <p>Complete the form carefully. After your details are saved, the page will show an application reference and a UPI payment link.</p>
+  <div class="tag">Your journey starts here</div><h2 class="gold">REGISTER FOR RN-AIPTSE 2026</h2>
+  <p class="register-intro">Take your place in a national-level Physics talent search. Enter accurate student details to create your application. Keep your application reference safe for payment follow-up.</p>
+  <div class="form-steps" aria-label="Registration steps"><div class="form-step"><b>01 · APPLY</b>Fill student details</div><div class="form-step"><b>02 · PAY</b>Pay ₹200 via UPI</div><div class="form-step"><b>03 · VERIFY</b>Confirmation after review</div></div>
   <div class="payment-note"><strong>Registration fee: ₹200</strong><p class="note">The proposed total prize pool of ₹2,25,000 is not being published until officially confirmed. Registration fee is non-refundable.</p><p class="note">Pay using your preferred UPI app (Google Pay, PhonePe or another UPI app) to <strong>9731236981@ibl</strong>. The payment button opens a UPI payment request where supported. Opening the app is not proof of payment; registration remains pending until Rankers Nest verifies the payment.</p><p class="note">If the UPI link does not open, use your UPI app to pay ₹200 to the UPI ID above and email the application reference, payment UTR/transaction ID and payment date to <a href="mailto:vashishthamadhusudan@gmail.com">vashishthamadhusudan@gmail.com</a>. Never email your UPI PIN, OTP or bank password.</p><p class="note"><strong>Important:</strong> Automated payment verification is not connected yet. Do not assume the registration is confirmed until you receive confirmation from Rankers Nest.</p></div>
 
   <form id="exam-form">
-    <label for="name">Student Full Name *</label>
+    <div class="field">
+<label for="name">Student Full Name *</label>
     <input id="name" required>
 
-    <label for="father">Father's Name *</label>
+    <div class="field">
+<label for="father">Father's Name *</label>
     <input id="father" required>
 
-    <label for="mother">Mother's Name *</label>
+    <div class="field">
+<label for="mother">Mother's Name *</label>
     <input id="mother" required>
 
-    <label for="dob">Date of Birth *</label>
+    <div class="field">
+<label for="dob">Date of Birth *</label>
 <input id="dob" type="text" placeholder="DDMMYYYY" inputmode="numeric" pattern="[0-9]{8}" maxlength="8" title="Enter 8 digits: DDMMYYYY" required>
+    </div>
 
-    <label for="mobile">Mobile Number *</label>
+    <div class="field">
+<label for="mobile">Mobile Number *</label>
     <input id="mobile" type="tel" inputmode="numeric"
       pattern="[0-9]{10}" maxlength="10" required>
 
-    <label for="email">Email Address *</label>
+    <div class="field">
+<label for="email">Email Address *</label>
     <input id="email" type="email" required>
 
-    <label for="school">School Name *</label>
+    <div class="field full">
+<label for="school">School Name *</label>
     <input id="school" required>
 
-    <label for="class">Current Class *</label>
+    <div class="field">
+<label for="class">Current Class *</label>
     <select id="class" required>
       <option value="">Choose Class</option>
       <option>Class 9</option>
@@ -199,15 +228,16 @@ footer{margin-top:45px;border-top:1px solid #263d5a;background:#061126;padding:2
       <option>Dropper</option>
     </select>
 
-    <label for="exam">Preparing For *</label>
+    <div class="field">
+<label for="exam">Preparing For *</label>
     <select id="exam" required>
       <option value="">Choose Exam</option>
       <option>JEE</option>
       <option>NEET</option>
     </select>
 
-    <p class="note">
-      Only provide information requested for exam registration. Do not enter Aadhaar or bank account details.
+    <p class="note form-disclaimer">
+      By submitting, you confirm the details are accurate. The ₹200 registration fee is non-refundable. Do not enter Aadhaar, UPI PIN, OTP or bank passwords. Application submission alone does not confirm registration.
     </p>
 
     <button class="btn" type="submit" style="width:100%">
@@ -331,3 +361,11 @@ footer{margin-top:45px;border-top:1px solid #263d5a;background:#061126;padding:2
 
 </body>
 </html>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
