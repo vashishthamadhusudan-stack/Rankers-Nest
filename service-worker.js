@@ -6,7 +6,7 @@ const FILES = [
   "./student-dashboard.html",
   "./daily-practice.html",
   "./quality-check.html",
-  "./premium.css?v=20261019",
+  "./premium.css?v=20261020",
   "./icon.svg"
 ];
 
