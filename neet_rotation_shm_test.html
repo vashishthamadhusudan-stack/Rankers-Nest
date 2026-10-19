@@ -185,13 +185,14 @@ function finish(auto){
   box.appendChild(exp);
  });
  const score=correct*4-wrong;
+ const percentage=score/180*100;
  const result=document.getElementById("result");
  result.style.display="block";
  result.innerHTML="<h2>Test Result</h2>"+
  "<p><b>Score:</b> "+score+" / 180</p>"+
  "<p><b>Correct:</b> "+correct+" &nbsp; <b>Wrong:</b> "+wrong+
  " &nbsp; <b>Unanswered:</b> "+unanswered+"</p>"+
- "<p><b>Percentage:</b> "+(Math.max(0,score)/180*100).toFixed(2)+"%</p>"+
+ "<p><b>Percentage:</b> "+percentage.toFixed(2)+"%</p>"+
  "<p>"+(auto?"Time is over. Your test was submitted automatically.":"Your test has been submitted.")+"</p>"+
  "<p>Scroll through the questions to review the correct answers and explanations.</p>"+
  "<p><button type=\"button\" onclick=\"window.print()\">Print / Save PDF</button></p>";
