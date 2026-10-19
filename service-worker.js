@@ -1,8 +1,11 @@
-const CACHE_NAME = "rankers-nest-v2";
+const CACHE_NAME = "rankers-nest-v3";
 const FILES = [
   "./",
   "./index.html",
   "./manifest.json",
+  "./student-dashboard.html",
+  "./daily-practice.html",
+  "./quality-check.html",
   "./premium.css?v=20261019",
   "./icon.svg"
 ];
