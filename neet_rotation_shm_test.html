@@ -73,8 +73,12 @@ footer{text-align:center;color:#9da5b5;padding:25px}
 4. Your test will submit automatically when the timer reaches zero.<br>
 5. Select one option for each question.
 </div>
-<div id="questions"></div>
-<div style="text-align:center;margin:24px 0">
+<div style="text-align:center;margin:20px 0" id="start-panel">
+<button id="start-test" type="button">START TEST</button>
+<p class="sub">The 60-minute timer begins when you press Start Test.</p>
+</div>
+<div id="questions" style="display:none"></div>
+<div id="test-controls" style="text-align:center;margin:24px 0;display:none">
 <button id="submit" onclick="finish(false)">SUBMIT TEST</button>
 <button id="reset" onclick="location.reload()">RESTART TEST</button>
 </div>
@@ -141,21 +145,29 @@ Q.forEach((q,i)=>{
  root.appendChild(div);
 });
 
-let remaining=3600, submitted=false;
+let remaining=3600, submitted=false, started=false, tick=null;
 const timerEl=document.getElementById("timer");
-const tick=setInterval(()=>{
- if(submitted)return;
- remaining--;
- const m=Math.floor(remaining/60),s=remaining%60;
- timerEl.textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
- if(remaining<=0)finish(true);
-},1000);
+function startTest(){
+ if(started||submitted)return;
+ started=true;
+ document.getElementById("start-panel").style.display="none";
+ document.getElementById("questions").style.display="block";
+ document.getElementById("test-controls").style.display="block";
+ tick=setInterval(()=>{
+  if(submitted)return;
+  remaining--;
+  const m=Math.floor(remaining/60),s=remaining%60;
+  timerEl.textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+  if(remaining<=0)finish(true);
+ },1000);
+}
+document.getElementById("start-test").addEventListener("click",startTest);
 
 function finish(auto){
  if(submitted)return;
  if(!auto && !confirm("Are you sure you want to submit the test?"))return;
  submitted=true;
- clearInterval(tick);
+ if(tick)clearInterval(tick);
  let correct=0,wrong=0,unanswered=0;
  Q.forEach((q,i)=>{
   const chosen=document.querySelector('input[name="q'+i+'"]:checked');
