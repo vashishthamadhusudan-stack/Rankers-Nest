@@ -42,6 +42,20 @@ const QUESTIONS=[
 {topic:"Magnetism",q:"A charged particle moves parallel to a uniform magnetic field. The magnetic force on it is:",o:["qvB","qvB/2","Zero","Infinite"],a:2,why:"F = qvB sin θ. For parallel motion θ = 0°, so the force is zero."},
 {topic:"Ray Optics",q:"An object is placed beyond 2F of a convex lens. The image is formed:",o:["Between F and 2F on the other side","Beyond 2F on the same side","At infinity","At the optical centre"],a:0,why:"A convex lens forms a real, inverted, diminished image between F and 2F when the object is beyond 2F."},
 {topic:"Modern Physics",q:"The half-life of a radioactive sample is 2 hours. The fraction remaining after 6 hours is:",o:["1/2","1/4","1/8","1/16"],a:2,why:"Six hours is three half-lives, so the remaining fraction is (1/2)³ = 1/8."}
+,
+{topic:"Kinematics",q:"A car's velocity increases uniformly from 5 m/s to 15 m/s in 5 s. Its acceleration is:",o:["1 m/s²","2 m/s²","3 m/s²","4 m/s²"],a:1,why:"a = (v−u)/t = (15−5)/5 = 2 m/s²."},
+{topic:"Centre of Mass",q:"Two equal masses are placed at x = 0 and x = 4 m. Their centre of mass is at:",o:["0 m","1 m","2 m","4 m"],a:2,why:"For equal masses, the centre of mass lies midway between them, at x = 2 m."},
+{topic:"Gravitation",q:"If the mass of a planet remains the same but its radius doubles, the surface gravity becomes:",o:["4g","2g","g/2","g/4"],a:3,why:"g = GM/R². Doubling R reduces surface gravity to one-fourth."},
+{topic:"Elasticity",q:"Within the elastic limit, stress is directly proportional to strain. This statement is known as:",o:["Pascal's law","Hooke's law","Bernoulli's principle","Archimedes' principle"],a:1,why:"Hooke's law states that stress is proportional to strain within the elastic limit."},
+{topic:"Thermal Physics",q:"A substance of mass 2 kg and specific heat 500 J kg⁻¹ K⁻¹ is heated by 4 K. Heat supplied is:",o:["250 J","1000 J","2000 J","4000 J"],a:2,why:"Q = mcΔT = 2×500×4 = 4000 J. Correct option is D."},
+{topic:"Thermodynamics",q:"For an ideal gas undergoing an isothermal process, the change in internal energy is:",o:["Positive","Negative","Zero","Equal to the heat supplied always"],a:2,why:"For an ideal gas, internal energy depends only on temperature. In an isothermal process ΔT = 0, so ΔU = 0."},
+{topic:"Waves",q:"The frequency of a wave is 100 Hz and its speed is 340 m/s. Its wavelength is:",o:["0.34 m","3.4 m","34 m","340 m"],a:0,why:"λ = v/f = 340/100 = 3.4 m. Correct option is B."},
+{topic:"Electric Field",q:"The electric field inside a conductor in electrostatic equilibrium is:",o:["Maximum at the centre","Zero","Equal to surface charge density","Always infinite"],a:1,why:"Free charges redistribute until the electric field inside the conducting material is zero."},
+{topic:"Resistivity",q:"A wire's length is doubled and its cross-sectional area remains the same. Its resistance becomes:",o:["R/2","R","2R","4R"],a:2,why:"R = ρL/A, so doubling length doubles resistance."},
+{topic:"Magnetic Field",q:"The SI unit of magnetic field is:",o:["Weber","Tesla","Henry","Farad"],a:1,why:"Magnetic flux density B is measured in tesla (T)."},
+{topic:"Electromagnetic Induction",q:"According to Lenz's law, the induced current acts to:",o:["Increase the change in magnetic flux","Oppose the change causing it","Always oppose the magnetic field itself","Make resistance zero"],a:1,why:"The induced current produces an effect that opposes the change in magnetic flux that induced it."},
+{topic:"Optical Instruments",q:"The power of a lens of focal length +0.5 m is:",o:["+0.5 D","+1 D","+2 D","−2 D"],a:2,why:"P = 1/f (in metres) = 1/0.5 = +2 dioptres."},
+{topic:"Dual Nature",q:"If the frequency of incident light is below the threshold frequency, increasing its intensity will:",o:["Cause photoemission","Increase stopping potential","Not cause photoemission","Increase work function"],a:2,why:"Below threshold frequency, each photon has insufficient energy; intensity alone cannot cause photoemission."}
 ];
 const LETTERS=["A","B","C","D"], answers=Array(QUESTIONS.length).fill(null);
 let current=0, reportData=null;
