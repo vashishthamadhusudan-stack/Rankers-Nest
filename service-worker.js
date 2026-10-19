@@ -1,4 +1,4 @@
-const CACHE_NAME = "rankers-nest-v14";
+const CACHE_NAME = "rankers-nest-v15";
 const FILES = [
   "./",
   "./index.html",
@@ -35,7 +35,8 @@ const FILES = [
   "./jee-physics-online-classes.html",
   "./neet-physics-online-classes.html",
   "./premium.css?v=20261020",
-  "./icon.svg"
+  "./icon.svg",
+  "./madhusudan-vashishtha.png"
 ];
 
 self.addEventListener("install", event => {
