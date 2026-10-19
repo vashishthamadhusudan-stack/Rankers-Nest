@@ -30,3 +30,18 @@ img,iframe,video{max-width:100%}
 :focus-visible{outline:2px solid var(--rn-gold);outline-offset:3px}
 @media(max-width:650px){body{overflow-wrap:break-word}main,.container{max-width:100%}h1{font-size:clamp(30px,9vw,46px)}.grid,.cards,.chapters,.chapter-grid,.topics-grid{grid-template-columns:1fr!important}button,.btn,input[type=submit]{max-width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+/* Accessibility, consistency and responsive refinements — 2026-10-20 */
+:root{scrollbar-color:#405574 #07152d}
+::selection{background:#f4c84b;color:#101b2b}
+a,button,input,select,textarea{transition:color .18s ease,border-color .18s ease,background-color .18s ease,transform .18s ease}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--rn-gold)!important;outline-offset:3px}
+button:disabled{opacity:.62;cursor:not-allowed;transform:none!important}
+[hidden]{display:none!important}
+img,svg,video,iframe{height:auto;max-width:100%}
+pre,code{max-width:100%;overflow:auto}
+table{display:block;overflow-x:auto}
+fieldset{min-width:0}
+label{cursor:pointer}
+@media(max-width:650px){.rn-links,.nav-links{gap:10px;flex-wrap:wrap}.rn-header,.site-header{position:sticky;top:0}.rn-grid,.grid,.cards,.chapters,.chapter-grid,.topics-grid,.faq{grid-template-columns:1fr!important}.rn-card,.card{min-width:0}.question img{display:block;margin-inline:auto}.actions{gap:9px}}
+@media(prefers-contrast:more){:root{--rn-line:#6b7f99;--rn-muted:#d5dfed}}
