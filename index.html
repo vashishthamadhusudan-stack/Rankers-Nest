@@ -10,30 +10,80 @@
   <meta property="og:title" content="Rankers Nest — Where Rankers Are Made">
   <meta property="og:description" content="Concept-focused Physics coaching for JEE Main, JEE Advanced and NEET.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#111111">
+  <meta name="theme-color" content="#07152d">
   <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <meta name="mobile-web-app-capable" content="yes">
   <style>
-    :root{--bg:#101010;--panel:#181818;--panel2:#202020;--gold:#e5b94f;--gold2:#f7d77c;--text:#f6f4ef;--muted:#c4c0b6;--line:#38342a}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}
-    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;border-bottom:1px solid #2c2a24}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}.mark{display:grid;place-items:center;width:42px;height:42px;border:1px solid var(--gold);border-radius:12px;color:var(--gold);font-weight:900}
-    .brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:2px;font-weight:600}.links{display:flex;gap:22px;font-size:14px;color:var(--muted)}.links a:hover{color:var(--gold)}
-    .hero{padding:76px 0 66px;display:grid;grid-template-columns:1.3fr .7fr;gap:44px;align-items:center}
-    .eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:2.4px;font-size:12px;font-weight:800}.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.06;letter-spacing:-2px;margin:16px 0 20px}.hero h1 span{color:var(--gold)}.hero p{font-size:18px;color:var(--muted);max-width:650px}
-    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.btn{display:inline-flex;justify-content:center;align-items:center;padding:12px 18px;border-radius:9px;font-weight:800;border:1px solid var(--gold);background:var(--gold);color:#15120a}.btn.secondary{background:transparent;color:var(--text);border-color:#555044}.btn:hover{transform:translateY(-1px)}
-    .hero-card{border:1px solid var(--line);border-radius:22px;padding:28px;background:radial-gradient(circle at top right,#3a2f17 0,transparent 45%),var(--panel);box-shadow:0 18px 55px #0005}
-    .hero-card .big{font-size:58px;font-weight:900;line-height:1;color:var(--gold)}.hero-card h3{margin:10px 0 5px;font-size:22px}.hero-card p{font-size:14px;margin:0}.pill{display:inline-block;margin:8px 6px 0 0;padding:6px 10px;border:1px solid #51472f;border-radius:99px;color:var(--gold2);font-size:12px}
-    section{padding:58px 0}.section-head{max-width:700px;margin-bottom:28px}.section-head h2{font-size:clamp(28px,4vw,42px);line-height:1.15;margin:8px 0 12px;letter-spacing:-.8px}.section-head p{color:var(--muted);margin:0}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--panel);border:1px solid #302e28;border-radius:16px;padding:22px}.card .num{color:var(--gold);font-size:13px;font-weight:900;letter-spacing:1px}.card h3{margin:10px 0 8px;font-size:20px}.card p{color:var(--muted);font-size:15px;margin:0}
-    .about{display:grid;grid-template-columns:.75fr 1.25fr;gap:30px;align-items:stretch}.profile{border-radius:18px;padding:28px;background:linear-gradient(145deg,#302716,#181818 68%);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}.profile .initials{font-size:64px;font-weight:900;color:var(--gold);line-height:1}.profile .role{color:var(--gold2);font-weight:800}.about-copy{padding:10px 0}.about-copy h2{font-size:clamp(28px,4vw,40px);line-height:1.15;margin:8px 0 14px}.about-copy p,.about-copy li{color:var(--muted)}.about-copy ul{padding-left:20px}
-    .cta{border:1px solid #5a4925;background:linear-gradient(120deg,#292214,#171717 70%);border-radius:20px;padding:34px;display:flex;align-items:center;justify-content:space-between;gap:24px}.cta h2{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:8px 0}.cta p{color:var(--muted);margin:0}
-    .faq{display:grid;grid-template-columns:1fr 1fr;gap:14px}.faq details{background:var(--panel);border:1px solid #302e28;border-radius:12px;padding:17px}.faq summary{font-weight:800;cursor:pointer}.faq details p{color:var(--muted);margin-bottom:0}
-    footer{border-top:1px solid #2c2a24;padding:28px 0 40px;color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-    .note{color:#a8a39a;font-size:12px;margin-top:18px}
-    @media(max-width:800px){.hero,.about{grid-template-columns:1fr}.hero{padding:50px 0}.hero-card{max-width:520px}.grid{grid-template-columns:1fr}.faq{grid-template-columns:1fr}.links{display:none}.cta{align-items:flex-start;flex-direction:column}.hero h1{letter-spacing:-1px}}
-  </style>
+:root{--bg:#07152d;--panel:#0d2141;--panel2:#132b4e;--gold:#f4c84b;--gold2:#ffe08a;--text:#f7f9ff;--muted:#b8c5d9;--line:#263d5e;--navy:#07152d}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:radial-gradient(ellipse at 78% 0%,#173765 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1160px,92%);margin-inline:auto}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:17px 0;border-bottom:1px solid #29405f}
+.brand{display:flex;align-items:center;gap:13px;font-weight:850;letter-spacing:.5px;font-size:17px}
+.mark{display:grid;place-items:center;width:48px;height:48px;border:1.5px solid var(--gold);border-radius:14px;color:var(--gold);font-weight:900;background:linear-gradient(145deg,#172e4e,#07152d);box-shadow:0 5px 22px #0002}
+.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.2px;font-weight:650;margin-top:1px}
+.links{display:flex;gap:22px;font-size:13px;font-weight:650;color:var(--muted)}
+.links a{transition:color .2s}.links a:hover{color:var(--gold)}
+.hero{padding:72px 0 56px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:clamp(28px,5vw,64px);align-items:center}
+.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:850}
+.hero h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-2.8px;margin:18px 0 22px;max-width:760px}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:clamp(16px,1.7vw,19px);color:var(--muted);max-width:650px;margin:0}
+.actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;min-height:48px;padding:12px 19px;border-radius:11px;font-weight:800;font-size:14px;border:1px solid var(--gold);background:linear-gradient(135deg,#ffe08a,#f4c84b);color:#101b2b;box-shadow:0 8px 22px #0002;transition:transform .18s,box-shadow .18s,border-color .18s}
+.btn.secondary{background:#0c1e38;color:var(--text);border-color:#405574;box-shadow:none}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px #0003}
+.hero-card{position:relative;overflow:hidden;border:1px solid #385171;border-radius:24px;padding:30px;background:radial-gradient(circle at 100% 0%,#4b3d1d 0,transparent 43%),linear-gradient(150deg,#11294b,#0b1c35 70%);box-shadow:0 22px 60px #0003}
+.hero-card:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--gold),transparent)}
+.hero-card .big{font-size:clamp(54px,6vw,72px);font-weight:900;line-height:1;color:var(--gold);letter-spacing:-3px}
+.hero-card h3{margin:14px 0 8px;font-size:22px;line-height:1.2}
+.hero-card p{font-size:14px;margin:0}
+.pill{display:inline-block;margin:16px 6px 0 0;padding:6px 10px;border:1px solid #5a5036;border-radius:99px;color:var(--gold2);font-size:11px;font-weight:750}
+.note{color:#aabbd2;font-size:12px;margin-top:18px}
+.trust-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 auto 24px}
+.trust-item{padding:17px 20px;border:1px solid #263e5d;border-radius:14px;background:#0b1d37;display:flex;gap:12px;align-items:center}
+.trust-item strong{display:block;font-size:14px}.trust-item span{display:block;font-size:12px;color:var(--muted)}
+section{padding:64px 0}
+.section-head{max-width:720px;margin-bottom:30px}
+.section-head h2{font-size:clamp(29px,4vw,44px);line-height:1.12;margin:9px 0 13px;letter-spacing:-1.2px}
+.section-head p{color:var(--muted);margin:0;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{position:relative;background:linear-gradient(145deg,#102544,#0b1b33);border:1px solid #263d5a;border-radius:18px;padding:24px;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:#8b773f}
+.card .num{color:var(--gold);font-size:11px;font-weight:900;letter-spacing:1.4px}
+.card h3{margin:11px 0 8px;font-size:19px;line-height:1.3}
+.card p{color:var(--muted);font-size:14px;margin:0}
+.about{display:grid;grid-template-columns:.72fr 1.28fr;gap:32px;align-items:stretch}
+.profile{border-radius:22px;padding:30px;background:radial-gradient(circle at 100% 0%,#4b3d1d 0,transparent 45%),linear-gradient(145deg,#11294b,#0b1b33);border:1px solid #3a4c65;display:flex;flex-direction:column;justify-content:space-between;min-height:270px}
+.profile .initials{font-size:72px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-3px;margin:22px 0}
+.profile h3{font-size:20px}
+.profile .role{color:var(--gold2);font-weight:800}
+.about-copy{padding:10px 0}.about-copy h2{font-size:clamp(28px,4vw,42px);line-height:1.13;margin:9px 0 16px;letter-spacing:-1px}
+.about-copy p,.about-copy li{color:var(--muted)}.about-copy ul{padding-left:20px}.about-copy li{padding:3px 0}
+.cta{border:1px solid #6a582b;background:radial-gradient(circle at 100% 0%,#3d321b 0,transparent 48%),linear-gradient(120deg,#102544,#0b1b33 72%);border-radius:24px;padding:clamp(24px,4vw,42px);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.cta h2{font-size:clamp(27px,4vw,40px);line-height:1.12;margin:9px 0 12px;letter-spacing:-1px}.cta p{color:var(--muted);margin:0}
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:14px}.faq details{background:var(--panel);border:1px solid #2a405d;border-radius:14px;padding:18px}.faq summary{font-weight:800;cursor:pointer}.faq details p{color:var(--muted);margin-bottom:0}
+#videos iframe{display:block;max-width:100%;box-shadow:0 18px 45px #0004}
+#online-tests{padding:30px!important;text-align:left!important;background:linear-gradient(145deg,#102544,#0b1b33)!important;border:1px solid #2a4262;border-radius:22px!important;margin:20px auto!important;max-width:1160px}
+#online-tests h2,#student-registration h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.8px;margin:6px 0 8px}
+#online-tests p,#student-registration p{color:var(--muted)}
+#online-tests a{display:inline-flex!important;align-items:center;justify-content:center;min-height:46px;margin:8px 8px 0 0!important;padding:12px 17px!important;border:1px solid var(--gold)!important;border-radius:10px!important;background:var(--gold)!important;color:#101b2b!important;font-weight:800!important}
+#student-registration{padding:clamp(22px,4vw,38px)!important;max-width:760px!important;margin:30px auto!important;background:linear-gradient(145deg,#102544,#0b1b33)!important;color:var(--text)!important;border:1px solid #2a4262;border-radius:22px!important}
+#registration-form label{display:block;font-weight:700;font-size:13px;color:#d9e3f1;margin-top:12px}
+#registration-form input,#registration-form select{display:block;width:100%;padding:13px 14px;margin:7px 0 12px;box-sizing:border-box;border:1px solid #3b5271;border-radius:10px;background:#07162c;color:#fff;font:inherit}
+#registration-form input:focus,#registration-form select:focus{outline:2px solid var(--gold);outline-offset:1px}
+#registration-form button{width:100%;padding:14px;background:linear-gradient(135deg,#ffe08a,#f4c84b);color:#101b2b;border:0;border-radius:10px;font-weight:850;font-size:15px;cursor:pointer;margin-top:12px}
+#registration-message{overflow-wrap:anywhere}
+footer{border-top:1px solid #263d5a;padding:30px 0 38px;color:var(--muted);font-size:12px;background:#061126}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(max-width:800px){.hero,.about{grid-template-columns:1fr}.hero{padding:46px 0 36px;gap:28px}.hero-card{max-width:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.links{display:none}.cta{align-items:flex-start;flex-direction:column}.hero h1{letter-spacing:-1.6px}.trust-strip{grid-template-columns:1fr}.trust-item{padding:13px 16px}section{padding:48px 0}}
+@media(max-width:520px){.wrap{width:min(100% - 32px,1160px)}.brand{font-size:14px;gap:10px}.mark{width:43px;height:43px}.brand small{font-size:9px;letter-spacing:1.6px}.hero{padding-top:38px}.hero h1{font-size:clamp(39px,12vw,54px);line-height:1.04;margin:15px 0}.hero p{font-size:16px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}.actions .btn{font-size:13px;padding:12px 10px;min-height:48px}.actions .btn:first-child{grid-column:1/-1}.hero-card{padding:24px}.grid{grid-template-columns:1fr}.card{padding:21px}.section-head{margin-bottom:22px}.section-head h2{font-size:31px}#online-tests{padding:22px!important}#online-tests a{width:100%;margin:8px 0 0!important}.foot{flex-direction:column;align-items:flex-start;gap:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -62,16 +112,13 @@
         <p>Concept-focused online Physics coaching for JEE Main, JEE Advanced and NEET aspirants in Class 11, Class 12 and dropper batches.</p>
        
 <div class="actions dashboard">
-  <a class="btn" href="pyq-solutions.html">PYQ Solutions</a>
+  <a class="btn" href="#contact">Book a Free Demo Class <span aria-hidden="true">→</span></a>
+  <a class="btn secondary" href="#courses">Explore Courses</a>
+  <a class="btn secondary" href="pyq-solutions.html">PYQ Solutions</a>
   <a class="btn secondary" href="#videos">Video Lectures</a>
- 
+  <a class="btn secondary" href="#online-tests">Tests &amp; Practice</a>
   <a class="btn secondary" href="https://chatgpt.com/share/6ad1f650-fbd0-83ee-9321-b01e4527a158" target="_blank" rel="noopener noreferrer">✦ Rankers Nest AI ChatGPT</a>
-
-<a class="btn secondary" href="#online-tests">Tests &amp; Practice</a>
-
-<a class="btn" href="national-talent-hunt.html">RN-AIPTSE 2026 – Register Now</a>
-
-  <a class="btn" href="#contact">Join a Class</a>
+  <a class="btn" href="national-talent-hunt.html">RN-AIPTSE 2026 – Register Now</a>
 </div>
 
         
@@ -85,7 +132,12 @@
       </aside>
     </section>
 
-    <section class="wrap" id="courses">
+    <section class="wrap trust-strip" aria-label="Rankers Nest highlights">
+  <div class="trust-item"><span aria-hidden="true">✦</span><div><strong>15+ Years of Teaching</strong><span>Physics educator-led learning</span></div></div>
+  <div class="trust-item"><span aria-hidden="true">◎</span><div><strong>JEE Main · Advanced · NEET</strong><span>Focused entrance preparation</span></div></div>
+  <div class="trust-item"><span aria-hidden="true">✓</span><div><strong>Concepts + PYQs + Practice</strong><span>Learn, apply and revise</span></div></div>
+</section>
+<section class="wrap" id="courses">
       <div class="section-head"><div class="eyebrow">Courses</div><h2>Physics preparation for every stage</h2><p>Build concepts step by step and develop the problem-solving skills needed for competitive examinations.</p></div>
       <div class="grid">
         <article class="card"><div class="num">01 / JEE</div><h3>JEE Main Physics</h3><p>Concept learning, numerical practice and previous-year questions across the JEE Physics syllabus.</p></article>
@@ -132,17 +184,6 @@
     </iframe>
   </div>
 </section>
-
-    <section class="wrap" id="contact">
-      <div class="cta">
-        <div><div class="eyebrow">Take the next step</div><h2>Want to learn Physics with Rankers Nest?</h2><p>Contact us for current batch timings, fees, course details and admission enquiries.</p></div>
-        <div class="actions" style="margin-top:0"><a class="btn" href="mailto:vashishthamadhusudan@gmail.com?subject=Rankers%20Nest%20Course%20Enquiry">Email for Enquiry</a><a class="btn secondary" href="https://wa.me/919731236981?text=Hello%20Rankers%20Nest%2C%20I%20would%20like%20to%20know%20about%20Physics%20classes." target="_blank" rel="noopener">WhatsApp Enquiry</a></div>
-      </div>
-      
-    </section>
-  </main>
-  <footer><div class="wrap foot"><div><strong style="color:var(--text)">RANKERS NEST</strong><br>Where Rankers Are Made</div><div>Online Physics Coaching · JEE Main · JEE Advanced · NEET</div><div>© <span id="year">2026</span> Rankers Nest. All rights reserved.</div></div></footer>
-
 
 <section id="online-tests" style="padding:20px;text-align:center;background:#181818;color:white;border-radius:12px;margin:20px 0;">
 
@@ -221,6 +262,18 @@
     <p id="registration-message" role="status"></p>
   </form>
 </section>
+
+    <section class="wrap" id="contact">
+      <div class="cta">
+        <div><div class="eyebrow">Take the next step</div><h2>Want to learn Physics with Rankers Nest?</h2><p>Contact us for current batch timings, fees, course details and admission enquiries.</p></div>
+        <div class="actions" style="margin-top:0"><a class="btn" href="mailto:vashishthamadhusudan@gmail.com?subject=Rankers%20Nest%20Course%20Enquiry">Email for Enquiry</a><a class="btn secondary" href="https://wa.me/919731236981?text=Hello%20Rankers%20Nest%2C%20I%20would%20like%20to%20know%20about%20Physics%20classes." target="_blank" rel="noopener">WhatsApp Enquiry</a></div>
+      </div>
+      
+    </section>
+  </main>
+  <footer><div class="wrap foot"><div><strong style="color:var(--text)">RANKERS NEST</strong><br>Where Rankers Are Made</div><div>Online Physics Coaching · JEE Main · JEE Advanced · NEET</div><div>© <span id="year">2026</span> Rankers Nest. All rights reserved.</div></div></footer>
+
+
 <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
