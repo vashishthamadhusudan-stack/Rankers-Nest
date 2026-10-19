@@ -5,6 +5,7 @@ const FILES = [
   "./manifest.json",
   "./student-dashboard.html",
   "./daily-practice.html",
+  "./video-library.html",
   "./quality-check.html",
   "./premium.css?v=20261020",
   "./icon.svg"
