@@ -41,7 +41,7 @@ const questions=[
 {year:"AIPMT 2011",part:"Gauss’s Law",q:"A Gaussian sphere encloses charge Q. If its radius is doubled while the enclosed charge is unchanged, the net electric flux:",o:["Doubles","Halves","Becomes one-fourth","Remains unchanged"],a:3,e:"Gauss's law gives Φ=Q/ε₀, independent of Gaussian surface size."},
 {year:"AIPMT 2010",part:"Electric Flux",q:"A uniform electric field is parallel to a flat square surface. The electric flux through the square is:",o:["EA","EA/2","Zero","Depends only on side length"],a:2,e:"Flux=EA cosθ, with θ measured from the surface normal. Here θ=90°, so flux is zero."},
 {year:"NEET 2022",part:"Capacitors",q:"A 900 pF capacitor charged to 100 V is disconnected and connected in parallel to an identical uncharged capacitor. The final energy stored in the pair is:",o:["4.5×10⁻⁶ J","3.25×10⁻⁶ J","2.25×10⁻⁶ J","1.5×10⁻⁶ J"],a:2,e:"Charge conservation gives final voltage 50 V. U=½(2C)(50)²=2.25×10⁻⁶ J."},
-{year:"NEET 2026 (Re-Exam)",part:"Capacitors",q:"Three identical capacitors P, Q and S of capacitance C are connected to a battery as shown in the original exam diagram. The ratio of energy in P to total energy depends on the exact circuit arrangement.",o:["2/3","1/3","1/2","Cannot be determined without the circuit diagram"],a:3,e:"The source question is diagram-dependent. The diagram is not reproduced here, so no guessed answer is provided. This item is intentionally not scored as a PYQ and should be replaced when the original diagram is added."}
+
 ];
 questions.forEach(q=>{if(q.fix!==undefined)q.a=q.fix;});
 const root=document.getElementById('questions');
