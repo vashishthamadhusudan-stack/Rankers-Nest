@@ -164,7 +164,7 @@ footer{margin-top:45px;border-top:1px solid #263d5a;background:#061126;padding:2
 <section class="panel" id="register">
   <div class="tag">Step 1 · Application</div><h2 class="gold">STUDENT REGISTRATION</h2>
   <p>Complete the form carefully. After your details are saved, the page will show an application reference and a UPI payment link.</p>
-  <div class="payment-note"><strong>Registration fee: ₹200</strong><p class="note">The proposed total prize pool of ₹2,25,000 is not being published until officially confirmed. Registration fee is non-refundable. Your application is not confirmed until payment is successfully verified.</p><p class="note">Payment gateway and automatic verification are not yet connected on this page. Please do not treat a saved application or UPI app opening as proof of payment.</p></div>
+  <div class="payment-note"><strong>Registration fee: ₹200</strong><p class="note">The proposed total prize pool of ₹2,25,000 is not being published until officially confirmed. Registration fee is non-refundable.</p><p class="note">Pay using your preferred UPI app (Google Pay, PhonePe or another UPI app) to <strong>9731236981@ibl</strong>. The payment button opens a UPI payment request where supported. Opening the app is not proof of payment; registration remains pending until Rankers Nest verifies the payment.</p><p class="note">If the UPI link does not open, use your UPI app to pay ₹200 to the UPI ID above and email the application reference, payment UTR/transaction ID and payment date to <a href="mailto:vashishthamadhusudan@gmail.com">vashishthamadhusudan@gmail.com</a>. Never email your UPI PIN, OTP or bank password.</p><p class="note"><strong>Important:</strong> Automated payment verification is not connected yet. Do not assume the registration is confirmed until you receive confirmation from Rankers Nest.</p></div>
 
   <form id="exam-form">
     <label for="name">Student Full Name *</label>
@@ -300,7 +300,7 @@ footer{margin-top:45px;border-top:1px solid #263d5a;background:#061126;padding:2
 
       const paymentLink = document.createElement("a");
       paymentLink.href = upiLink;
-      paymentLink.textContent = "OPEN UPI APP & PAY ₹200";
+      paymentLink.textContent = "PAY ₹200 WITH GPay / PhonePe / UPI";
       paymentLink.style.display = "inline-block";
       paymentLink.style.marginTop = "12px";
       paymentLink.style.color = "#101010";
@@ -312,6 +312,10 @@ footer{margin-top:45px;border-top:1px solid #263d5a;background:#061126;padding:2
 
       message.appendChild(document.createElement("br"));
       message.appendChild(paymentLink);
+      const emailHelp = document.createElement("p");
+      emailHelp.className = "note";
+      emailHelp.textContent = "If payment is completed, keep the UTR/transaction ID and email it with this application reference to vashishthamadhusudan@gmail.com for verification. Payment is not automatically verified on this page.";
+      message.appendChild(emailHelp);
       button.textContent = "APPLICATION SAVED — PAYMENT PENDING";
       button.disabled = true;
 
