@@ -1,4 +1,4 @@
-const CACHE_NAME = "rankers-nest-v11";
+const CACHE_NAME = "rankers-nest-v12";
 const FILES = [
   "./",
   "./index.html",
