@@ -47,6 +47,7 @@ button{border:0;border-radius:8px;padding:13px 18px;font-weight:bold;cursor:poin
 #result{display:none;background:#202839;border:2px solid #d6a638;padding:18px;border-radius:12px;margin:18px 0}
 .explanation{background:#111722;padding:12px;margin:9px 0;border-radius:8px;line-height:1.6}
 footer{text-align:center;color:#9da5b5;padding:25px}
+@media print{button,#submit{display:none!important}body{background:#fff!important;color:#000!important}h1,h2,h3,p,li,.question,.option,.explanation{color:#000!important} .question{break-inside:avoid;border:1px solid #999!important;box-shadow:none!important}}
 </style>
 <link rel="stylesheet" href="premium.css?v=20261020">
 </head>
@@ -177,7 +178,8 @@ function finish(auto){
  " &nbsp; <b>Unanswered:</b> "+unanswered+"</p>"+
  "<p><b>Percentage:</b> "+(Math.max(0,score)/180*100).toFixed(2)+"%</p>"+
  "<p>"+(auto?"Time is over. Your test was submitted automatically.":"Your test has been submitted.")+"</p>"+
- "<p>Scroll through the questions to review the correct answers and explanations.</p>";
+ "<p>Scroll through the questions to review the correct answers and explanations.</p>"+
+ "<p><button type=\"button\" onclick=\"window.print()\">Print / Save PDF</button></p>";
  result.scrollIntoView({behavior:"smooth"});
  document.getElementById("submit").disabled=true;
 }
