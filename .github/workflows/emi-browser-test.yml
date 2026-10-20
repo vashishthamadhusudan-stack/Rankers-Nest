@@ -34,7 +34,7 @@ jobs:
             await page.locator('input[name="q0"][value="3"]').check();
             await expect(page.locator('#progressText')).toContainText('1 of 40');
             await page.locator('#check').click();
-            await expect(page.locator('#s0')).toContainText('Correct answer: D');
+            await expect(page.locator('#s0')).toContainText(/correct answer: D/i);
             await page.locator('#solutionsBtn').click();
             await expect(page.locator('#s39')).toBeVisible();
             await page.locator('#submit').click();
