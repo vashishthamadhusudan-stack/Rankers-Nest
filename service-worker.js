@@ -1,4 +1,4 @@
-const CACHE_NAME = "rankers-nest-v15";
+const CACHE_NAME = "rankers-nest-v16";
 const FILES = [
   "./",
   "./index.html",
@@ -13,6 +13,7 @@ const FILES = [
   "./jee-physics-online-classes.html",
   "./online-physics-classes.html",
   "./manifest.json",
+  "./site-updates.json",
   "./student-dashboard.html",
   "./daily-practice.html",
   "./video-library.html",
