@@ -36,7 +36,7 @@ self.addEventListener("notificationclick", event => {
   }));
 });
 
-const CACHE_NAME = "rankers-nest-v17";
+const CACHE_NAME = "rankers-nest-v18";
 const FILES = [
   "./",
   "./index.html",
@@ -52,6 +52,7 @@ const FILES = [
   "./online-physics-classes.html",
   "./manifest.json",
   "./site-updates.json",
+  "./push-config.js",
   "./student-dashboard.html",
   "./daily-practice.html",
   "./video-library.html",
