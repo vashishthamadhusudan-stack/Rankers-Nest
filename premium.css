@@ -76,3 +76,44 @@ footer a{color:var(--rn-gold2)}
  table{font-size:14px}
  :is(button,.btn,input[type=submit],input[type=button]){min-height:44px}
 }
+
+
+/* Homepage hierarchy: keep learning shortcuts visible before the notice board. */
+.site-updates{margin-top:8px;margin-bottom:22px;padding:18px}
+.updates-heading{align-items:center;margin-bottom:12px}
+.updates-heading h2{font-size:clamp(22px,2.5vw,28px);margin:5px 0}
+.updates-heading p{font-size:12px}
+.updates-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.update-item{grid-template-columns:1fr;align-content:start;gap:6px;padding:14px;min-width:0}
+.update-item strong{font-size:13px}
+.update-item p{font-size:11px;line-height:1.5}
+.update-open{white-space:normal;font-size:11px}
+.push-subscribe-card{padding:13px 15px;margin-top:10px;gap:12px}
+.push-subscribe-copy>strong{font-size:13px}
+.push-subscribe-copy p{font-size:11px;line-height:1.5}
+.push-subscribe-button{min-height:42px}
+.updates-footnote{margin-top:8px}
+@media(max-width:650px){
+ .site-updates{padding:14px;margin-top:4px;margin-bottom:18px}
+ .updates-heading{flex-direction:row;align-items:center;gap:8px}
+ .updates-heading h2{font-size:21px}
+ .updates-heading p{font-size:11px;line-height:1.45}
+ .updates-count{font-size:10px;padding:4px 7px}
+ .updates-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .update-item{padding:10px;gap:6px;border-radius:12px}
+ .update-item strong{font-size:12px;overflow-wrap:anywhere}
+ .update-item p{font-size:10px;line-height:1.45}
+ .update-open{font-size:10px}
+ .push-subscribe-card{flex-direction:row;align-items:center;padding:11px;gap:9px}
+ .push-subscribe-copy>strong{font-size:12px}
+ .push-subscribe-copy p{font-size:10px;line-height:1.4}
+ .push-subscribe-copy p:nth-of-type(1){display:none}
+ .push-subscribe-button{width:auto;flex:0 0 auto;max-width:46%;padding:9px 10px;font-size:10px;line-height:1.3;white-space:normal}
+ .updates-footnote{font-size:10px}
+}
+@media(max-width:380px){
+ .updates-heading{align-items:flex-start;flex-direction:column}
+ .updates-list{grid-template-columns:1fr}
+ .push-subscribe-card{align-items:stretch;flex-direction:column}
+ .push-subscribe-button{max-width:none;width:100%}
+}
