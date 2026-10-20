@@ -178,6 +178,14 @@ footer a:hover{color:var(--gold)}
 .mobile-links .updates-nav-badge{margin-left:5px}
 @media(max-width:650px){.site-updates{padding:17px}.updates-heading{flex-direction:column;gap:9px}.update-item{grid-template-columns:1fr;gap:7px;padding:13px}.update-open{white-space:normal}.update-date{font-size:9px}}
 
+
+/* Opt-in browser push notification control */
+.push-subscribe-card{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:16px;padding:17px;border:1px solid #6a582b;border-radius:14px;background:rgba(5,17,35,.72)}
+.push-subscribe-copy{min-width:0}.push-subscribe-copy>strong{display:block;font-size:15px}.push-subscribe-copy p{font-size:12px;color:var(--muted);margin:5px 0 0}.push-subscribe-copy #push-notification-status{color:var(--gold2);font-size:11px}
+.push-subscribe-button{flex:0 0 auto;min-height:46px;padding:11px 15px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(135deg,#ffe08a,#f4c84b);color:#101b2b;font:inherit;font-size:12px;font-weight:900;cursor:pointer}
+.push-subscribe-button:disabled{opacity:.65;cursor:wait}
+@media(max-width:650px){.push-subscribe-card{align-items:stretch;flex-direction:column}.push-subscribe-button{width:100%;white-space:normal}}
+
 </style>
   <script type="application/ld+json">
   {
@@ -231,6 +239,14 @@ footer a:hover{color:var(--gold)}
     <div class="updates-list" id="updates-list" aria-live="polite">
       <article class="update-item"><span class="update-date">20 OCT 2026</span><div><strong>Daily Physics Challenge — Kinetic Theory of Gases</strong><p>Worked example, key formulas and 4 practice MCQs.</p></div><a class="update-open" href="todays-physics-challenge.html">Open challenge →</a></article>
       <article class="update-item"><span class="update-date">19 OCT 2026</span><div><strong>Daily Physics Challenge — Heat &amp; Thermodynamics</strong><p>Review the previous day's questions and explanations.</p></div><a class="update-open" href="archive/daily-physics-challenge-2026-10-19.html">View archive →</a></article>
+    </div>
+    <div class="push-subscribe-card" aria-labelledby="push-subscribe-title">
+      <div class="push-subscribe-copy">
+        <strong id="push-subscribe-title">Get new updates on your phone</strong>
+        <p>Subscribe once to receive a notification when a new Rankers Nest resource is published—even when this website is closed.</p>
+        <p id="push-notification-status" role="status" aria-live="polite">Notifications are optional. You can turn them off in your browser settings.</p>
+      </div>
+      <button class="push-subscribe-button" id="push-subscribe-button" type="button">🔔 Subscribe to Notifications</button>
     </div>
     <p class="updates-footnote">Check this notice board whenever you visit Rankers Nest. New items are added here as resources are published.</p>
   </section>
@@ -644,6 +660,66 @@ registrationForm.addEventListener("submit", async (event) => {
     count.textContent = 'Recent updates';
     /* The two accessible fallback links in the HTML remain available offline. */
   }
+})();
+</script>
+
+<script>
+/* Optional FCM push subscription. Requires the Firebase Web Push key and deployed Cloud Function. */
+(async function setupRankersNestPush(){
+  const button=document.getElementById('push-subscribe-button');
+  const status=document.getElementById('push-notification-status');
+  if(!button||!status)return;
+  const say=message=>{status.textContent=message;};
+  const configReady=()=>window.RN_FCM_VAPID_KEY && !window.RN_FCM_VAPID_KEY.includes('ADD_FIREBASE');
+  if(!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)){
+    button.disabled=true; say('Push notifications are not supported by this browser. Please use an up-to-date browser on your phone.'); return;
+  }
+  if(Notification.permission==='granted' && localStorage.getItem('rn-push-enabled')==='yes'){
+    button.textContent='✓ Notifications enabled'; say('This device has opted in. New published updates can appear as notifications.');
+  } else if(Notification.permission==='denied'){
+    say('Notifications are blocked in browser settings. Allow notifications for Rankers Nest there, then try again.');
+  }
+  button.addEventListener('click',async()=>{
+    if(!configReady()){
+      say('Push setup is not finished yet. Rankers Nest is preparing the secure notification service; please try again after setup is complete.');
+      return;
+    }
+    button.disabled=true; button.textContent='Setting up…';
+    try{
+      const permission=await Notification.requestPermission();
+      if(permission!=='granted'){
+        say(permission==='denied'?'Permission was blocked. Enable notifications for this site in your browser settings.':'No permission was granted. You can subscribe later.');
+        button.textContent='🔔 Subscribe to Notifications'; return;
+      }
+      const [{initializeApp,getApps},{getMessaging,getToken},{getFunctions,httpsCallable}]=await Promise.all([
+        import('https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js'),
+        import('https://www.gstatic.com/firebasejs/13.0.0/firebase-messaging.js'),
+        import('https://www.gstatic.com/firebasejs/13.0.0/firebase-functions.js')
+      ]);
+      const app=getApps().length?getApps()[0]:initializeApp({
+        apiKey:'AIzaSyAbq6uqAZkq4f3fmORjIReufbgP5-PPT1M',
+        authDomain:'rankets-nest.firebaseapp.com',
+        projectId:'rankets-nest',
+        storageBucket:'rankets-nest.firebasestorage.app',
+        messagingSenderId:'703058556884',
+        appId:'1:703058556884:web:001203e8e9f2c0ffbe8841',
+        measurementId:'G-TQHGGPEZXJ'
+      });
+      const registration=await navigator.serviceWorker.ready;
+      const messaging=getMessaging(app);
+      const token=await getToken(messaging,{vapidKey:window.RN_FCM_VAPID_KEY,serviceWorkerRegistration:registration});
+      if(!token)throw new Error('Could not create a push subscription on this device.');
+      const subscribe=httpsCallable(getFunctions(app,'us-central1'),'subscribeToUpdates');
+      await subscribe({token,device: /Android/i.test(navigator.userAgent)?'Android':'Web'});
+      localStorage.setItem('rn-push-enabled','yes');
+      button.textContent='✓ Notifications enabled';
+      say('Subscribed successfully on this device. You will be notified when a new update is published.');
+    }catch(error){
+      console.error('Rankers Nest push setup:',error);
+      button.textContent='🔔 Try subscribing again';
+      say(error.code==='functions/unavailable'||error.code==='functions/not-found'?'The secure notification server is not deployed yet. Please try again after Rankers Nest finishes setup.':'Setup could not finish yet. Please check your connection and try again after notification setup is complete.');
+    }finally{button.disabled=false;}
+  });
 })();
 </script>
 
