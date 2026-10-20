@@ -209,6 +209,17 @@ footer a:hover{color:var(--gold)}
     "hasOfferCatalog":{"@type":"OfferCatalog","name":"Online Physics Learning Resources","itemListElement":[{"@type":"OfferCatalog","name":"JEE Main Physics Resources"},{"@type":"OfferCatalog","name":"JEE Advanced Physics Resources"},{"@type":"OfferCatalog","name":"NEET Physics Resources"}]}
   }
   </script>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "0a13153b-b826-4404-87c7-48c8348eaf2a",
+      serviceWorkerPath: "service-worker.js",
+      serviceWorkerParam: { scope: "/" }
+    });
+  });
+</script>
 <link rel="stylesheet" href="premium.css?v=20261020">
 </head>
 <body>
@@ -663,63 +674,29 @@ registrationForm.addEventListener("submit", async (event) => {
 })();
 </script>
 
-<script src="push-config.js"></script>
 <script>
-/* Optional FCM push subscription. Requires the Firebase Web Push key and deployed Cloud Function. */
-(async function setupRankersNestPush(){
+/* OneSignal opt-in for Rankers Nest Web Push. */
+(function setupRankersNestOneSignal(){
   const button=document.getElementById('push-subscribe-button');
   const status=document.getElementById('push-notification-status');
   if(!button||!status)return;
   const say=message=>{status.textContent=message;};
-  const configReady=()=>window.RN_FCM_VAPID_KEY && !window.RN_FCM_VAPID_KEY.includes('ADD_FIREBASE');
   if(!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)){
-    button.disabled=true; say('Push notifications are not supported by this browser. Please use an up-to-date browser on your phone.'); return;
+    button.disabled=true; say('Push notifications are not supported by this browser. Please use Chrome on Android or another supported browser.'); return;
   }
-  if(Notification.permission==='granted' && localStorage.getItem('rn-push-enabled')==='yes'){
-    button.textContent='✓ Notifications enabled'; say('This device has opted in. New published updates can appear as notifications.');
-  } else if(Notification.permission==='denied'){
-    say('Notifications are blocked in browser settings. Allow notifications for Rankers Nest there, then try again.');
-  }
-  button.addEventListener('click',async()=>{
-    if(!configReady()){
-      say('Push setup is not finished yet. Rankers Nest is preparing the secure notification service; please try again after setup is complete.');
-      return;
-    }
+  button.addEventListener('click',()=>{
     button.disabled=true; button.textContent='Setting up…';
-    try{
-      const permission=await Notification.requestPermission();
-      if(permission!=='granted'){
-        say(permission==='denied'?'Permission was blocked. Enable notifications for this site in your browser settings.':'No permission was granted. You can subscribe later.');
-        button.textContent='🔔 Subscribe to Notifications'; return;
-      }
-      const [{initializeApp,getApps},{getMessaging,getToken},{getFunctions,httpsCallable}]=await Promise.all([
-        import('https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js'),
-        import('https://www.gstatic.com/firebasejs/13.0.0/firebase-messaging.js'),
-        import('https://www.gstatic.com/firebasejs/13.0.0/firebase-functions.js')
-      ]);
-      const app=getApps().length?getApps()[0]:initializeApp({
-        apiKey:'AIzaSyAbq6uqAZkq4f3fmORjIReufbgP5-PPT1M',
-        authDomain:'rankets-nest.firebaseapp.com',
-        projectId:'rankets-nest',
-        storageBucket:'rankets-nest.firebasestorage.app',
-        messagingSenderId:'703058556884',
-        appId:'1:703058556884:web:001203e8e9f2c0ffbe8841',
-        measurementId:'G-TQHGGPEZXJ'
-      });
-      const registration=await navigator.serviceWorker.ready;
-      const messaging=getMessaging(app);
-      const token=await getToken(messaging,{vapidKey:window.RN_FCM_VAPID_KEY,serviceWorkerRegistration:registration});
-      if(!token)throw new Error('Could not create a push subscription on this device.');
-      const subscribe=httpsCallable(getFunctions(app,'us-central1'),'subscribeToUpdates');
-      await subscribe({token,device: /Android/i.test(navigator.userAgent)?'Android':'Web'});
-      localStorage.setItem('rn-push-enabled','yes');
-      button.textContent='✓ Notifications enabled';
-      say('Subscribed successfully on this device. You will be notified when a new update is published.');
-    }catch(error){
-      console.error('Rankers Nest push setup:',error);
-      button.textContent='🔔 Try subscribing again';
-      say(error.code==='functions/unavailable'||error.code==='functions/not-found'?'The secure notification server is not deployed yet. Please try again after Rankers Nest finishes setup.':'Setup could not finish yet. Please check your connection and try again after notification setup is complete.');
-    }finally{button.disabled=false;}
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal){
+      try{
+        await OneSignal.User.PushSubscription.optIn();
+        say('Subscription request completed. Please allow notifications if your browser asks.');
+        button.textContent='✓ Notifications enabled';
+      }catch(error){
+        say('Could not enable notifications yet. Check browser permission and try again.');
+        button.textContent='🔔 Subscribe to Notifications';
+      }finally{ button.disabled=false; }
+    });
   });
 })();
 </script>
