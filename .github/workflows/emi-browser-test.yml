@@ -1,0 +1,55 @@
+name: EMI test browser controls
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'neet-electromagnetic-induction-pyq-test.html'
+      - '.github/workflows/emi-browser-test.yml'
+  workflow_dispatch:
+jobs:
+  browser-controls:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Exercise test controls in Chromium
+        run: |
+          cat > /tmp/emi-controls.spec.cjs <<'EOF'
+          const { test, expect } = require('playwright/test');
+          const path = require('path');
+          test('40 questions render and all test controls work', async ({ page }) => {
+            const errors = [];
+            page.on('pageerror', e => errors.push(e.message));
+            await page.goto('file://' + path.resolve('neet-electromagnetic-induction-pyq-test.html'));
+            await expect(page.locator('.q')).toHaveCount(40);
+            await expect(page.locator('#timer')).toHaveText(/60:00/);
+            await expect(page.locator('#progressText')).toContainText('0 of 40');
+            await page.locator('input[name="q0"][value="3"]').check();
+            await expect(page.locator('#progressText')).toContainText('1 of 40');
+            await page.locator('#check').click();
+            await expect(page.locator('#s0')).toContainText('Correct answer: D');
+            await page.locator('#solutionsBtn').click();
+            await expect(page.locator('#s39')).toBeVisible();
+            await page.locator('#submit').click();
+            await expect(page.locator('#results')).toContainText('Score: 1 / 40');
+            await expect(page.locator('input[name="q1"]').first()).toBeDisabled();
+            await page.locator('#reset').click();
+            await expect(page.locator('#results')).toBeHidden();
+            await expect(page.locator('#progressText')).toContainText('0 of 40');
+            await expect(page.locator('input[name="q0"]').first()).toBeEnabled();
+            await page.locator('#pdf').click();
+            await expect(page.locator('#s39')).toBeVisible();
+            expect(errors).toEqual([]);
+          });
+          test('timer reaches zero and auto-submits', async ({ page }) => {
+            await page.goto('file://' + path.resolve('neet-electromagnetic-induction-pyq-test.html'));
+            await page.evaluate(() => { seconds = 1; tick(); });
+            await expect(page.locator('#results')).toContainText('Time is up — test submitted');
+            await expect(page.locator('#submit')).toBeDisabled();
+          });
+          EOF
+          npx playwright test /tmp/emi-controls.spec.cjs --reporter=line
