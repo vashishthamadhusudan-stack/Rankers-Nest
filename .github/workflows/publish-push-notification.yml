@@ -1,4 +1,4 @@
-name: Notify Rankers Nest subscribers on new update
+name: Notify Rankers Nest subscribers on new Physics Challenge
 
 on:
   push:
@@ -16,23 +16,46 @@ jobs:
     steps:
       - name: Check out latest updates feed
         uses: actions/checkout@v4
-      - name: Send notification for newest update
+
+      - name: Send newest update through OneSignal
         env:
-          PUSH_PUBLISH_URL: ${{ secrets.PUSH_PUBLISH_URL }}
-          PUSH_PUBLISH_SECRET: ${{ secrets.PUSH_PUBLISH_SECRET }}
+          ONESIGNAL_APP_ID: ${{ secrets.ONESIGNAL_APP_ID }}
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
         run: |
           set -euo pipefail
-          if [ -z "$PUSH_PUBLISH_URL" ] || [ -z "$PUSH_PUBLISH_SECRET" ]; then
-            echo "Push secrets are not configured yet; no notification was sent."
-            exit 0
+          if [ -z "$ONESIGNAL_APP_ID" ] || [ -z "$ONESIGNAL_REST_API_KEY" ]; then
+            echo "OneSignal secrets are missing. Add ONESIGNAL_APP_ID and ONESIGNAL_REST_API_KEY in repository Actions secrets."
+            exit 1
           fi
+
           update="$(jq -c '.updates[0]' site-updates.json)"
           if [ "$update" = "null" ] || [ -z "$update" ]; then
-            echo "No update found in feed."
+            echo "No update found in site-updates.json."
             exit 0
           fi
+
+          title="$(jq -r '.title // "New Rankers Nest Physics Challenge"' <<< "$update")"
+          message="$(jq -r '.description // "A new Physics resource is available on Rankers Nest."' <<< "$update")"
+          relative_url="$(jq -r '.url // ""' <<< "$update")"
+          if [ -z "$relative_url" ]; then
+            echo "Newest update has no URL; refusing to send a broken notification."
+            exit 1
+          fi
+          if [[ "$relative_url" =~ ^https?:// ]]; then
+            target_url="$relative_url"
+          else
+            target_url="https://vashishthamadhusudan-stack.github.io/Rankers-Nest/${relative_url#/}"
+          fi
+
+          payload="$(jq -cn \
+            --arg app_id "$ONESIGNAL_APP_ID" \
+            --arg title "$title" \
+            --arg message "$message" \
+            --arg url "$target_url" \
+            '{app_id:$app_id, included_segments:["Total Subscriptions"], headings:{en:$title}, contents:{en:$message}, url:$url}')"
+
           curl --fail-with-body --silent --show-error \
-            -X POST "$PUSH_PUBLISH_URL" \
-            -H "Authorization: Bearer $PUSH_PUBLISH_SECRET" \
+            -X POST "https://api.onesignal.com/notifications" \
+            -H "Authorization: Key $ONESIGNAL_REST_API_KEY" \
             -H "Content-Type: application/json" \
-            --data "$(jq -cn --argjson update "$update" '{update:$update}')"
+            --data "$payload"
