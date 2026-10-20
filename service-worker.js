@@ -1,4 +1,42 @@
-const CACHE_NAME = "rankers-nest-v16";
+/* Firebase Cloud Messaging background notifications. Public web-app config only. */
+importScripts("https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js");
+importScripts("https://www.gstatic.com/firebasejs/10.13.2/firebase-messaging-compat.js");
+firebase.initializeApp({
+  apiKey: "AIzaSyAbq6uqAZkq4f3fmORjIReufbgP5-PPT1M",
+  authDomain: "rankets-nest.firebaseapp.com",
+  projectId: "rankets-nest",
+  storageBucket: "rankets-nest.firebasestorage.app",
+  messagingSenderId: "703058556884",
+  appId: "1:703058556884:web:001203e8e9f2c0ffbe8841",
+  measurementId: "G-TQHGGPEZXJ"
+});
+const rnMessaging = firebase.messaging();
+rnMessaging.onBackgroundMessage(payload => {
+  const data = payload.data || {};
+  const notification = payload.notification || {};
+  const title = notification.title || data.title || "Rankers Nest — New Update";
+  const options = {
+    body: notification.body || data.body || "A new Physics resource is available.",
+    icon: "./icon.svg",
+    badge: "./icon.svg",
+    data: { url: data.url || "./#site-updates" },
+    tag: data.tag || "rankers-nest-update",
+    renotify: false
+  };
+  return self.registration.showNotification(title, options);
+});
+self.addEventListener("notificationclick", event => {
+  event.notification.close();
+  const target = new URL((event.notification.data && event.notification.data.url) || "./#site-updates", self.location.href).href;
+  event.waitUntil(clients.matchAll({type:"window",includeUncontrolled:true}).then(windowClients => {
+    for (const client of windowClients) {
+      if (client.url === target && "focus" in client) return client.focus();
+    }
+    if (clients.openWindow) return clients.openWindow(target);
+  }));
+});
+
+const CACHE_NAME = "rankers-nest-v17";
 const FILES = [
   "./",
   "./index.html",
