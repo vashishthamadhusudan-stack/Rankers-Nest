@@ -704,7 +704,7 @@ registrationForm.addEventListener("submit", async (event) => {
       button.textContent='✓ Notifications enabled';
     }catch(error){
       console.error('Rankers Nest notification setup failed:',error);
-      say('Setup did not finish. Refresh the page and try again. If it repeats, send this screenshot to Rankers Nest support.');
+      say('Setup failed: '+(error && error.message ? error.message : String(error))+'. Please send this message to Rankers Nest support.');
       button.textContent='🔔 Try Notifications Again';
     }finally{ button.disabled=false; }
   });
