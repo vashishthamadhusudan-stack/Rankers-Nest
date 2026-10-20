@@ -1,0 +1,38 @@
+name: Notify Rankers Nest subscribers on new update
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - site-updates.json
+
+permissions:
+  contents: read
+
+jobs:
+  notify-subscribers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out latest updates feed
+        uses: actions/checkout@v4
+      - name: Send notification for newest update
+        env:
+          PUSH_PUBLISH_URL: ${{ secrets.PUSH_PUBLISH_URL }}
+          PUSH_PUBLISH_SECRET: ${{ secrets.PUSH_PUBLISH_SECRET }}
+        run: |
+          set -euo pipefail
+          if [ -z "$PUSH_PUBLISH_URL" ] || [ -z "$PUSH_PUBLISH_SECRET" ]; then
+            echo "Push secrets are not configured yet; no notification was sent."
+            exit 0
+          fi
+          update="$(jq -c '.updates[0]' site-updates.json)"
+          if [ "$update" = "null" ] || [ -z "$update" ]; then
+            echo "No update found in feed."
+            exit 0
+          fi
+          curl --fail-with-body --silent --show-error \
+            -X POST "$PUSH_PUBLISH_URL" \
+            -H "Authorization: Bearer $PUSH_PUBLISH_SECRET" \
+            -H "Content-Type: application/json" \
+            --data "$(jq -cn --argjson update "$update" '{update:$update}')"
