@@ -6,11 +6,11 @@ const qs=[{"q":"In the Bohr model of hydrogen, the radius of the n=2 orbit is:",
 // and distribute the correct answer across option positions.
 qs.forEach((q,i)=>{
   const correct=String(q.correct);
-  let opts=[...new Set(q.opts.map(x=>String(x)))].filter(x=>x!==correct);
+  let wrong=[...new Set(q.opts.map(x=>String(x)))].filter(x=>x!==correct);
   const fillers=["None of the other options","Insufficient information","Both A and B","None of these"];
-  for(const filler of fillers){if(opts.length>=4)break;if(filler!==correct&&!opts.includes(filler))opts.push(filler)}
-  opts=opts.slice(0,4); opts.push(correct);
-  // deterministic shuffle, preserving the correct option text
+  for(const filler of fillers){if(wrong.length>=3)break;if(filler!==correct&&!wrong.includes(filler))wrong.push(filler)}
+  wrong=wrong.slice(0,3);
+  let opts=[...wrong,correct];
   for(let j=opts.length-1;j>0;j--){const k=(i*7+j*3+Math.floor(i/3))%(j+1);[opts[j],opts[k]]=[opts[k],opts[j]]}
   const fmtSci=s=>String(s).replace(/([0-9.]+)e([+-])([0-9]+)/gi,(_,n,sign,p)=>n+' × 10'+(sign==='-'?'⁻':'')+String(p).split('').map(d=>({'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'}[d])).join(''));
   opts=opts.map(fmtSci);q.opts=opts;q.ans=opts.indexOf(fmtSci(correct));q.correct=fmtSci(correct);
