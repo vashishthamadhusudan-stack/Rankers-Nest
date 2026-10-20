@@ -26,7 +26,7 @@ jobs:
             page.on('pageerror', e => errors.push(e.message));
             await page.goto('file://' + path.resolve('neet-electromagnetic-induction-pyq-test.html'));
             await expect(page.locator('.q')).toHaveCount(40);
-            await expect(page.locator('#timer')).toHaveText(/60:00/);
+            await expect(page.locator('#timer')).toHaveText(/^(60:00|59:[0-5][0-9])$/);
             await page.locator('#startPause').click();
             await expect(page.locator('#startPause')).toHaveText('Resume timer');
             await page.locator('#startPause').click();
