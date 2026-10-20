@@ -212,11 +212,19 @@ footer a:hover{color:var(--gold)}
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "0a13153b-b826-4404-87c7-48c8348eaf2a",
-      serviceWorkerPath: "OneSignalSDKWorker.js",
-      serviceWorkerParam: { scope: "/Rankers-Nest/" }
+  window.RNOneSignalReady = new Promise(function(resolve, reject) {
+    OneSignalDeferred.push(async function(OneSignal) {
+      try {
+        await OneSignal.init({
+          appId: "0a13153b-b826-4404-87c7-48c8348eaf2a",
+          serviceWorkerPath: "OneSignalSDKWorker.js",
+          serviceWorkerParam: { scope: "/Rankers-Nest/" }
+        });
+        resolve(OneSignal);
+      } catch (error) {
+        console.error("Rankers Nest OneSignal initialization failed:", error);
+        reject(error);
+      }
     });
   });
 </script>
@@ -684,19 +692,21 @@ registrationForm.addEventListener("submit", async (event) => {
   if(!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)){
     button.disabled=true; say('Push notifications are not supported by this browser. Please use Chrome on Android or another supported browser.'); return;
   }
-  button.addEventListener('click',()=>{
+  button.addEventListener('click',async()=>{
     button.disabled=true; button.textContent='Setting up…';
-    window.OneSignalDeferred = window.OneSignalDeferred || [];
-    OneSignalDeferred.push(async function(OneSignal){
-      try{
-        await OneSignal.User.PushSubscription.optIn();
-        say('Subscription request completed. Please allow notifications if your browser asks.');
-        button.textContent='✓ Notifications enabled';
-      }catch(error){
-        say('Could not enable notifications yet. Check browser permission and try again.');
-        button.textContent='🔔 Subscribe to Notifications';
-      }finally{ button.disabled=false; }
-    });
+    try{
+      const OneSignal=await Promise.race([
+        window.RNOneSignalReady,
+        new Promise((_,reject)=>setTimeout(()=>reject(new Error('OneSignal initialization timed out')),15000))
+      ]);
+      await OneSignal.User.PushSubscription.optIn();
+      say('Subscription request completed. Please allow notifications if your browser asks.');
+      button.textContent='✓ Notifications enabled';
+    }catch(error){
+      console.error('Rankers Nest notification setup failed:',error);
+      say('Setup did not finish. Refresh the page and try again. If it repeats, send this screenshot to Rankers Nest support.');
+      button.textContent='🔔 Try Notifications Again';
+    }finally{ button.disabled=false; }
   });
 })();
 </script>
