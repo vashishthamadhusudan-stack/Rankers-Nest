@@ -18,16 +18,19 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - name: Exercise test controls in Chromium
         run: |
-          cat > /tmp/emi-controls.spec.cjs <<'EOF'
+          cat > emi-controls.spec.cjs <<'EOF'
           const { test, expect } = require('playwright/test');
           const path = require('path');
-          test('40 questions render and all test controls work', async ({ page }) => {
+          test('questions, answers, score, solutions, restart, print and pause controls', async ({ page }) => {
             const errors = [];
             page.on('pageerror', e => errors.push(e.message));
             await page.goto('file://' + path.resolve('neet-electromagnetic-induction-pyq-test.html'));
             await expect(page.locator('.q')).toHaveCount(40);
             await expect(page.locator('#timer')).toHaveText(/60:00/);
-            await expect(page.locator('#progressText')).toContainText('0 of 40');
+            await page.locator('#startPause').click();
+            await expect(page.locator('#startPause')).toHaveText('Resume timer');
+            await page.locator('#startPause').click();
+            await expect(page.locator('#startPause')).toHaveText('Pause timer');
             await page.locator('input[name="q0"][value="3"]').check();
             await expect(page.locator('#progressText')).toContainText('1 of 40');
             await page.locator('#check').click();
@@ -41,8 +44,10 @@ jobs:
             await expect(page.locator('#results')).toBeHidden();
             await expect(page.locator('#progressText')).toContainText('0 of 40');
             await expect(page.locator('input[name="q0"]').first()).toBeEnabled();
+            await page.evaluate(() => { window.__printCalled = false; window.print = () => { window.__printCalled = true; }; });
             await page.locator('#pdf').click();
             await expect(page.locator('#s39')).toBeVisible();
+            expect(await page.evaluate(() => window.__printCalled)).toBe(true);
             expect(errors).toEqual([]);
           });
           test('timer reaches zero and auto-submits', async ({ page }) => {
@@ -52,4 +57,4 @@ jobs:
             await expect(page.locator('#submit')).toBeDisabled();
           });
           EOF
-          npx playwright test /tmp/emi-controls.spec.cjs --reporter=line
+          npx playwright test emi-controls.spec.cjs --reporter=line
