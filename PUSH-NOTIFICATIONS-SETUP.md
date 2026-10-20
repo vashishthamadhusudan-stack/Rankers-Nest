@@ -1,66 +1,27 @@
-# Rankers Nest push notifications — activation checklist
+# Rankers Nest automatic Physics Challenge notifications
 
-The homepage opt-in button and Firebase Messaging background handler are committed. Actual push delivery stays inactive until the steps below are completed.
+The GitHub Actions workflow is configured to send a OneSignal push whenever `site-updates.json` changes on the `main` branch. It sends the newest item (the first item in the `updates` array) to the OneSignal **Total Subscriptions** audience and links to that resource.
 
-## 1. Create a Web Push public key
+## One-time setup still required: GitHub Actions secrets
 
-1. Open Firebase Console: https://console.firebase.google.com/
-2. Select project **rankets-nest**.
-3. Open **Project settings** (gear) → **Cloud Messaging**.
-4. Under **Web configuration / Web Push certificates**, generate a key pair.
-5. Copy the **public key only**. Do not copy or publish any private/service-account key.
+In the GitHub repository, open **Settings → Secrets and variables → Actions → New repository secret**. Add these two secrets:
 
-## 2. Add the public key to the website
+- `ONESIGNAL_APP_ID`: the App ID for the **Rankers Nest App** in OneSignal.
+- `ONESIGNAL_REST_API_KEY`: the OneSignal REST API key for that same app. Treat this as a password: never commit it to a file or share it in chat.
 
-Edit `push-config.js` in the GitHub repository and replace:
-`ADD_FIREBASE_WEB_PUSH_PUBLIC_KEY_HERE`
-with the public key generated above. Commit the change.
+The workflow file is `.github/workflows/publish-push-notification.yml`. It expects those exact secret names. Do not use the Firebase `PUSH_PUBLISH_URL` / `PUSH_PUBLISH_SECRET` names for this workflow.
 
-## 3. Deploy the secure server functions
+## How automatic delivery works
 
-Install Node.js 20+ and Firebase CLI on a trusted computer, sign in with access to the Firebase project, then run from the repository root:
+1. Publish the new Daily Physics Challenge page.
+2. Add its title, description, and relative page URL as the first entry in `site-updates.json`.
+3. Commit both changes to `main`.
+4. GitHub Actions reads the newest update and asks OneSignal to send the notification to subscribed users.
 
-```bash
-npm install -g firebase-tools
-firebase login
-firebase use rankets-nest
-firebase functions:secrets:set PUSH_PUBLISH_SECRET
-```
+The workflow refuses to send if either secret is missing or the newest update has no URL. GitHub Actions → **Notify Rankers Nest subscribers on new Physics Challenge** shows the run result.
 
-When prompted for the secret value, create a long random value (at least 32 random characters) and keep it private. Do not commit it to GitHub. Then deploy:
+## Test safely
 
-```bash
-cd functions
-npm install
-cd ..
-firebase deploy --only functions
-```
+After adding both secrets, make a small test edit to the top item in `site-updates.json` and commit it. Open the repository's **Actions** tab and check that the workflow succeeds; confirm the notification arrives on the subscribed phone. Every change to `site-updates.json` sends the newest item, so avoid unnecessary edits to that file.
 
-Firebase may require the project to be on the **Blaze billing plan** for Cloud Functions/Secret Manager. Review Firebase's current pricing before enabling billing.
-
-The deploy output includes the URL for `publishSiteUpdate` (region `us-central1`). Keep it for the next step.
-
-## 4. Add GitHub Actions secrets
-
-In the GitHub repository, open **Settings → Secrets and variables → Actions → New repository secret** and add:
-
-- `PUSH_PUBLISH_URL`: the deployed `publishSiteUpdate` function URL.
-- `PUSH_PUBLISH_SECRET`: the exact same private secret value configured in Firebase.
-
-Do not put either secret in a public file or chat.
-
-## 5. Test
-
-1. Open the live site in Chrome on the student's phone.
-2. Tap **Subscribe to Notifications** and allow notifications.
-3. Confirm the button changes to **Notifications enabled**.
-4. Add a new item at the top of `site-updates.json` and commit it. The GitHub Actions workflow should invoke the function, which sends a push to subscribed devices.
-5. Test once with a non-critical update before relying on it.
-
-## Notes
-
-- Notifications are opt-in and can be disabled from the browser/site notification settings.
-- Push support depends on the browser, operating system and device settings.
-- Existing Firestore rules can remain restrictive: the callable function stores tokens server-side with the Admin SDK.
-- The public Firebase web config and VAPID public key are not Admin credentials. Never commit a Firebase service-account private key or the publishing secret.
-- The GitHub workflow watches changes to `site-updates.json` on the `main` branch and sends only the newest feed item. Keep newest update first.
+Notifications go only to users subscribed to the OneSignal app. Keep the newest item first in the `updates` array.
