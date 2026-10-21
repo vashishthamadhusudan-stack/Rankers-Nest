@@ -38,6 +38,8 @@ function isQuizFile(file) { return /(pyq|jee-main-|neet-|practice|test|challenge
       let optionCounts = [];
       let quizAction = 'not applicable';
       let questionRecords = [];
+      let dataQuestionRecords = [];
+      let dataVariable = null;
       let hrefs = [];
       try {
         title = await page.title();
@@ -91,7 +93,36 @@ function isQuizFile(file) { return /(pyq|jee-main-|neet-|practice|test|challenge
               return {questionNumber:index+1,groupName:name,meta,prompt,options,answerKey:keyMatch ? keyMatch[1].toUpperCase() : null,solution};
             });
           });
-          for (const q of questionRecords) questionExport.push({file,finalUrl:page.url(),pageTitle:title,...q});
+          const extracted = await page.evaluate(() => {
+            const names = ['qs','data','questions','Q','questionData','questionBank'];
+            let best = null;
+            for (const name of names) {
+              try {
+                const arr = eval(name);
+                if (!Array.isArray(arr) || !arr.length) continue;
+                const items = arr.map((q, i) => {
+                  const isArray = Array.isArray(q);
+                  const opts = isArray ? q[1] : (q.o || q.options || q.opts || q.choices || q.answers);
+                  if (!Array.isArray(opts)) return null;
+                  return {
+                    questionNumber: i + 1,
+                    prompt: isArray ? String(q[0] ?? '') : String(q.q ?? q.text ?? q.question ?? q.prompt ?? q.statement ?? ''),
+                    options: opts.map(x => String(x)),
+                    answerRaw: isArray ? (q[2] ?? null) : (q.a ?? q.ans ?? q.answer ?? q.correct ?? q.key ?? q.correctAnswer ?? null),
+                    answerField: isArray ? 'array-index-2' : (q.a !== undefined ? 'a' : q.ans !== undefined ? 'ans' : q.answer !== undefined ? 'answer' : q.correct !== undefined ? 'correct' : q.key !== undefined ? 'key' : q.correctAnswer !== undefined ? 'correctAnswer' : null),
+                    solution: isArray ? String(q[3] ?? '') : String(q.s ?? q.e ?? q.exp ?? q.explanation ?? q.solution ?? q.sol ?? q.rationale ?? ''),
+                    meta: isArray ? String(q[4] ?? '') : String(q.d ?? q.y ?? q.year ?? q.source ?? q.exam ?? q.sub ?? '')
+                  };
+                });
+                const valid = items.filter(Boolean);
+                if (valid.length && (!best || valid.length > best.items.length)) best = {name,items:valid};
+              } catch {}
+            }
+            return best;
+          });
+          if (extracted) { dataVariable = extracted.name; dataQuestionRecords = extracted.items; }
+          const exportRows = dataQuestionRecords.length ? dataQuestionRecords : questionRecords;
+          for (const q of exportRows) questionExport.push({file,finalUrl:page.url(),pageTitle:title,dataVariable,...q});
         }
       } catch (e) { loadError = loadError || e.message; }
       const row = {file,title,status,quizLike:isQuizFile(file),radioQuestionGroups:radioGroups,optionCounts,quizAction,pageErrors,loadError};
@@ -117,8 +148,15 @@ function isQuizFile(file) { return /(pyq|jee-main-|neet-|practice|test|challenge
     }
     const report = {generatedAt:new Date().toISOString(),base,htmlPages:htmlFiles.length,internalUrlsChecked:linkResults.length,failures,results,linkResults,questionRecordCount:questionExport.length};
     fs.writeFileSync('website-browser-audit.json',JSON.stringify(report,null,2));
-    fs.writeFileSync('pyq-question-export.json',JSON.stringify({generatedAt:report.generatedAt,questionRecordCount:questionExport.length,questions:questionExport},null,2));
-    const summary = {htmlPages:htmlFiles.length,internalUrlsChecked:linkResults.length,quizLikePages:results.filter(x=>x.quizLike).length,non200Pages:results.filter(x=>x.status!==200).length,javascriptErrors:results.reduce((n,x)=>n+x.pageErrors.length,0),brokenInternalLinks:failures.filter(x=>x.kind==='broken-internal-link'||x.kind==='internal-link-request-error').length,questionRecords:questionExport.length,report:'website-browser-audit.json',questionExport:'pyq-question-export.json'};
+    const uniqueQuestions = new Map();
+    for (const q of questionExport) {
+      const key = q.finalUrl + '|' + q.questionNumber;
+      if (!uniqueQuestions.has(key)) uniqueQuestions.set(key, {...q,sourcePaths:[q.file]});
+      else if (!uniqueQuestions.get(key).sourcePaths.includes(q.file)) uniqueQuestions.get(key).sourcePaths.push(q.file);
+    }
+    const uniqueQuestionRows = [...uniqueQuestions.values()];
+    fs.writeFileSync('pyq-question-export.json',JSON.stringify({generatedAt:report.generatedAt,questionRecordCount:uniqueQuestionRows.length,rawQuestionRecordCount:questionExport.length,questions:uniqueQuestionRows},null,2));
+    const summary = {htmlPages:htmlFiles.length,internalUrlsChecked:linkResults.length,quizLikePages:results.filter(x=>x.quizLike).length,non200Pages:results.filter(x=>x.status!==200).length,javascriptErrors:results.reduce((n,x)=>n+x.pageErrors.length,0),brokenInternalLinks:failures.filter(x=>x.kind==='broken-internal-link'||x.kind==='internal-link-request-error').length,questionRecords:uniqueQuestionRows.length,rawQuestionRecords:questionExport.length,report:'website-browser-audit.json',questionExport:'pyq-question-export.json'};
     console.log(JSON.stringify(summary,null,2));
     if (summary.non200Pages || summary.javascriptErrors || summary.brokenInternalLinks) process.exitCode = 1;
   } finally { await browser.close(); }
