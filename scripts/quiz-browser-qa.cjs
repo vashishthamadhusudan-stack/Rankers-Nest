@@ -6,7 +6,7 @@ const { pathToFileURL } = require('node:url');
 const pages = [
   { file: 'jee-main-electric-field-potential.html', count: 25, answerExpr: 'qs[0].a', timerVar: 'remaining', scoreSelector: '#score', resultSelector: '#result' },
   { file: 'jee-main-gauss-law.html', count: 25, answerExpr: 'qs[0].a', timerVar: 'remaining', scoreSelector: '#score', resultSelector: '#result' },
-  { file: 'jee-main-capacitors.html', count: 25, answerExpr: 'data[0].a', timerVar: 'left', scoreSelector: '#result', resultSelector: '#result' },
+  { file: 'jee-main-capacitors.html', count: 25, numericQuestions: 1, answerExpr: 'data[0].a', timerVar: 'left', scoreSelector: '#result', resultSelector: '#result' },
   { file: 'jee-main-current-electricity.html', count: 57, answerExpr: 'data[0].a', timerVar: 'left', scoreSelector: '#result', resultSelector: '#result' },
 ];
 
@@ -18,13 +18,17 @@ async function testPage(browser, pageSpec, target) {
   await page.goto(target, { waitUntil: 'load', timeout: 60000 });
   await page.locator('#start').click();
   const groupCount = await page.locator('input[type="radio"]').evaluateAll(inputs => new Set(inputs.map(i => i.name)).size);
-  assert(groupCount === pageSpec.count, `${pageSpec.file}: expected ${pageSpec.count} questions, got ${groupCount}`);
+  const questionCardCount = await page.locator('.question, .q').count();
+  assert(questionCardCount === pageSpec.count, `${pageSpec.file}: expected ${pageSpec.count} question cards, got ${questionCardCount}`);
+  assert(groupCount === pageSpec.count - (pageSpec.numericQuestions || 0), `${pageSpec.file}: expected ${pageSpec.count - (pageSpec.numericQuestions || 0)} radio groups, got ${groupCount}`);
   const optionCounts = await page.locator('input[type="radio"]').evaluateAll(inputs => {
     const groups = {};
     for (const input of inputs) groups[input.name] = (groups[input.name] || 0) + 1;
     return Object.values(groups);
   });
-  assert(optionCounts.length === pageSpec.count && optionCounts.every(n => n === 4), `${pageSpec.file}: every question must have exactly four options`);
+  assert(optionCounts.length === groupCount && optionCounts.every(n => n === 4), `${pageSpec.file}: every multiple-choice question must have exactly four options`);
+  const numericCount = await page.locator('input[type="number"]').count();
+  assert(numericCount === (pageSpec.numericQuestions || 0), `${pageSpec.file}: expected ${pageSpec.numericQuestions || 0} numerical inputs, got ${numericCount}`);
 
   const answer = await page.evaluate(expr => (0, eval)(expr), pageSpec.answerExpr);
   await page.locator(`input[name="q0"][value="${answer}"]`).check();
@@ -40,13 +44,20 @@ async function testPage(browser, pageSpec, target) {
   assert(/(?:Score\s*:?\s*|^\s*)3\b|3\s*marks/i.test(scoreText), pageSpec.file + ': expected score +4-1=3, got score element: ' + scoreText + '; result: ' + resultText);
 
   const disabledCount = await page.locator('input[type="radio"]:disabled').count();
-  assert(disabledCount === pageSpec.count * 4, `${pageSpec.file}: choices were not locked after submission (${disabledCount} disabled)`);
+  assert(disabledCount === groupCount * 4, `${pageSpec.file}: radio choices were not locked after submission (${disabledCount} disabled)`);
+  const numericDisabledCount = await page.locator('input[type="number"]:disabled').count();
+  assert(numericDisabledCount === (pageSpec.numericQuestions || 0), `${pageSpec.file}: numerical input was not locked after submission`);
   const visibleSolutions = await page.locator('.solution:visible, .sol:visible, details[open]').count();
   const arrayName = pageSpec.answerExpr.split('[')[0];
   const expectedKeys = await page.evaluate(name => (name === 'qs' ? qs : data).map(item => item.a), arrayName);
+  const questionTypes = await page.evaluate(name => (name === 'qs' ? qs : data).map(item => item.type || 'mcq'), arrayName);
   const solutionTexts = await page.locator('.solution, details').allInnerTexts();
   assert(solutionTexts.length === pageSpec.count, `${pageSpec.file}: solution/question count mismatch: ${solutionTexts.length}`);
-  const keyMismatch = solutionTexts.findIndex((text, i) => { const match = text.match(/(?:Answer|Key):\s*([A-D])/i); return !match || match[1].toUpperCase() !== String.fromCharCode(65 + expectedKeys[i]); });
+  const keyMismatch = solutionTexts.findIndex((text, i) => {
+    if (questionTypes[i] === 'numeric') return !new RegExp('Answer:\\s*' + expectedKeys[i] + '(?:\\s|$)').test(text);
+    const match = text.match(/(?:Answer|Key):\\s*([A-D])/i);
+    return !match || match[1].toUpperCase() !== String.fromCharCode(65 + expectedKeys[i]);
+  });
   assert(keyMismatch === -1, `${pageSpec.file}: displayed solution key does not match stored answer key at Q${keyMismatch + 1}`);
   assert(solutionTexts.every(text => text.trim().length > 20), `${pageSpec.file}: one or more solution texts are empty/too short`);
   assert(visibleSolutions >= pageSpec.count, `${pageSpec.file}: solutions did not all reveal after submit (visible count ${visibleSolutions})`);
@@ -55,9 +66,13 @@ async function testPage(browser, pageSpec, target) {
   // Restart should clear prior selections and unlock all options.
   await page.locator('#start').click();
   const checkedAfterRestart = await page.locator('input[type="radio"]:checked').count();
-  assert(checkedAfterRestart === 0, `${pageSpec.file}: restart did not clear answers`);
+  assert(checkedAfterRestart === 0, `${pageSpec.file}: restart did not clear radio answers`);
+  const numericFilledAfterRestart = await page.locator('input[type="number"]').evaluateAll(xs => xs.filter(x => x.value.trim() !== '').length);
+  assert(numericFilledAfterRestart === 0, `${pageSpec.file}: restart did not clear numerical answers`);
   const enabledAfterRestart = await page.locator('input[type="radio"]:not(:disabled)').count();
-  assert(enabledAfterRestart === pageSpec.count * 4, `${pageSpec.file}: restart did not unlock all options`);
+  assert(enabledAfterRestart === groupCount * 4, `${pageSpec.file}: restart did not unlock radio options`);
+  const numericEnabledAfterRestart = await page.locator('input[type="number"]:not(:disabled)').count();
+  assert(numericEnabledAfterRestart === (pageSpec.numericQuestions || 0), `${pageSpec.file}: restart did not unlock numerical input`);
 
   // Force the countdown to one second and verify auto-submit in the running page.
   await page.evaluate(timerVar => { window.__qaTimerVar = timerVar; (0, eval)(timerVar + ' = 1'); }, pageSpec.timerVar);
