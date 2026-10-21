@@ -1,19 +1,27 @@
 {
-  "updatedAt": "2026-10-20",
+  "updatedAt": "2026-10-21",
   "updates": [
+    {
+      "date": "2026-10-21",
+      "dateLabel": "21 OCT 2026",
+      "title": "Daily Physics Challenge — Specific Heat Capacities of Gases",
+      "description": "Day 3: Cp, Cv, Mayer's relation, gamma, worked example and 5 MCQs with explanations.",
+      "url": "todays-physics-challenge.html",
+      "linkLabel": "Open today's challenge →"
+    },
     {
       "date": "2026-10-20",
       "dateLabel": "20 OCT 2026",
       "title": "Daily Physics Challenge — Kinetic Theory of Gases",
       "description": "Worked example, key formulas and 4 practice MCQs.",
-      "url": "todays-physics-challenge.html",
-      "linkLabel": "Open challenge →"
+      "url": "archive/daily-physics-challenge-2026-10-20.html",
+      "linkLabel": "View archive →"
     },
     {
       "date": "2026-10-19",
       "dateLabel": "19 OCT 2026",
       "title": "Daily Physics Challenge — Heat & Thermodynamics",
-      "description": "Review the previous day's questions and explanations.",
+      "description": "First law, thermodynamic processes and 5 MCQs with explanations.",
       "url": "archive/daily-physics-challenge-2026-10-19.html",
       "linkLabel": "View archive →"
     }
