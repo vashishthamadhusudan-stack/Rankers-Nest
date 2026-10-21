@@ -36,7 +36,7 @@ This register separates (1) source match, (2) independent physics calculation, a
 | Q | Page key | Classification | Source / key status |
 |---:|---|---|---|
 | 1 | B | IIT-JEE 2004 Screening | Question figure/options and answer checked against paper/solution copy |
-| 2 | D | IIT-JEE 1979 | Question is a redraw of the published graph; source record identified, but not a facsimile scan |
+| 2 | D | IIT-JEE 1979 | Question is a redraw of the published graph; source record identified in the historical Motion index, but not a facsimile scan. Source index: https://www.examelite.com/previous-year-papers/iit-jee-advance-previous-year-papers/subjects/physics-2057/topics/mechanics-4823/subtopics/motion-3842 |
 | 3–6 | B, C, 20, AC | Practice graph drills | Practice, not PYQs |
 | 7 | AB | JEE Advanced 2026 Paper 1 | Source solution checked |
 | 8 | B | IIT-JEE 1982 | Source and calculation checked; option format adapted |
@@ -70,4 +70,4 @@ This register separates (1) source match, (2) independent physics calculation, a
 
 The Playwright test in `scripts/kinematics-e2e-regression.cjs` maintains an independent expected-key manifest for all 36 questions. It opens the local committed HTML and the live GitHub Pages URL in a 390 px mobile viewport, checks question count/types/keys/inputs/solutions/graphs, submits all correct answers, checks the total score, confirms all solutions reveal, resets, tests a wrong answer, tests the alternate accepted Q30 answer (8), checks console errors, and checks horizontal overflow. The run report is uploaded as a GitHub Actions artifact.
 
-Automated grading passing is not, by itself, proof that every historical question is a perfect facsimile. Official final-key mapping for legacy pre-2007 papers remains unavailable in a single authoritative source; secondary paper copies are documented above where located.
+During the browser regression setup, a genuine progress-tracking bug was found and fixed: blank multi-part numeric questions were incorrectly counted as attempted because an empty pair produced a comma string. The pair-value reader now returns an empty string when all component fields are blank. Automated grading passing is not, by itself, proof that every historical question is a perfect facsimile. Official final-key mapping for legacy pre-2007 papers remains unavailable in a single authoritative source; secondary paper copies are documented above where located.
