@@ -101,11 +101,11 @@ async function testPage(browser, target, label) {
     assert((await page.locator('#progress').innerText()).includes('0 / 36'), label + ': reset did not clear progress');
     assert(!(await page.locator('#result').isVisible()), label + ': reset did not hide results');
     assert((await page.locator('#timer').innerText())==='60:00', label + ': reset did not restore the timer');
-    await page.locator('#startTest').click();
     assert(await page.locator('.solution:visible').count()===0, label + ': reset did not hide solutions');
     assert(await page.locator('.question input:disabled').count()>0, label + ': reset should lock questions until test starts again');
     assert(await page.locator('.question input:checked').count()===0, label + ': reset did not clear selected choices');
     assert(await page.locator('.question input[type="number"]').evaluateAll(xs=>xs.every(x=>x.value==='')), label + ': reset did not clear numerical fields');
+    await page.locator('#startTest').click();
 
     await page.locator('.question[data-q="1"] input[value="B"]').check();
     await page.locator('.question[data-q="8"] input[value="A"]').check();
