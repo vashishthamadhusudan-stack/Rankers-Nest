@@ -61,6 +61,11 @@ async function testPage(browser, target, label) {
     await page.waitForFunction(() => document.querySelector('#progress') && /\/\s*36/.test(document.querySelector('#progress').textContent));
     const initialProgress = await page.locator('#progress').innerText();
     assert(/0\s*\/\s*36/.test(initialProgress) && await page.locator('.question input:checked').count()===0, label + ': initial progress/state invalid: ' + JSON.stringify(initialProgress));
+    assert((await page.locator('#timer').innerText())==='60:00', label + ': timer must initialize at 60:00');
+    assert(await page.locator('.question input:disabled').count()>0, label + ': questions should remain locked until Start test');
+    await page.locator('#startTest').click();
+    assert(await page.locator('#submitTop').isEnabled(), label + ': top Submit test button did not enable after start');
+    assert(await page.locator('.question input:disabled').count()===0, label + ': question inputs remained disabled after start');
 
     for (const q of audit) {
       const card=page.locator('.question[data-q="' + q.id + '"]');
@@ -98,6 +103,7 @@ async function testPage(browser, target, label) {
     assert((await page.locator('#timer').innerText())==='60:00', label + ': reset did not restore the timer');
     await page.locator('#startTest').click();
     assert(await page.locator('.solution:visible').count()===0, label + ': reset did not hide solutions');
+    assert(await page.locator('.question input:disabled').count()>0, label + ': reset should lock questions until test starts again');
     assert(await page.locator('.question input:checked').count()===0, label + ': reset did not clear selected choices');
     assert(await page.locator('.question input[type="number"]').evaluateAll(xs=>xs.every(x=>x.value==='')), label + ': reset did not clear numerical fields');
 
