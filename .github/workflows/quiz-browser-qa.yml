@@ -15,7 +15,7 @@ permissions:
 jobs:
   browser-qa:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,7 +25,9 @@ jobs:
         run: |
           npm install --no-save playwright
           npx playwright install --with-deps chromium
-      - name: Run local browser tests
+      - name: Run local and live-site browser tests
+        env:
+          LIVE_BASE: https://vashishthamadhusudan-stack.github.io/Rankers-Nest
         run: node scripts/quiz-browser-qa.cjs
       - name: Upload QA report
         if: always()
