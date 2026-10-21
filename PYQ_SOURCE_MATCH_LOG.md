@@ -19,6 +19,9 @@ This is a live audit log, not a claim that the entire site is verified. A row is
 - NEET UG 2026 Code-13 solution PDF: https://dcx0p3on5z8dw.cloudfront.net/Aakash/s3fs-public/pdf_management_files/target_solutions/NEET_2026_Answer_Key_Solution_Code_13_Download.pdf
 - NEET UG 2026 Code-11 solution PDF: https://dcx0p3on5z8dw.cloudfront.net/Aakash/s3fs-public/pdf_management_files/target_solutions/NEET_2026_Answer_Key_Solution_Code_11_Download.pdf.pdf
 - NEET UG 2025 Code-45 solution PDF: https://dcx0p3on5z8dw.cloudfront.net/Aakash/s3fs-public/pdf_management_files/target_solutions/neet-question-paper-solution-physics-code-45.pdf
+- NEET 2021 rod-balance question source copy: https://askfilo.com/user-question-answers-smart-solutions/a-uniform-rod-of-length-200-cm-and-mass-500-g-is-balanced-on-3133303138363533
+- NEET 2022 flywheel-angular-acceleration question: https://www.neet720.in/neet/pyq/2022
+- NEET 2018 rolling-sphere kinetic-energy ratio source compilation: https://www.scribd.com/document/772215403/Arihant-34-Year-neet-Physics-Chapter-wise
 - Official NEET NTA documents: https://neet.nta.nic.in/documents/
 - Official NEET UG 2026 re-examination final answer keys: https://neet.nta.nic.in/final-answer-keys-for-neet-ug-2026-re-examination/
 
