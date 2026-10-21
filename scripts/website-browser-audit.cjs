@@ -64,7 +64,7 @@ function isQuizFile(file) { return /(pyq|jee-main-|neet-|practice|test|challenge
           });
           radioGroups = groups.length;
           optionCounts = groups.map(g=>g.count);
-          const submit = page.locator('#submit,button[type="submit"],input[type="submit"]').first();
+          const submit = page.locator('#submit,button[type="submit"],input[type="submit"],button.submit,.submit').first();
           if (radioGroups && await submit.count() && await submit.isVisible().catch(()=>false)) {
             const first = page.locator('input[type="radio"]').first();
             await first.check({force:true}).catch(()=>{});
