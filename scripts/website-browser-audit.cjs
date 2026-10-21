@@ -80,16 +80,19 @@ function isQuizFile(file) { return /(pyq|jee-main-|neet-|practice|test|challenge
       await page.close();
     }
     const linkResults = [];
-    for (const url of [...internalLinks]) {
-      try {
-        const response = await context.request.get(url, { timeout: 15000, failOnStatusCode: false });
-        const code = response.status();
-        linkResults.push({url,status:code});
-        if (code < 200 || code >= 400) failures.push({kind:'broken-internal-link',url,status:code});
-      } catch (e) {
-        linkResults.push({url,status:0,error:e.message});
-        failures.push({kind:'internal-link-request-error',url,detail:e.message});
-      }
+    const urlsToCheck = [...internalLinks];
+    for (let i = 0; i < urlsToCheck.length; i += 12) {
+      await Promise.all(urlsToCheck.slice(i, i + 12).map(async url => {
+        try {
+          const response = await context.request.get(url, { timeout: 15000, failOnStatusCode: false });
+          const code = response.status();
+          linkResults.push({url,status:code});
+          if (code < 200 || code >= 400) failures.push({kind:'broken-internal-link',url,status:code});
+        } catch (e) {
+          linkResults.push({url,status:0,error:e.message});
+          failures.push({kind:'internal-link-request-error',url,detail:e.message});
+        }
+      }));
     }
     const report = {generatedAt:new Date().toISOString(),base,htmlPages:htmlFiles.length,internalUrlsChecked:linkResults.length,failures,results,linkResults};
     fs.writeFileSync('website-browser-audit.json',JSON.stringify(report,null,2));
