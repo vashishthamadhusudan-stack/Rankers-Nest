@@ -43,3 +43,15 @@ Status: **NOT CLASSROOM-READY — do not distribute as the completed chapter ban
 - Third-party Laws of Motion question index used to establish the approximate historical topic count: https://questions.examside.com/past-years/jee/jee-advanced/physics/laws-of-motion
 
 This document records audit findings and acceptance criteria; it is not a certification that the current 10-question page is ready for students.
+
+
+## Expansion started — 22 October 2026
+
+- Replaced the inadequate 10-question draft with an **80-question original practice bank**.
+- Each generated question has an inline schematic diagram, four choices, a keyed answer, and a worked calculation.
+- Added a 120-minute timer, Start/Submit/Reset, automatic submission, score, solution reveal, and print/save-PDF control.
+- Added a separate historical-source checklist and direct links to the third-party topic index and official paper archive.
+- These 80 are explicitly labelled **Original practice**; they are not falsely labelled as 80 historical PYQs.
+- The dedicated Playwright regression was updated to check 80 questions, 80 diagrams, 4 options per question, solution/key-letter agreement, score, reset, timer/locking and mobile horizontal overflow.
+- **Browser regression status at this note: running; not yet certified PASS.** The live deployment also needs to finish before the live-page test can pass.
+- Next academic phase: replace selected practice slots with carefully source-matched historical PYQs only after checking the original paper figure, complete wording, option order and official key. The current public topic index reports 38 Laws of Motion questions across 27 papers from 1978–2025, not 70–80 historical questions.
