@@ -89,7 +89,7 @@ async function testPage(browser, target, label) {
     assert(await page.locator('#result').isVisible(), label + ': result panel did not appear');
 
     await page.locator('#reset').click();
-    await page.waitForFunction(() => /0\\s*\\/\\s*36/.test(document.querySelector('#progress')?.textContent || ''));
+    await page.waitForFunction(() => /0\s*\/\s*36/.test(document.querySelector('#progress')?.textContent || ''));
     assert((await page.locator('#progress').innerText()).includes('0 / 36'), label + ': reset did not clear progress');
     assert(!(await page.locator('#result').isVisible()), label + ': reset did not hide results');
     assert(await page.locator('.solution:visible').count()===0, label + ': reset did not hide solutions');
