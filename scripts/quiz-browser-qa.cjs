@@ -74,6 +74,18 @@ async function testPage(browser, pageSpec, target) {
   const numericEnabledAfterRestart = await page.locator('input[type="number"]:not(:disabled)').count();
   assert(numericEnabledAfterRestart === (pageSpec.numericQuestions || 0), `${pageSpec.file}: restart did not unlock numerical input`);
 
+  if (pageSpec.numericQuestions) {
+    await page.locator(`input[name="q0"][value="${answer}"]`).check();
+    await page.locator(`input[name="q1"][value="${wrong}"]`).check();
+    await page.locator('input[type="number"]').fill(String(expectedKeys[pageSpec.numericQuestionIndex]));
+    await page.locator('#submit').click();
+    const numericScoreText = await page.locator(pageSpec.scoreSelector).innerText();
+    assert(/Score\\s+7\\s*\\/\\s*100/i.test(numericScoreText) && /Correct\\s*2/i.test(numericScoreText) && /Incorrect\\s*1/i.test(numericScoreText) && /Unattempted\\s*22/i.test(numericScoreText), `${pageSpec.file}: numeric answer scoring failed; expected 2 correct, 1 incorrect, 22 blank and 7 marks, got: ${numericScoreText}`);
+    await page.locator('#start').click();
+    const numericCleared = await page.locator('input[type="number"]').evaluateAll(xs => xs.every(x => x.value.trim() === '' && !x.disabled));
+    assert(numericCleared, `${pageSpec.file}: restart after numeric scoring did not reset the numeric input`);
+  }
+
   // Force the countdown to one second and verify auto-submit in the running page.
   await page.evaluate(timerVar => { window.__qaTimerVar = timerVar; (0, eval)(timerVar + ' = 1'); }, pageSpec.timerVar);
   await page.waitForTimeout(1500);
