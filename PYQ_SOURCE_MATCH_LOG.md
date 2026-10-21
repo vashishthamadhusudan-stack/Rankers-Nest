@@ -24,6 +24,7 @@ This is a live audit log, not a claim that the entire site is verified. A row is
 | neet-rotational-dynamics-pyq.html | Q23: two point masses at rod ends; moment of inertia through their centre of mass | Matches NEET 2016 Phase 2. | Site option B = m₁m₂L²/(m₁+m₂), independently derived using centre-of-mass distances. | **Question and answer verified against a paper/solution compilation.** |
 | neet-rotational-dynamics-pyq.html | Q24: disc and sphere of same radius roll down equal inclines | Matches NEET 2016 Phase 1 source wording. | Site option A = sphere; the sphere's shape factor 2/5 is smaller than the disc's 1/2, so it accelerates more. | **Question and answer verified against a PYQ compilation.** |
 | neet-rotational-dynamics-pyq.html | Q27: ratio of rolling solid-sphere acceleration to frictionless sliding acceleration | Matches AIPMT 2014. | Site option A = 5/7. Rolling acceleration is (5/7)g sinθ, while sliding acceleration is g sinθ. | **Question and answer verified against a PYQ compilation.** |
+| neet-gravitation-pyq.html | Q1: work required to raise a mass from Earth's surface to height R | Exact match to NEET UG 2026 paper held 3 May 2026 (the page now labels it as the original 3 May paper to distinguish it from the 21 June re-examination). | Site option D = mgR/2; ΔU=−GMm/(2R)−(−GMm/R)=GMm/(2R)=mgR/2. | **Question and calculation verified against the 3 May paper scan; official final-key mapping for that original sitting remains separate from the 21 June re-exam key.** |
 | neet-rotational-dynamics-pyq.html | Q26: 50 kg cylinder, radius 0.5 m, angular acceleration 2 rev s⁻² | Matches AIPMT 2014. | Site option B = 50π N; TR=Iα with I=½MR² and α=4π rad s⁻². | **Question and calculation verified against a paper/solution copy.** |
 
 ### Sources for the confirmed matches
@@ -44,6 +45,7 @@ This is a live audit log, not a claim that the entire site is verified. A row is
 - NEET 2016 Phase 2 rod-end masses and sphere/cylinder rotational-energy ratio: https://www.scribd.com/document/431111080/CLS-Aipmt-19-20-XIII-Phy-Study-Package-1-Level-1-Chapter-7
 - NEET 2016 Phase 1 disc-versus-sphere incline question: https://ajaysahuphysics.com/class-11/system-of-particles-and-rotational-motion/pyq/
 - AIPMT 2014 rolling-sphere versus sliding acceleration ratio: https://samacheerguru.com/samacheer-kalvi-11th-physics-solutions-chapter-5/
+- NEET UG 2026 3 May original-paper scan in the user's Library: NEET-2026-WITH-WATER-MARK-COMP04.05.2026.pdf; official NTA documents distinguish the 3 May sitting from the 21 June re-examination: https://neet.nta.nic.in/documents/
 - Official NEET NTA documents: https://neet.nta.nic.in/documents/
 - Official NEET UG 2026 re-examination final answer keys: https://neet.nta.nic.in/final-answer-keys-for-neet-ug-2026-re-examination/
 
