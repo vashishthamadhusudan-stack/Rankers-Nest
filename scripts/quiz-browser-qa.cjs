@@ -37,7 +37,7 @@ async function testPage(browser, pageSpec, target) {
   assert(/Incorrect\s*1|Wrong\s*1/i.test(resultText), `${pageSpec.file}: incorrect count missing/wrong: ${resultText}`);
   assert(new RegExp(`Unattempted\\s*${pageSpec.count - 2}`, 'i').test(resultText), `${pageSpec.file}: unattempted count missing/wrong: ${resultText}`);
   const scoreText = await page.locator(pageSpec.scoreSelector).innerText();
-  assert(/(?:Score\\s*:?\\s*|^\\s*)3\\b|3\\s*marks/i.test(scoreText), `${pageSpec.file}: expected score +4-1=3, got score element: ${scoreText}; result: ${resultText}`);
+  assert(/(?:Score\s*:?\s*|^\s*)3\b|3\s*marks/i.test(scoreText), pageSpec.file + ': expected score +4-1=3, got score element: ' + scoreText + '; result: ' + resultText);
 
   const disabledCount = await page.locator('input[type="radio"]:disabled').count();
   assert(disabledCount === pageSpec.count * 4, `${pageSpec.file}: choices were not locked after submission (${disabledCount} disabled)`);
