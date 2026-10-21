@@ -14,6 +14,7 @@ function walk(dir) {
 }
 walk(root);
 const results = [];
+const questionExport = [];
 const internalLinks = new Set();
 const failures = [];
 function isQuizFile(file) { return /(pyq|jee-main-|neet-|practice|test|challenge|quiz|question|rotation|gravitation|electrostatics|current-electricity|heat|thermodynamics|momentum|collision|kinematics|friction|magnetism|specific-heat)/i.test(file); }
@@ -36,6 +37,7 @@ function isQuizFile(file) { return /(pyq|jee-main-|neet-|practice|test|challenge
       let radioGroups = 0;
       let optionCounts = [];
       let quizAction = 'not applicable';
+      let questionRecords = [];
       let hrefs = [];
       try {
         title = await page.title();
@@ -71,6 +73,25 @@ function isQuizFile(file) { return /(pyq|jee-main-|neet-|practice|test|challenge
             quizAction = 'radio selection + submit attempted';
           } else if (radioGroups) quizAction = 'questions rendered; no standard submit control found';
           else quizAction = 'no radio-based questions detected';
+          questionRecords = await page.locator('input[type="radio"]').evaluateAll(inputs => {
+            const groups = new Map();
+            for (const input of inputs) {
+              if (!groups.has(input.name)) groups.set(input.name, []);
+              groups.get(input.name).push(input);
+            }
+            return [...groups.entries()].map(([name, items], index) => {
+              let card = items[0].closest('.question, .q, .question-card, li, article');
+              if (!card) { let p = items[0].parentElement; for (let k = 0; p && k < 5; k++, p = p.parentElement) { if (p.querySelector('h3,h4') && p.querySelectorAll('input[type="radio"]').length >= 2) { card = p; break; } } }
+              const prompt = card ? ((card.querySelector('h3,h4') || {}).innerText || '').trim() : '';
+              const options = items.map(input => { const label = input.closest('label'); return (label ? label.innerText : input.parentElement.innerText || '').replace(/\\s+/g,' ').trim(); });
+              const sol = card ? card.querySelector('.solution, .sol, .explanation, details') : null;
+              const solution = sol ? (sol.innerText || sol.textContent || '').replace(/\\s+/g,' ').trim() : '';
+              const keyMatch = solution.match(/(?:Answer|Key):?\\s*([A-D])/i);
+              const meta = card ? ((card.querySelector('.meta,.tag,.eyebrow') || {}).innerText || '').trim() : '';
+              return {questionNumber:index+1,groupName:name,meta,prompt,options,answerKey:keyMatch ? keyMatch[1].toUpperCase() : null,solution};
+            });
+          });
+          for (const q of questionRecords) questionExport.push({file,finalUrl:page.url(),pageTitle:title,...q});
         }
       } catch (e) { loadError = loadError || e.message; }
       const row = {file,title,status,quizLike:isQuizFile(file),radioQuestionGroups:radioGroups,optionCounts,quizAction,pageErrors,loadError};
@@ -94,9 +115,10 @@ function isQuizFile(file) { return /(pyq|jee-main-|neet-|practice|test|challenge
         }
       }));
     }
-    const report = {generatedAt:new Date().toISOString(),base,htmlPages:htmlFiles.length,internalUrlsChecked:linkResults.length,failures,results,linkResults};
+    const report = {generatedAt:new Date().toISOString(),base,htmlPages:htmlFiles.length,internalUrlsChecked:linkResults.length,failures,results,linkResults,questionRecordCount:questionExport.length};
     fs.writeFileSync('website-browser-audit.json',JSON.stringify(report,null,2));
-    const summary = {htmlPages:htmlFiles.length,internalUrlsChecked:linkResults.length,quizLikePages:results.filter(x=>x.quizLike).length,non200Pages:results.filter(x=>x.status!==200).length,javascriptErrors:results.reduce((n,x)=>n+x.pageErrors.length,0),brokenInternalLinks:failures.filter(x=>x.kind==='broken-internal-link'||x.kind==='internal-link-request-error').length,report:'website-browser-audit.json'};
+    fs.writeFileSync('pyq-question-export.json',JSON.stringify({generatedAt:report.generatedAt,questionRecordCount:questionExport.length,questions:questionExport},null,2));
+    const summary = {htmlPages:htmlFiles.length,internalUrlsChecked:linkResults.length,quizLikePages:results.filter(x=>x.quizLike).length,non200Pages:results.filter(x=>x.status!==200).length,javascriptErrors:results.reduce((n,x)=>n+x.pageErrors.length,0),brokenInternalLinks:failures.filter(x=>x.kind==='broken-internal-link'||x.kind==='internal-link-request-error').length,questionRecords:questionExport.length,report:'website-browser-audit.json',questionExport:'pyq-question-export.json'};
     console.log(JSON.stringify(summary,null,2));
     if (summary.non200Pages || summary.javascriptErrors || summary.brokenInternalLinks) process.exitCode = 1;
   } finally { await browser.close(); }
