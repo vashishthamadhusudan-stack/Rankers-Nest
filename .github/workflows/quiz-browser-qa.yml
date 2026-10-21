@@ -28,4 +28,4 @@ jobs:
         with:
           name: quiz-browser-qa-results
           path: quiz-browser-qa-results.json
-          if-no-files-found: ignore
+          if-no-files-found: ignore# Re-run after fixing score assertion for the Gauss page.
