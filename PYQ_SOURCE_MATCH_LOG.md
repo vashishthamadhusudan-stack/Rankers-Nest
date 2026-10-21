@@ -103,6 +103,10 @@ This is a live audit log, not a claim that the entire site is verified. A row is
 | current-electricity-neet-pyq.html | The page contains 104 questions and says they were reconstructed from a user-provided Disha PDF, but that specific source PDF was not found in the current Library/Conversation file search. | Keep source-by-source matching and original option-order verification pending until the cited source or equivalent original question-paper copies are available. |
 | neet-physics.html | Some chapter cards previously overstated source verification. | Updated cards to say source matching/official-key audit is in progress where not yet established. |
 
+## Site-wide extraction limits
+
+The successful browser-audit artifact contains 1,807 unique question records across 46 pages (1,915 raw records before redirected aliases were deduplicated). This is an inventory/export, **not** a full academic verification: 525 records had blank prompt extraction, 428 had blank solution extraction, and 570 had no structured answer field in the export. Those records require improved extraction or manual inspection before any claim of full source verification.
+
 ## Batch status
 
 - Full website inventory: 81 HTML pages scanned; 60 quiz/PYQ-like pages detected.
