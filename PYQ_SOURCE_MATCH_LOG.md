@@ -2,6 +2,14 @@
 
 Last updated: 21 October 2026
 
+## What “matched” means in this log
+
+- **Question/source match** means the wording or mathematical setup was located in a question-paper/solution copy.
+- **Answer check** means the site’s answer value was independently recalculated or cross-checked against that secondary source.
+- This does **not** automatically mean the original option order/text is preserved. Some site questions reorder or paraphrase options; those must be restored if the page is meant to reproduce the original paper exactly.
+- Official NTA final-key mapping by exam date/session/paper code remains a separate check unless a row explicitly says otherwise. Secondary coaching/compilation PDFs are supporting evidence, not a substitute for NTA’s final key.
+
+
 This is a live audit log, not a claim that the entire site is verified. A row is marked verified only for the specific source comparison stated in that row.
 
 ## Confirmed question-level matches
