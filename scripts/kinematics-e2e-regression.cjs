@@ -95,10 +95,11 @@ async function testPage(browser, target, label) {
     assert(await page.locator('.question input:checked').count()===0, label + ': reset did not clear selected choices');
     assert(await page.locator('.question input[type="number"]').evaluateAll(xs=>xs.every(x=>x.value==='')), label + ': reset did not clear numerical fields');
 
-    await page.locator('.question[data-q="1"] input[value="A"]').check();
+    await page.locator('.question[data-q="1"] input[value="B"]').check();
+    await page.locator('.question[data-q="16"] input[value="B"]').check();
     await page.locator('button[type="submit"]').click();
     const wrongScore=await page.locator('#scoreTitle').innerText();
-    assert(wrongScore.includes('/ '+max), label + ': wrong-answer submission failed');
+    assert(wrongScore.includes('1.25 / '+max), label + ': negative marking mismatch; expected +2 - 0.75 = 1.25, got ' + wrongScore);
     await page.locator('#reset').click();
     await page.locator('.question[data-q="30"] input[type="number"]').fill('8');
     await page.locator('button[type="submit"]').click();
