@@ -1,0 +1,36 @@
+name: Quiz browser QA
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'jee-main-electric-field-potential.html'
+      - 'jee-main-gauss-law.html'
+      - 'jee-main-capacitors.html'
+      - 'jee-main-current-electricity.html'
+      - 'scripts/quiz-browser-qa.cjs'
+      - '.github/workflows/quiz-browser-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Run local browser tests
+        run: node scripts/quiz-browser-qa.cjs
+      - name: Upload QA report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quiz-browser-qa-results
+          path: quiz-browser-qa-results.json
+          if-no-files-found: ignore
