@@ -55,7 +55,8 @@ async function testPage(browser, target, label) {
     assert(await page.locator('svg.graph').count()===9, label + ': expected 9 embedded graph SVGs');
     assert(await page.locator('iframe').count()===0, label + ': unexpected iframe');
     const external=await page.locator('a[href^="http"],script[src^="http"],img[src^="http"]').count();
-    assert(external===0, label + ': unexpected external resources/links found (' + external + ')');
+    const anyLinks=await page.locator('a[href]').count();
+    assert(external===0 && anyLinks===0, label + ': unexpected external resources or clickable links found (external=' + external + ', links=' + anyLinks + ')');
     const max=audit.reduce((s,q)=>s+q.marks,0);
     await page.waitForFunction(() => document.querySelector('#progress') && /\/\s*36/.test(document.querySelector('#progress').textContent));
     const initialProgress = await page.locator('#progress').innerText();
@@ -82,16 +83,20 @@ async function testPage(browser, target, label) {
       }
     }
     assert((await page.locator('#progress').innerText()).includes('36 / 36'), label + ': progress failed to count all 36 attempted questions');
-    await page.locator('button[type="submit"]').click();
+    await page.locator('#submitTop').click();
     const score=await page.locator('#scoreTitle').innerText();
     assert(score.includes(max.toFixed(2)) && score.includes('/ '+max), label + ': all-correct score mismatch; expected ' + max + ', got "' + score + '"');
     assert(await page.locator('.solution:visible').count()===36, label + ': not all 36 solutions revealed after submit');
     assert(await page.locator('#result').isVisible(), label + ': result panel did not appear');
+    assert(await page.locator('#submitTop').isDisabled(), label + ': top submit should disable after submission');
+    assert(await page.locator('.question input:disabled').count()>0, label + ': submitted answers should be locked');
 
     await page.locator('#reset').click();
     await page.waitForFunction(() => /0\s*\/\s*36/.test(document.querySelector('#progress')?.textContent || ''));
     assert((await page.locator('#progress').innerText()).includes('0 / 36'), label + ': reset did not clear progress');
     assert(!(await page.locator('#result').isVisible()), label + ': reset did not hide results');
+    assert((await page.locator('#timer').innerText())==='60:00', label + ': reset did not restore the timer');
+    await page.locator('#startTest').click();
     assert(await page.locator('.solution:visible').count()===0, label + ': reset did not hide solutions');
     assert(await page.locator('.question input:checked').count()===0, label + ': reset did not clear selected choices');
     assert(await page.locator('.question input[type="number"]').evaluateAll(xs=>xs.every(x=>x.value==='')), label + ': reset did not clear numerical fields');
@@ -102,6 +107,7 @@ async function testPage(browser, target, label) {
     const wrongScore=await page.locator('#scoreTitle').innerText();
     assert(wrongScore.includes('1.25 / '+max), label + ': negative marking mismatch; expected Q1 +2 and Q8 -0.75 = 1.25, got ' + wrongScore);
     await page.locator('#reset').click();
+    await page.locator('#startTest').click();
     await page.locator('.question[data-q="30"] input[type="number"]').fill('8');
     await page.locator('button[type="submit"]').click();
     const altScore=await page.locator('#scoreTitle').innerText();
@@ -110,7 +116,7 @@ async function testPage(browser, target, label) {
 
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth);
     assert(!overflow, label + ': horizontal overflow at 390px mobile viewport');
-    const summary={target:label,questions:audit.length,marksAvailable:max,allCorrectScore:score,solutionsReveal:'PASS 36/36',reset:'PASS',wrongAnswerFlow:'PASS',alternateNumericQ30:'PASS',sourceKeyManifest:'PASS 36/36',mobileOverflow:'PASS',graphs:9,externalResources:external,consoleErrors:errors.length};
+    const summary={target:label,questions:audit.length,marksAvailable:max,allCorrectScore:score,solutionsReveal:'PASS 36/36',reset:'PASS',wrongAnswerFlow:'PASS',alternateNumericQ30:'PASS',sourceKeyManifest:'PASS 36/36',mobileOverflow:'PASS',timer:'PASS 60:00; start/pause-by-submit/reset',topSubmit:'PASS',noClickableLinks:anyLinks,graphs:9,externalResources:external,consoleErrors:errors.length};
     results.push(summary);
     return summary;
   } finally { await page.close(); }
