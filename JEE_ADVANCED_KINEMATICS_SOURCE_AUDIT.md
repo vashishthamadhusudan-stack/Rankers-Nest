@@ -71,3 +71,11 @@ This register separates (1) source match, (2) independent physics calculation, a
 The Playwright test in `scripts/kinematics-e2e-regression.cjs` maintains an independent expected-key manifest for all 36 questions. It opens the local committed HTML and the live GitHub Pages URL in a 390 px mobile viewport, checks question count/types/keys/inputs/solutions/graphs, submits all correct answers, checks the total score, confirms all solutions reveal, resets, tests a wrong answer, tests the alternate accepted Q30 answer (8), checks console errors, and checks horizontal overflow. The run report is uploaded as a GitHub Actions artifact.
 
 During the browser regression setup, two genuine interaction bugs were found and fixed: (1) blank multi-part numeric questions were incorrectly counted as attempted because an empty pair produced a comma string; the pair-value reader now returns an empty string when all component fields are blank; (2) the Reset button ID shadowed the native form.reset() method, so Reset threw before clearing controls. Reset now calls HTMLFormElement.prototype.reset.call(form), explicitly clears controls, and refreshes progress. Automated grading passing is not, by itself, proof that every historical question is a perfect facsimile. Official final-key mapping for legacy pre-2007 papers remains unavailable in a single authoritative source; secondary paper copies are documented above where located.
+
+## Test controls and link hygiene (21 October 2026)
+
+- Added a **60-minute countdown** at the top of the student test. It begins only when the student taps **Start test**; questions stay locked until then.
+- Added **Submit test** at the top as well as the existing bottom submit button. Submission stops the timer, locks answers, shows the score and reveals worked solutions. If the countdown reaches zero, the test auto-submits.
+- Reset stops/reinitializes the timer to 60:00, clears all answers/progress and locks the test until Start test is tapped again.
+- Removed/confirmed there are **zero clickable hyperlinks** in the quiz HTML, zero external source links, and zero iframes. Source provenance is recorded in this audit file, not linked from the student-facing test.
+- Browser regression now additionally checks the timer initial value, Start-test lock/unlock, top submit, reset timer behavior and zero-link requirement.
