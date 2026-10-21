@@ -100,6 +100,7 @@ This is a live audit log, not a claim that the entire site is verified. A row is
 | Site page | Finding | Action |
 |---|---|---|
 | jee-main-electric-field-potential.html | 25 questions were traced to a JEE Main 2025 chapter-wise archive, but original NTA paper codes/question IDs and official final-key mapping have not been established for the full set. | Student-facing notice now says to treat the page as practice until source verification is complete. |
+| current-electricity-neet-pyq.html | The page contains 104 questions and says they were reconstructed from a user-provided Disha PDF, but that specific source PDF was not found in the current Library/Conversation file search. | Keep source-by-source matching and original option-order verification pending until the cited source or equivalent original question-paper copies are available. |
 | neet-physics.html | Some chapter cards previously overstated source verification. | Updated cards to say source matching/official-key audit is in progress where not yet established. |
 
 ## Batch status
