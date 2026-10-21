@@ -6,7 +6,7 @@ const { pathToFileURL } = require('node:url');
 const pages = [
   { file: 'jee-main-electric-field-potential.html', count: 25, answerExpr: 'qs[0].a', timerVar: 'remaining', scoreSelector: '#score', resultSelector: '#result' },
   { file: 'jee-main-gauss-law.html', count: 25, answerExpr: 'qs[0].a', timerVar: 'remaining', scoreSelector: '#score', resultSelector: '#result' },
-  { file: 'jee-main-capacitors.html', count: 25, numericQuestions: 1, answerExpr: 'data[0].a', timerVar: 'left', scoreSelector: '#result', resultSelector: '#result' },
+  { file: 'jee-main-capacitors.html', count: 25, numericQuestions: 1, numericQuestionIndex: 3, answerExpr: 'data[0].a', timerVar: 'left', scoreSelector: '#result', resultSelector: '#result' },
   { file: 'jee-main-current-electricity.html', count: 57, answerExpr: 'data[0].a', timerVar: 'left', scoreSelector: '#result', resultSelector: '#result' },
 ];
 
