@@ -55,7 +55,7 @@ async function testPage(browser, pageSpec, target) {
   assert(solutionTexts.length === pageSpec.count, `${pageSpec.file}: solution/question count mismatch: ${solutionTexts.length}`);
   const keyMismatch = solutionTexts.findIndex((text, i) => {
     if (questionTypes[i] === 'numeric') return !new RegExp('Answer:\\s*' + expectedKeys[i] + '(?:\\s|$)').test(text);
-    const match = text.match(/(?:Answer|Key):\\s*([A-D])/i);
+    const match = text.match(/(?:Answer|Key):\s*([A-D])/i);
     return !match || match[1].toUpperCase() !== String.fromCharCode(65 + expectedKeys[i]);
   });
   assert(keyMismatch === -1, `${pageSpec.file}: displayed solution key does not match stored answer key at Q${keyMismatch + 1}`);
