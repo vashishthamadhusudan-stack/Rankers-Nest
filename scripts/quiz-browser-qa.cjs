@@ -92,7 +92,7 @@ async function testPage(browser, pageSpec, target) {
   const autoResult = await page.locator(pageSpec.resultSelector).innerText();
   assert(/Unattempted\s*\d+|unattempted\s*\d+/i.test(autoResult), `${pageSpec.file}: timer did not auto-submit`);
   await page.close();
-  return { page: pageSpec.file, target, questions: groupCount, optionsPerQuestion: 4, scoreScenario: '+4 correct, -1 incorrect, 0 blank => 3', autoSubmit: 'PASS', solutionsReveal: 'PASS', lockingAndRestart: 'PASS', consoleErrors: errors.length };
+  return { page: pageSpec.file, target, questions: questionCardCount, multipleChoiceQuestions: groupCount, numericalInputs: numericCount, optionsPerQuestion: 4, scoreScenario: pageSpec.numericQuestions ? '+4 correct MCQ, -1 incorrect MCQ, +4 correct numeric, 0 blank => 7' : '+4 correct, -1 incorrect, 0 blank => 3', autoSubmit: 'PASS', solutionsReveal: 'PASS', lockingAndRestart: 'PASS', consoleErrors: errors.length };
 }
 
 (async () => {
