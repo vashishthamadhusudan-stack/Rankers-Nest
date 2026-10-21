@@ -83,9 +83,9 @@ function isQuizFile(file) { return /(pyq|jee-main-|neet-|practice|test|challenge
               let card = items[0].closest('.question, .q, .question-card, li, article');
               if (!card) { let p = items[0].parentElement; for (let k = 0; p && k < 5; k++, p = p.parentElement) { if (p.querySelector('h3,h4') && p.querySelectorAll('input[type="radio"]').length >= 2) { card = p; break; } } }
               const prompt = card ? ((card.querySelector('h3,h4') || {}).innerText || '').trim() : '';
-              const options = items.map(input => { const label = input.closest('label'); return (label ? label.innerText : input.parentElement.innerText || '').replace(/\\s+/g,' ').trim(); });
+              const options = items.map(input => { const label = input.closest('label'); return (label ? label.innerText : input.parentElement.innerText || '').replace(/\s+/g,' ').trim(); });
               const sol = card ? card.querySelector('.solution, .sol, .explanation, details') : null;
-              const solution = sol ? (sol.innerText || sol.textContent || '').replace(/\\s+/g,' ').trim() : '';
+              const solution = sol ? (sol.innerText || sol.textContent || '').replace(/\s+/g,' ').trim() : '';
               const keyMatch = solution.match(/(?:Answer|Key):?\\s*([A-D])/i);
               const meta = card ? ((card.querySelector('.meta,.tag,.eyebrow') || {}).innerText || '').trim() : '';
               return {questionNumber:index+1,groupName:name,meta,prompt,options,answerKey:keyMatch ? keyMatch[1].toUpperCase() : null,solution};
