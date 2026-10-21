@@ -38,6 +38,9 @@ This is a live audit log, not a claim that the entire site is verified. A row is
 | neet-rotational-dynamics-pyq.html | Q30: rod moment of inertia about an end using its centre-axis value I₀ | Matches AIPMT 2011. | Site option C = I₀+ML²/4 by the parallel-axis theorem. | **Question and answer verified against a PYQ compilation.** |
 | neet-gravitation-pyq.html | Q1: work required to raise a mass from Earth's surface to height R | Exact match to NEET UG 2026 paper held 3 May 2026 (the page now labels it as the original 3 May paper to distinguish it from the 21 June re-examination). | Site option D = mgR/2; ΔU=−GMm/(2R)−(−GMm/R)=GMm/(2R)=mgR/2. | **Question and calculation verified against the 3 May paper scan; official final-key mapping for that original sitting remains separate from the 21 June re-exam key.** |
 | neet-gravitation-pyq.html | Page-level audit | Of 30 entries, only Q1 has been source-matched so far. Q1 and Q17 repeat the same work-to-height-R question under different year labels; Q23 and Q27 repeat the same escape-speed/same-density question under different year labels. | Answer calculations for these items may be mathematically correct, but duplicated generic questions do not prove the claimed exam year. | **Page claim changed to a 30-question practice set with source audit in progress; remaining year labels are provisional.** |
+| neet-gravitation-pyq.html | Q24: AIPMT 2015 remote-sensing satellite orbital speed | Exact question and original option set located in a paper compilation. | Restored the original four option values and key D = 7.76 km/s; recomputed v=√(gR²/(R+h))≈7.76 km/s. | **Question, options and numerical answer now match the source copy; official key mapping remains pending.** |
+| neet-gravitation-pyq.html | Q30: AIPMT 2010 satellite orbital speeds at radii 4R and R | Exact question and original option set located in a PYQ source. | Restored options 3V/2, 3V/4, 6V, 12V; key C = 6V because v∝1/√r. | **Question, options and answer now match the source copy; official key mapping remains pending.** |
+| neet-gravitation-pyq.html | Q28–Q29: escape speed vs orbital speed; minimum escape speed | Question concepts/wording located in AIPMT source copies, but current option wording/order is not an exact reproduction. | Current answer values are mathematically correct, but these two items remain practice/adapted until original option text and order are restored. | **Not exact-paper verified.** |
 | neet-rotational-dynamics-pyq.html | Q26: 50 kg cylinder, radius 0.5 m, angular acceleration 2 rev s⁻² | Matches AIPMT 2014. | Site option B = 50π N; TR=Iα with I=½MR² and α=4π rad s⁻². | **Question and calculation verified against a paper/solution copy.** |
 
 ### Sources for the confirmed matches
@@ -63,6 +66,8 @@ This is a live audit log, not a claim that the entire site is verified. A row is
 - NEET 2013 hinged-rod solution: https://www.rankupp.in/neet-pyq/neet-2013
 - AIPMT 2011 parallel-axis theorem question: https://ro.scribd.com/document/431111080/CLS-Aipmt-19-20-XIII-Phy-Study-Package-1-Level-1-Chapter-7
 - NEET UG 2026 3 May original-paper scan in the user's Library: NEET-2026-WITH-WATER-MARK-COMP04.05.2026.pdf; official NTA documents distinguish the 3 May sitting from the 21 June re-examination: https://neet.nta.nic.in/documents/
+- AIPMT 2015 remote-sensing satellite orbital-speed question: https://www.scribd.com/document/1011312592/11-Exercise-1-to-4
+- AIPMT 2010 satellite-speed ratio question: https://www.rankupp.in/neet-pyq/physics/gravitation
 - Official NEET NTA documents: https://neet.nta.nic.in/documents/
 - Official NEET UG 2026 re-examination final answer keys: https://neet.nta.nic.in/final-answer-keys-for-neet-ug-2026-re-examination/
 
