@@ -22,6 +22,10 @@ jobs:
         run: node scripts/website-pyq-audit.cjs
       - name: Run four critical quiz regression tests
         run: node scripts/quiz-browser-qa.cjs
+      - name: Run JEE Advanced Newton's Laws browser regression
+        env:
+          LIVE_BASE: https://vashishthamadhusudan-stack.github.io/Rankers-Nest
+        run: node scripts/newtons-laws-e2e-regression.cjs
       - name: Run whole-site live Chromium and link audit
         env:
           LIVE_BASE: https://vashishthamadhusudan-stack.github.io/Rankers-Nest
@@ -35,6 +39,7 @@ jobs:
             pyq-audit-inventory.json
             PYQ_AUDIT_REGISTER.md
             quiz-browser-qa-results.json
+            newtons-laws-regression-results.json
             website-browser-audit.json
             pyq-question-export.json
           if-no-files-found: warn
