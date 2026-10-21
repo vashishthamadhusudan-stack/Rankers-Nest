@@ -20,6 +20,10 @@ This is a live audit log, not a claim that the entire site is verified. A row is
 | neet-rotational-dynamics-pyq.html | Q14: 100 kg, 2 m-radius disc rolling at 0.20 m/s; work to stop | Matches a NEET 2019 solution compilation. | Site option C = 3 J; K=½Mv²+½(½MR²)(v²/R²)=¾Mv²=3 J. | **Question and calculation verified against a solution copy.** |
 | neet-rotational-dynamics-pyq.html | Q17: stopping work for equal-mass/radius sphere, disc and ring at equal angular speed | Matches a NEET 2018 question source. | Site option A = ring > disc > sphere; W=½Iω² and I_ring > I_disc > I_sphere. | **Question and answer verified against a secondary source.** |
 | neet-rotational-dynamics-pyq.html | Q18: 3 kg hollow cylinder, radius 0.40 m, 30 N tangential pull | Matches a NEET 2017 PYQ source. | Site option B = 25 rad s⁻²; α=FR/(MR²)=F/(MR)=25 rad s⁻². | **Question and answer verified against a secondary source.** |
+| neet-rotational-dynamics-pyq.html | Q22: solid sphere and solid cylinder; cylinder rotates at twice the sphere's angular speed | Matches NEET 2016 Phase 2 source wording. | Site option A = 1/5 for K_sphere/K_cylinder. | **Question and answer verified against a PYQ compilation.** |
+| neet-rotational-dynamics-pyq.html | Q23: two point masses at rod ends; moment of inertia through their centre of mass | Matches NEET 2016 Phase 2. | Site option B = m₁m₂L²/(m₁+m₂), independently derived using centre-of-mass distances. | **Question and answer verified against a paper/solution compilation.** |
+| neet-rotational-dynamics-pyq.html | Q24: disc and sphere of same radius roll down equal inclines | Matches NEET 2016 Phase 1 source wording. | Site option A = sphere; the sphere's shape factor 2/5 is smaller than the disc's 1/2, so it accelerates more. | **Question and answer verified against a PYQ compilation.** |
+| neet-rotational-dynamics-pyq.html | Q27: ratio of rolling solid-sphere acceleration to frictionless sliding acceleration | Matches AIPMT 2014. | Site option A = 5/7. Rolling acceleration is (5/7)g sinθ, while sliding acceleration is g sinθ. | **Question and answer verified against a PYQ compilation.** |
 | neet-rotational-dynamics-pyq.html | Q26: 50 kg cylinder, radius 0.5 m, angular acceleration 2 rev s⁻² | Matches AIPMT 2014. | Site option B = 50π N; TR=Iα with I=½MR² and α=4π rad s⁻². | **Question and calculation verified against a paper/solution copy.** |
 
 ### Sources for the confirmed matches
@@ -37,6 +41,9 @@ This is a live audit log, not a claim that the entire site is verified. A row is
 - NEET 2019 rolling-disc stopping-work question: https://www.scribd.com/document/721671496/Aakash-Modules-02
 - NEET 2017 hollow-cylinder rope question: https://www.rankupp.in/neet-pyq/physics/system-of-particles-and-rotational-motion
 - AIPMT 2014 cylinder-tension question: https://questions.examside.com/past-years/year-wise/medical/neet/aipmt-2014/UTyg8YV2m5ZfiulZ7tTpx
+- NEET 2016 Phase 2 rod-end masses and sphere/cylinder rotational-energy ratio: https://www.scribd.com/document/431111080/CLS-Aipmt-19-20-XIII-Phy-Study-Package-1-Level-1-Chapter-7
+- NEET 2016 Phase 1 disc-versus-sphere incline question: https://ajaysahuphysics.com/class-11/system-of-particles-and-rotational-motion/pyq/
+- AIPMT 2014 rolling-sphere versus sliding acceleration ratio: https://samacheerguru.com/samacheer-kalvi-11th-physics-solutions-chapter-5/
 - Official NEET NTA documents: https://neet.nta.nic.in/documents/
 - Official NEET UG 2026 re-examination final answer keys: https://neet.nta.nic.in/final-answer-keys-for-neet-ug-2026-re-examination/
 
@@ -47,7 +54,7 @@ This is a live audit log, not a claim that the entire site is verified. A row is
 | Site page | Finding | Required action |
 |---|---|---|
 | neet-laws-of-motion-pyq.html | The question “A block is just about to slide on a rough plane at 37°...” has no visible year/shift/question ID in its data and looks like generic concept practice. | Find an exact source match. Until then, do not advertise this individual item as a confirmed PYQ. |
-| neet-rotational-dynamics-pyq.html | Q9 and Q21 are explicitly tagged “concept check,” not PYQ. Q5, Q7–Q9, Q13, Q16, Q19–Q20, Q22–Q25, Q27–Q30 and remaining year-tagged items still need one-by-one source matching. The items already matched above do not imply that the whole 30-question set is verified. | Keep Q9/Q21 clearly classified as concept practice; verify Q4 and remaining year-tagged items before claiming the entire set is source-verified. |
+| neet-rotational-dynamics-pyq.html | Q9 and Q21 are explicitly tagged “concept check,” not PYQ. Q5, Q7–Q9, Q13, Q16, Q19–Q21, Q25, Q28–Q30 and remaining year-tagged items still need one-by-one source matching. The items already matched above do not imply that the whole 30-question set is verified. | Keep Q9/Q21 clearly classified as concept practice; verify Q4 and remaining year-tagged items before claiming the entire set is source-verified. |
 | jee-main-capacitors.html | Multiple questions explicitly depend on original circuit/graph/geometry figures that are absent from the current page; some solution text itself says the source figure is required. | Restore only from the matching source paper figure; otherwise replace with a fully specified text-only question or hold it from a PYQ-only set. |
 
 ## Batch status
