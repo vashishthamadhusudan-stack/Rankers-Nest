@@ -29,7 +29,7 @@ function isQuizFile(file) { return /(pyq|jee-main-|neet-|practice|test|challenge
       let status = 0;
       let loadError = '';
       try {
-        const response = await page.goto(base + '/' + file, { waitUntil: 'domcontentloaded', timeout: 30000 });
+        const response = await page.goto(base + '/' + file, { waitUntil: 'domcontentloaded', timeout: 12000 });
         status = response ? response.status() : 0;
         await page.waitForTimeout(100);
       } catch (e) { loadError = e.message; }
