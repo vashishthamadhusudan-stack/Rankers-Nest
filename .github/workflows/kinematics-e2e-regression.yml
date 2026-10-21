@@ -1,0 +1,33 @@
+name: JEE Advanced Kinematics End-to-End Regression
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'jee-advanced-kinematics-pyq.html'
+      - 'scripts/kinematics-e2e-regression.cjs'
+      - '.github/workflows/kinematics-e2e-regression.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  kinematics-e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Run source-key manifest and full browser regression (local + live)
+        run: node scripts/kinematics-e2e-regression.cjs
+      - name: Upload regression report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jee-advanced-kinematics-e2e-report
+          path: kinematics-regression-results.json
+          if-no-files-found: warn
