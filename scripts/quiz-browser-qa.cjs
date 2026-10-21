@@ -42,6 +42,13 @@ async function testPage(browser, pageSpec, target) {
   const disabledCount = await page.locator('input[type="radio"]:disabled').count();
   assert(disabledCount === pageSpec.count * 4, `${pageSpec.file}: choices were not locked after submission (${disabledCount} disabled)`);
   const visibleSolutions = await page.locator('.solution:visible, .sol:visible, details[open]').count();
+  const arrayName = pageSpec.answerExpr.split('[')[0];
+  const expectedKeys = await page.evaluate(name => (name === 'qs' ? qs : data).map(item => item.a), arrayName);
+  const solutionTexts = await page.locator('.solution, details').allInnerTexts();
+  assert(solutionTexts.length === pageSpec.count, `${pageSpec.file}: solution/question count mismatch: ${solutionTexts.length}`);
+  const keyMismatch = solutionTexts.findIndex((text, i) => { const match = text.match(/(?:Answer|Key):\\s*([A-D])/i); return !match || match[1].toUpperCase() !== String.fromCharCode(65 + expectedKeys[i]); });
+  assert(keyMismatch === -1, `${pageSpec.file}: displayed solution key does not match stored answer key at Q${keyMismatch + 1}`);
+  assert(solutionTexts.every(text => text.trim().length > 20), `${pageSpec.file}: one or more solution texts are empty/too short`);
   assert(visibleSolutions >= pageSpec.count, `${pageSpec.file}: solutions did not all reveal after submit (visible count ${visibleSolutions})`);
   assert(errors.length === 0, `${pageSpec.file}: browser JS errors: ${errors.join('; ')}`);
 
