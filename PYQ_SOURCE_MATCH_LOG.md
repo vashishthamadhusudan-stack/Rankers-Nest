@@ -95,6 +95,13 @@ This is a live audit log, not a claim that the entire site is verified. A row is
 | jee-main-capacitors.html | Q4 — 23 Jan 2025 Shift 2, steady-state charge on 8 μF capacitor | Located the source question as a numerical-answer type, with 10 Ω and 15 Ω series resistors and a 5 V source. | Removed the invented four MCQ options, added a numeric-answer field, redrew the circuit from the source, and independently checked I=0.2 A, V_C=2 V, Q=16 μC. | **Question type, circuit and numerical answer now match the source copy; official key mapping pending.** |
 | jee-main-capacitors.html | Q7 — 28 Jan 2025 Shift 1, two capacitors' charge-time graph | Located the source graph question and original option order. | Redrew the charge-time graph with q₂>q₁; restored original option order and key D: C₂>C₁ and U₂>U₁. The previous stored key was wrong and one option contained the typo U₂>U₂. | **Graph, options and answer corrected against the source copy; official key mapping pending.** |
 
+## Additional page-level findings
+
+| Site page | Finding | Action |
+|---|---|---|
+| jee-main-electric-field-potential.html | 25 questions were traced to a JEE Main 2025 chapter-wise archive, but original NTA paper codes/question IDs and official final-key mapping have not been established for the full set. | Student-facing notice now says to treat the page as practice until source verification is complete. |
+| neet-physics.html | Some chapter cards previously overstated source verification. | Updated cards to say source matching/official-key audit is in progress where not yet established. |
+
 ## Batch status
 
 - Full website inventory: 81 HTML pages scanned; 60 quiz/PYQ-like pages detected.
