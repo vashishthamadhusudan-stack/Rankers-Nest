@@ -110,6 +110,41 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 .exam-choice-note{margin:10px 0 0;color:#aebed4;font-size:11px;line-height:1.5}
 @media(max-width:540px){.exam-choice{padding:15px;margin-top:22px}.exam-choice-buttons{grid-template-columns:1fr}.exam-choice-btn{min-height:62px}}
 
+
+/* Premium institute-level brand and section system */
+.brand small{font-size:9px;letter-spacing:1.75px;color:#e7ca76;margin-top:3px}
+.nav{min-height:76px}
+.exam-choice{margin:18px 0 0;padding:22px 24px;border-color:rgba(244,200,75,.42);background:linear-gradient(110deg,rgba(20,43,77,.98),rgba(8,22,43,.98));box-shadow:0 18px 48px rgba(0,0,0,.24)}
+.exam-choice-heading{font-size:15px;letter-spacing:.15px;margin-bottom:15px}
+.exam-choice-buttons{gap:14px}
+.exam-choice-btn{min-height:74px;padding:15px 20px;border-radius:12px;font-size:16px;box-shadow:inset 0 1px rgba(255,255,255,.32),0 9px 20px rgba(0,0,0,.15)}
+.exam-choice-btn.neet{background:linear-gradient(135deg,#f8faff,#dce7f7);color:#101b2b}
+.exam-choice-note{font-size:12px;margin-top:12px}
+.hero{padding-top:clamp(40px,5.5vw,70px)}
+.hero h1{max-width:750px;font-size:clamp(46px,6.4vw,76px);line-height:1.02}
+.hero p{font-size:clamp(16px,1.55vw,18px);max-width:640px}
+.mentor-card{min-height:510px}
+.proof-strip{padding-top:5px}
+.learning-system{padding:70px 0;background:linear-gradient(180deg,rgba(14,34,62,.55),rgba(6,17,38,.1));border-top:1px solid rgba(135,160,196,.1);border-bottom:1px solid rgba(135,160,196,.1)}
+.learning-system-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,80px);align-items:center}
+.learning-system h2{font-size:clamp(31px,4.3vw,48px);line-height:1.12;letter-spacing:-1.5px;margin:12px 0}
+.learning-system-inner>div:first-child p{max-width:530px;color:#c2cede;line-height:1.8}
+.system-points{display:grid;gap:13px}
+.system-points>div{display:flex;gap:17px;padding:18px 20px;border:1px solid rgba(132,157,190,.2);border-radius:14px;background:linear-gradient(145deg,rgba(17,39,70,.8),rgba(8,23,44,.9))}
+.system-points>div>span{font-size:12px;font-weight:900;letter-spacing:1px;color:var(--gold);padding-top:3px}
+.system-points section{padding:0;margin:0}
+.system-points h3{font-size:16px;margin:0 0 4px}
+.system-points p{font-size:13px;line-height:1.65;color:#bdc9dc;margin:0}
+#programs .section-head{max-width:800px}
+#programs .card{min-height:300px;display:flex;flex-direction:column}
+#programs .card p{flex:1}
+#faculty{background:linear-gradient(180deg,rgba(12,29,53,.25),transparent)}
+.cta{position:relative;overflow:hidden}
+.cta:after{content:"RN";position:absolute;right:7%;top:50%;transform:translateY(-50%);font-size:clamp(90px,15vw,190px);font-weight:950;letter-spacing:-12px;color:rgba(244,200,75,.035);pointer-events:none}
+.cta>div,.cta>a{position:relative;z-index:1}
+@media(max-width:800px){.learning-system-inner{grid-template-columns:1fr;gap:24px}.learning-system{padding:54px 0}.mentor-card{min-height:460px}}
+@media(max-width:540px){.nav{min-height:65px}.exam-choice{margin-top:12px;padding:16px}.exam-choice-buttons{grid-template-columns:1fr 1fr;gap:9px}.exam-choice-btn{min-height:76px;padding:12px;font-size:14px}.exam-choice-btn span{font-size:10px}.hero{padding-top:34px}.hero h1{font-size:clamp(39px,11vw,54px);letter-spacing:-1.8px}.mentor-card{min-height:410px}.learning-system h2{font-size:32px}.system-points>div{padding:16px}.cta:after{right:0;top:20%;font-size:100px}}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Madhusudan Vashishtha","jobTitle":"Physics Educator and Founder of Rankers Nest","image":"https://vashishthamadhusudan-stack.github.io/Rankers-Nest/madhusudan-vashishtha.png","worksFor":{"@type":"EducationalOrganization","name":"Rankers Nest","url":"https://vashishthamadhusudan-stack.github.io/Rankers-Nest/"},"knowsAbout":["JEE Main Physics","JEE Advanced Physics","NEET Physics"]}
@@ -117,7 +152,7 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 </head>
 <body>
 <header><div class="wrap nav">
-<a class="brand" href="https://vashishthamadhusudan-stack.github.io/Rankers-Nest/"><span class="mark">RN</span><span>RANKERS NEST<small>PHYSICS · JEE &amp; NEET</small></span></a>
+<a class="brand" href="https://vashishthamadhusudan-stack.github.io/Rankers-Nest/"><span class="mark">RN</span><span>RANKERS NEST<small>WHERE RANKERS ARE MADE</small></span></a>
 <nav class="links" aria-label="Main navigation"><a href="#programs">Programs</a><a href="#learning">Our Approach</a><a href="#faculty">Faculty</a><a href="#faq">FAQs</a></nav>
 <a class="btn" href="#exam-choice">WhatsApp Enquiry</a>
 </div></header>
@@ -133,9 +168,9 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 </div>
 </div>
 <section class="hero wrap">
-<div><div class="eyebrow">Physics preparation · 2027</div>
-<h1>Build Physics Confidence.<br><span>Work Toward Your Rank.</span></h1>
-<p>Focused online Physics preparation for JEE Main, JEE Advanced and NEET 2027—led by experienced Physics educator Madhusudan Vashishtha. Explore the right program and connect directly for course details, fees and demo-class information.</p>
+<div><div class="eyebrow">A premium Physics learning experience · 2027</div>
+<h1>Master Physics.<br><span>Make Your Rank Count.</span></h1>
+<p>Structured, exam-focused Physics preparation for JEE Main, JEE Advanced and NEET 2027—guided by Madhusudan Vashishtha, Founder of Rankers Nest and Ex-Unacademy educator. Build clarity, sharpen problem-solving and prepare with purpose.</p>
 
 <div class="actions"><a class="btn" href="#programs">Explore JEE &amp; NEET Programs</a><a class="btn secondary" href="#faculty">Meet Your Faculty</a></div>
 </div>
@@ -145,18 +180,19 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 <div class="mentor-info"><div class="eyebrow">Your Physics mentor</div><h2>Madhusudan Vashishtha</h2><p>Founder &amp; Physics Educator · Rankers Nest<br>JEE Main · JEE Advanced · NEET</p></div>
 </aside>
 </section>
-<div class="wrap proof-strip"><div class="proof"><strong>15+ Years of Teaching</strong><span>Physics educator-led learning</span></div><div class="proof"><strong>Ex-Unacademy</strong><span>Competitive exam Physics teaching</span></div><div class="proof"><strong>JEE &amp; NEET Focus</strong><span>Concepts, practice and PYQs</span></div></div>
-<section id="programs"><div class="wrap"><div class="section-head"><div class="eyebrow">Choose your target</div><h2>Physics Programs for 2027 Aspirants</h2><p>Choose your exam below. Your WhatsApp enquiry will open with the selected program so you can ask about course format, fees, schedule and demo availability.</p></div>
+<div class="wrap proof-strip"><div class="proof"><strong>15+ Years of Teaching</strong><span>Experienced Physics instruction</span></div><div class="proof"><strong>Ex-Unacademy Educator</strong><span>Competitive exam teaching experience</span></div><div class="proof"><strong>JEE Main · Advanced · NEET</strong><span>Focused preparation for your target</span></div></div>
+<section class="learning-system"><div class="wrap learning-system-inner"><div><div class="eyebrow">The Rankers Nest difference</div><h2>A smarter way to prepare for Physics.</h2><p>Strong fundamentals. Purposeful practice. Exam-focused preparation. Every element is designed to help you approach Physics with greater clarity and confidence.</p></div><div class="system-points"><div><span>01</span><section><h3>Understand the concept</h3><p>Build clarity before moving into complex applications.</p></section></div><div><span>02</span><section><h3>Learn to solve</h3><p>Develop a systematic approach to numerical and conceptual questions.</p></section></div><div><span>03</span><section><h3>Practice with purpose</h3><p>Strengthen preparation through PYQs, revision and exam-oriented practice.</p></section></div></div></div></section>
+<section id="programs"><div class="wrap"><div class="section-head"><div class="eyebrow">Your target. Your preparation.</div><h2>Programs Built Around Your Exam.</h2><p>Explore focused Physics learning options for JEE Main, JEE Advanced and NEET. Choose your program and ask directly about course format, fees, schedule and demo availability.</p></div>
 <div class="grid">
 <article class="card"><span class="num">PROGRAM 01 · ENGINEERING</span><h3>JEE Main &amp; JEE Advanced Physics</h3><p>Build conceptual strength and systematic problem-solving for engineering entrance preparation.</p><a class="btn" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20I%20am%20interested%20in%20Rankers%20Nest%20JEE%20Main%20%26%20JEE%20Advanced%20Physics%202027.%20Please%20share%20course%20details%2C%20fees%20and%20demo%20information.">Enquire for JEE 2027</a></article>
 <article class="card"><span class="num">PROGRAM 02 · MEDICAL</span><h3>NEET Physics</h3><p>Strengthen fundamentals and practice Physics with an exam-focused approach for NEET.</p><a class="btn" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20I%20am%20interested%20in%20Rankers%20Nest%20NEET%20Physics%202027.%20Please%20share%20course%20details%2C%20fees%20and%20demo%20information.">Enquire for NEET 2027</a></article>
 <article class="card"><span class="num">LEARNING OPTIONS</span><h3>Class 11 · Class 12 · Dropper</h3><p>Ask about group classes, one-to-one mentoring, revision support and chapter-wise learning options.</p><a class="btn secondary" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20please%20share%20Rankers%20Nest%20Physics%20batch%20options%20for%20Class%2011%2C%20Class%2012%20and%20Dropper.">Ask About Batches</a></article>
 </div></div></section>
-<section id="learning"><div class="wrap"><div class="section-head"><div class="eyebrow">The Rankers Nest approach</div><h2>Learn the Concepts. Practice with Purpose.</h2><p>A Physics learning approach designed to help students understand ideas, work through questions and prepare with greater confidence.</p></div>
+<section id="learning"><div class="wrap"><div class="section-head"><div class="eyebrow">Our academic approach</div><h2>Clarity First. Practice That Matters.</h2><p>A Physics learning approach designed to help students understand ideas, work through questions and prepare with greater confidence.</p></div>
 <div class="feature-grid"><div class="feature"><h3>Concept Clarity</h3><p>Build a strong understanding of Physics fundamentals before moving to applications.</p></div><div class="feature"><h3>Numerical Problem-Solving</h3><p>Develop a structured way to approach calculations and competitive-exam questions.</p></div><div class="feature"><h3>Previous-Year Questions</h3><p>Use chapter-wise PYQ practice to understand exam patterns and question approaches.</p></div><div class="feature"><h3>Practice &amp; Revision</h3><p>Explore tests, revision support and practice resources available through Rankers Nest.</p></div></div></div></section>
 <section id="faculty"><div class="wrap about">
 <div class="profile-box"><img src="madhusudan-vashishtha.png" alt="Portrait of Madhusudan Vashishtha" loading="lazy" width="600" height="750"><h3>Madhusudan Vashishtha</h3><div class="role">Founder &amp; Physics Educator</div><p style="color:var(--muted);font-size:13px;margin-bottom:0">15+ Years of Teaching Experience · Ex-Unacademy</p></div>
-<div class="about-copy"><div class="eyebrow">Meet your teacher</div><h2>Experienced Physics Teaching. Focused on Understanding.</h2><p>Rankers Nest is led by Madhusudan Vashishtha, a Physics educator with over 15 years of teaching experience and a prior teaching association with Unacademy. His teaching focus is on strengthening fundamentals, developing numerical confidence and helping students approach competitive-exam questions systematically.</p><ul><li>Physics-focused instruction for JEE Main, JEE Advanced and NEET</li><li>Concept explanations and numerical problem-solving</li><li>Previous-year question practice and revision support</li><li>Learning options for Class 11, Class 12 and dropper aspirants</li></ul><a class="btn" href="#exam-choice">Choose JEE or NEET to Enquire</a></div>
+<div class="about-copy"><div class="eyebrow">Leadership &amp; faculty</div><h2>Learn Physics with an Experienced Educator.</h2><p>Rankers Nest is led by Madhusudan Vashishtha, a Physics educator with over 15 years of teaching experience and a prior teaching association with Unacademy. His teaching focus is on strengthening fundamentals, developing numerical confidence and helping students approach competitive-exam questions systematically.</p><ul><li>Physics-focused instruction for JEE Main, JEE Advanced and NEET</li><li>Concept explanations and numerical problem-solving</li><li>Previous-year question practice and revision support</li><li>Learning options for Class 11, Class 12 and dropper aspirants</li></ul><a class="btn" href="#exam-choice">Choose JEE or NEET to Enquire</a></div>
 </div></section>
 <section id="faq"><div class="wrap"><div class="section-head"><div class="eyebrow">Quick answers</div><h2>Frequently Asked Questions</h2></div><div class="faq">
 <details><summary>Which exams does Rankers Nest cover?</summary><p>Physics preparation for JEE Main, JEE Advanced and NEET. Contact us to discuss the program that fits your target.</p></details>
@@ -164,7 +200,7 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 <details><summary>Are group and one-to-one classes available?</summary><p>Rankers Nest offers group learning and personal mentoring options. Ask on WhatsApp for current availability, fees and schedules.</p></details>
 <details><summary>How can I get fees and demo-class details?</summary><p>Choose JEE or NEET above and send a WhatsApp enquiry directly to Rankers Nest.</p></details>
 </div></div></section>
-<section><div class="wrap"><div class="cta"><div><div class="eyebrow">Take the next step</div><h2>Let’s Discuss Your Physics Preparation.</h2><p>Tell us your class and target exam. Get information about course options, fees, schedules and demo-class availability directly from Rankers Nest.</p></div><a class="btn" href="#exam-choice">Choose JEE or NEET</a></div></div></section>
+<section><div class="wrap"><div class="cta"><div><div class="eyebrow">Your next chapter starts here</div><h2>Make Your Physics Preparation Count.</h2><p>Tell us your class and target exam. Get information about course options, fees, schedules and demo-class availability directly from Rankers Nest.</p></div><a class="btn" href="#exam-choice">Choose JEE or NEET</a></div></div></section>
 </main>
 <footer><div class="wrap foot"><span>© Rankers Nest · JEE Main · JEE Advanced · NEET Physics</span><span>Founder &amp; Faculty: Madhusudan Vashishtha</span><span><a href="mailto:vashishthamadhusudan@gmail.com">Email Enquiry</a></span></div></footer>
 <div class="sticky-cta"><a class="btn" href="#exam-choice">Choose JEE or NEET · WhatsApp Enquiry</a></div>
