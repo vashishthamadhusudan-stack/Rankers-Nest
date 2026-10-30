@@ -99,6 +99,17 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 @media(max-width:800px){.hero{padding-top:54px;gap:32px}.hero:before{width:80%;height:58%;top:10px}.mentor-card{min-height:450px;max-width:600px}.proof-strip{gap:10px}.proof{padding:16px 18px}section{padding:58px 0}}
 @media(max-width:540px){.hero{padding-top:39px;padding-bottom:34px}.hero h1{font-size:clamp(40px,11.8vw,57px);letter-spacing:-1.9px;line-height:1.02}.hero p{font-size:15.5px;line-height:1.75}.actions{gap:10px}.mentor-card{min-height:410px;border-radius:24px}.mentor-card:after{inset:9px;border-radius:17px}.mentor-info{left:22px;right:22px;bottom:23px}.experience{top:19px;right:19px;padding:9px 12px}.proof-strip{grid-template-columns:1fr}.proof{padding:16px 19px}.section-head h2{font-size:32px;letter-spacing:-1px}.card{padding:23px}.card p{min-height:0}.feature{padding:19px 18px 19px 24px}.profile-box{padding:17px}.cta{padding:25px 22px}.faq details{padding:18px}section{padding:49px 0}}
 
+
+.exam-choice{margin:27px 0 0;padding:19px;border:1px solid rgba(244,200,75,.3);border-radius:18px;background:linear-gradient(145deg,rgba(17,39,70,.92),rgba(7,21,42,.96));box-shadow:0 14px 38px rgba(0,0,0,.16)}
+.exam-choice-heading{margin:0 0 13px;color:#f7f9ff;font-size:14px;font-weight:850;letter-spacing:.1px}
+.exam-choice-buttons{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.exam-choice-btn{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;min-height:68px;padding:13px 16px;border:1px solid #e7c65c;border-radius:11px;background:linear-gradient(135deg,#ffe08a,#f4c84b);color:#101b2b;font-weight:900;line-height:1.25;transition:transform .18s,box-shadow .18s}
+.exam-choice-btn span{font-size:11px;font-weight:700;opacity:.78;letter-spacing:.3px}
+.exam-choice-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(244,200,75,.18)}
+.exam-choice-btn.neet{background:linear-gradient(135deg,#f6f8ff,#d9e5f5);border-color:#a9bfdc}
+.exam-choice-note{margin:10px 0 0;color:#aebed4;font-size:11px;line-height:1.5}
+@media(max-width:540px){.exam-choice{padding:15px;margin-top:22px}.exam-choice-buttons{grid-template-columns:1fr}.exam-choice-btn{min-height:62px}}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Madhusudan Vashishtha","jobTitle":"Physics Educator and Founder of Rankers Nest","image":"https://vashishthamadhusudan-stack.github.io/Rankers-Nest/madhusudan-vashishtha.png","worksFor":{"@type":"EducationalOrganization","name":"Rankers Nest","url":"https://vashishthamadhusudan-stack.github.io/Rankers-Nest/"},"knowsAbout":["JEE Main Physics","JEE Advanced Physics","NEET Physics"]}
@@ -108,13 +119,21 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 <header><div class="wrap nav">
 <a class="brand" href="https://vashishthamadhusudan-stack.github.io/Rankers-Nest/"><span class="mark">RN</span><span>RANKERS NEST<small>PHYSICS · JEE &amp; NEET</small></span></a>
 <nav class="links" aria-label="Main navigation"><a href="#programs">Programs</a><a href="#learning">Our Approach</a><a href="#faculty">Faculty</a><a href="#faq">FAQs</a></nav>
-<a class="btn" href="https://wa.me/919731236981?text=Hello%20Rankers%20Nest%2C%20please%20share%20Physics%20course%20details%20for%202027.">WhatsApp Enquiry</a>
+<a class="btn" href="#exam-choice">WhatsApp Enquiry</a>
 </div></header>
 <main>
 <section class="hero wrap">
 <div><div class="eyebrow">Physics preparation · 2027</div>
 <h1>Build Physics Confidence.<br><span>Work Toward Your Rank.</span></h1>
 <p>Focused online Physics preparation for JEE Main, JEE Advanced and NEET 2027—led by experienced Physics educator Madhusudan Vashishtha. Explore the right program and connect directly for course details, fees and demo-class information.</p>
+<div class="exam-choice" id="exam-choice">
+  <p class="exam-choice-heading">Which exam are you preparing for? Choose your target to enquire on WhatsApp.</p>
+  <div class="exam-choice-buttons">
+    <a class="exam-choice-btn" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20I%20am%20 enquiring%20for%20JEE%202027%20Physics%20at%20Rankers%20Nest.%20Please%20share%20course%20details%2C%20fees%2C%20schedule%20and%20demo%20class%20information.">For JEE 2027 <span>JEE Main / JEE Advanced Physics →</span></a>
+    <a class="exam-choice-btn neet" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20I%20am%20enquiring%20for%20NEET%202027%20Physics%20at%20Rankers%20Nest.%20Please%20share%20course%20details%2C%20fees%2C%20schedule%20and%20demo%20class%20information.">For NEET 2027 <span>NEET Physics →</span></a>
+  </div>
+  <p class="exam-choice-note">Your WhatsApp message will automatically mention the exam you selected, so we can guide you with the relevant course details.</p>
+</div>
 <div class="actions"><a class="btn" href="#programs">Explore JEE &amp; NEET Programs</a><a class="btn secondary" href="#faculty">Meet Your Faculty</a></div>
 </div>
 <aside class="mentor-card" aria-label="Madhusudan Vashishtha, Physics faculty">
@@ -134,7 +153,7 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 <div class="feature-grid"><div class="feature"><h3>Concept Clarity</h3><p>Build a strong understanding of Physics fundamentals before moving to applications.</p></div><div class="feature"><h3>Numerical Problem-Solving</h3><p>Develop a structured way to approach calculations and competitive-exam questions.</p></div><div class="feature"><h3>Previous-Year Questions</h3><p>Use chapter-wise PYQ practice to understand exam patterns and question approaches.</p></div><div class="feature"><h3>Practice &amp; Revision</h3><p>Explore tests, revision support and practice resources available through Rankers Nest.</p></div></div></div></section>
 <section id="faculty"><div class="wrap about">
 <div class="profile-box"><img src="madhusudan-vashishtha.png" alt="Portrait of Madhusudan Vashishtha" loading="lazy" width="600" height="750"><h3>Madhusudan Vashishtha</h3><div class="role">Founder &amp; Physics Educator</div><p style="color:var(--muted);font-size:13px;margin-bottom:0">15+ Years of Teaching Experience · Ex-Unacademy</p></div>
-<div class="about-copy"><div class="eyebrow">Meet your teacher</div><h2>Experienced Physics Teaching. Focused on Understanding.</h2><p>Rankers Nest is led by Madhusudan Vashishtha, a Physics educator with over 15 years of teaching experience and a prior teaching association with Unacademy. His teaching focus is on strengthening fundamentals, developing numerical confidence and helping students approach competitive-exam questions systematically.</p><ul><li>Physics-focused instruction for JEE Main, JEE Advanced and NEET</li><li>Concept explanations and numerical problem-solving</li><li>Previous-year question practice and revision support</li><li>Learning options for Class 11, Class 12 and dropper aspirants</li></ul><a class="btn" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20I%20would%20like%20to%20know%20more%20about%20your%20Physics%20classes%20for%202027.">Talk to Madhusudan</a></div>
+<div class="about-copy"><div class="eyebrow">Meet your teacher</div><h2>Experienced Physics Teaching. Focused on Understanding.</h2><p>Rankers Nest is led by Madhusudan Vashishtha, a Physics educator with over 15 years of teaching experience and a prior teaching association with Unacademy. His teaching focus is on strengthening fundamentals, developing numerical confidence and helping students approach competitive-exam questions systematically.</p><ul><li>Physics-focused instruction for JEE Main, JEE Advanced and NEET</li><li>Concept explanations and numerical problem-solving</li><li>Previous-year question practice and revision support</li><li>Learning options for Class 11, Class 12 and dropper aspirants</li></ul><a class="btn" href="#exam-choice">Choose JEE or NEET to Enquire</a></div>
 </div></section>
 <section id="faq"><div class="wrap"><div class="section-head"><div class="eyebrow">Quick answers</div><h2>Frequently Asked Questions</h2></div><div class="faq">
 <details><summary>Which exams does Rankers Nest cover?</summary><p>Physics preparation for JEE Main, JEE Advanced and NEET. Contact us to discuss the program that fits your target.</p></details>
@@ -142,8 +161,8 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 <details><summary>Are group and one-to-one classes available?</summary><p>Rankers Nest offers group learning and personal mentoring options. Ask on WhatsApp for current availability, fees and schedules.</p></details>
 <details><summary>How can I get fees and demo-class details?</summary><p>Choose JEE or NEET above and send a WhatsApp enquiry directly to Rankers Nest.</p></details>
 </div></div></section>
-<section><div class="wrap"><div class="cta"><div><div class="eyebrow">Take the next step</div><h2>Let’s Discuss Your Physics Preparation.</h2><p>Tell us your class and target exam. Get information about course options, fees, schedules and demo-class availability directly from Rankers Nest.</p></div><a class="btn" href="https://wa.me/919731236981?text=Hello%20Rankers%20Nest%2C%20I%20want%20to%20discuss%20Physics%20preparation%20for%20JEE%202027%20%2F%20NEET%202027.%20Please%20share%20course%20details.">Chat on WhatsApp</a></div></div></section>
+<section><div class="wrap"><div class="cta"><div><div class="eyebrow">Take the next step</div><h2>Let’s Discuss Your Physics Preparation.</h2><p>Tell us your class and target exam. Get information about course options, fees, schedules and demo-class availability directly from Rankers Nest.</p></div><a class="btn" href="#exam-choice">Choose JEE or NEET</a></div></div></section>
 </main>
 <footer><div class="wrap foot"><span>© Rankers Nest · JEE Main · JEE Advanced · NEET Physics</span><span>Founder &amp; Faculty: Madhusudan Vashishtha</span><span><a href="mailto:vashishthamadhusudan@gmail.com">Email Enquiry</a></span></div></footer>
-<div class="sticky-cta"><a class="btn" href="https://wa.me/919731236981?text=Hello%20Rankers%20Nest%2C%20please%20share%20JEE%202027%20%2F%20NEET%202027%20Physics%20course%20details.">WhatsApp Course Enquiry</a></div>
+<div class="sticky-cta"><a class="btn" href="#exam-choice">Choose JEE or NEET · WhatsApp Enquiry</a></div>
 </body></html>
