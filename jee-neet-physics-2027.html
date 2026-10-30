@@ -195,6 +195,11 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 .demo-mode-btn.is-selected,.exam-choice-btn.is-selected{outline:2px solid #ffe08a;outline-offset:2px;box-shadow:0 0 0 4px rgba(244,200,75,.13),0 8px 20px rgba(0,0,0,.18)}
 .demo-submit{display:flex;width:100%;margin-top:13px;min-height:48px}
 .exam-choice-btn{appearance:none}
+
+/* Fee cards are direct WhatsApp enquiry links */
+.fee-enquiry{display:flex;flex-direction:column;text-decoration:none;color:inherit;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s}
+.fee-enquiry:hover,.fee-enquiry:focus-visible{transform:translateY(-2px);border-color:#e9c85c;box-shadow:0 0 0 2px rgba(244,200,75,.15),0 10px 24px rgba(0,0,0,.18);outline:none}
+.fee-card-cta{display:block;margin-top:12px;font-size:11px;font-weight:800;letter-spacing:.2px;color:#e8ca67}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Madhusudan Vashishtha","jobTitle":"Physics Educator and Founder of Rankers Nest","image":"https://vashishthamadhusudan-stack.github.io/Rankers-Nest/madhusudan-vashishtha.png","worksFor":{"@type":"EducationalOrganization","name":"Rankers Nest","url":"https://vashishthamadhusudan-stack.github.io/Rankers-Nest/"},"knowsAbout":["JEE Main Physics","JEE Advanced Physics","NEET Physics"]}
@@ -217,9 +222,13 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
   </div>
   <a class="btn demo-submit" id="demo-submit" href="https://wa.me/919731236981?text=Hello" target="_blank" rel="noopener noreferrer">Book Free Demo on WhatsApp →</a>
   <p class="fee-heading">Online Physics Coaching · Monthly Fees</p>
-  <div class="fee-options" aria-label="Online Physics class fees">
-    <div class="fee-card"><span class="fee-type">Online Group Classes</span><strong class="fee-price">₹4,000 <span style="font-size:13px;font-weight:700;color:#c1ccdd">/ month</span></strong><div class="fee-detail">4 classes per week</div></div>
-    <div class="fee-card"><span class="fee-type">One-to-One Mentoring</span><strong class="fee-price">₹12,000 <span style="font-size:13px;font-weight:700;color:#c1ccdd">/ month</span></strong><div class="fee-detail">4 classes per week · Personal attention</div></div>
+  <div class="fee-options" aria-label="Choose a class format and enquire on WhatsApp">
+    <a class="fee-card fee-enquiry" data-fee-format="Group Classes" href="https://wa.me/919731236981?text=Hello" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp enquiry for Group Classes">
+      <span class="fee-type">Online Group Classes</span><strong class="fee-price">₹4,000 <span style="font-size:13px;font-weight:700;color:#c1ccdd">/ month</span></strong><div class="fee-detail">4 classes per week</div><span class="fee-card-cta">Enquire on WhatsApp →</span>
+    </a>
+    <a class="fee-card fee-enquiry" data-fee-format="One-to-One Mentoring" href="https://wa.me/919731236981?text=Hello" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp enquiry for One-to-One Mentoring">
+      <span class="fee-type">One-to-One Mentoring</span><strong class="fee-price">₹12,000 <span style="font-size:13px;font-weight:700;color:#c1ccdd">/ month</span></strong><div class="fee-detail">4 classes per week · Personal attention</div><span class="fee-card-cta">Enquire on WhatsApp →</span>
+    </a>
   </div>
   <p class="exam-choice-note">Online Physics coaching for JEE Main, JEE Advanced and NEET 2027. Select your exam above to enquire on WhatsApp.</p>
 </div>
@@ -263,7 +272,9 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
     if(typeof window.gtag==='function'){window.gtag('event','whatsapp_enquiry_click',{exam:exam,cta_text:eventData.cta_text});}
   }
   var selectedFormat='Group Classes',selectedExam='JEE 2027';
-  function updateDemoLink(){var msg='Hello Sir, I would like to book a FREE demo class for '+selectedExam+' Physics at Rankers Nest. My preferred format is '+selectedFormat+'. Please share available demo slots and course details.';var link=document.getElementById('demo-submit');if(link){link.href='https://wa.me/919731236981?text='+encodeURIComponent(msg);}}
+  function whatsappHref(msg){return 'https://wa.me/919731236981?text='+encodeURIComponent(msg);}
+  function updateDemoLink(){var msg='Hello Sir, I would like to book a FREE demo class for '+selectedExam+' Physics at Rankers Nest. My preferred format is '+selectedFormat+'. Please share available demo slots and course details.';var link=document.getElementById('demo-submit');if(link){link.href=whatsappHref(msg);}}
+  document.querySelectorAll('[data-fee-format]').forEach(function(card){card.addEventListener('click',function(){var format=card.getAttribute('data-fee-format');var msg='Hello Sir, this is a WhatsApp enquiry for '+format+' Physics classes at Rankers Nest. My target exam is '+selectedExam+'. Please share the details and available demo slots.';card.href=whatsappHref(msg);});});
   document.querySelectorAll('[data-format]').forEach(function(btn){btn.addEventListener('click',function(){selectedFormat=btn.getAttribute('data-format');document.querySelectorAll('[data-format]').forEach(function(b){var yes=b===btn;b.classList.toggle('is-selected',yes);b.setAttribute('aria-pressed',yes?'true':'false');});updateDemoLink();});});
   document.querySelectorAll('[data-exam]').forEach(function(btn){btn.addEventListener('click',function(){selectedExam=btn.getAttribute('data-exam');document.querySelectorAll('[data-exam]').forEach(function(b){var yes=b===btn;b.classList.toggle('is-selected',yes);b.setAttribute('aria-pressed',yes?'true':'false');});updateDemoLink();});});
   updateDemoLink();
