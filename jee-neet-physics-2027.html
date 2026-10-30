@@ -159,8 +159,13 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 .free-demo-highlight .demo-tag{display:inline-flex;align-items:center;font-size:10px;font-weight:950;letter-spacing:1.5px;color:#382900;background:rgba(255,255,255,.48);border:1px solid rgba(70,48,0,.12);border-radius:999px;padding:4px 9px}
 .free-demo-highlight strong{font-size:clamp(17px,4.2vw,21px);line-height:1.35;color:#101b2b;letter-spacing:.1px}
 .free-demo-highlight>span:last-child{font-size:13px;line-height:1.55;color:#382900;font-weight:650}
+.demo-mode-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;margin-top:8px}
+.demo-mode-btn{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;min-height:60px;padding:11px 13px;border:1px solid rgba(58,41,0,.28);border-radius:10px;background:rgba(255,255,255,.55);color:#101b2b;font-size:14px;font-weight:900;line-height:1.25;box-shadow:0 3px 10px rgba(70,48,0,.07);transition:transform .18s,background .18s}
+.demo-mode-btn span{font-size:11px;font-weight:650;color:#493700;line-height:1.4}
+.demo-mode-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.78)}
+.demo-mode-btn:focus-visible{outline:3px solid #101b2b;outline-offset:2px}
 .exam-choice-btn span{line-height:1.45}
-@media(max-width:540px){.free-demo-highlight{padding:15px 15px;margin-bottom:12px}.free-demo-highlight strong{font-size:16px}.free-demo-highlight>span:last-child{font-size:12px}}
+@media(max-width:540px){.free-demo-highlight{padding:15px 15px;margin-bottom:12px}.free-demo-highlight strong{font-size:16px}.free-demo-highlight>span:last-child{font-size:12px}.demo-mode-options{gap:8px}.demo-mode-btn{padding:10px 11px;min-height:62px;font-size:13px}.demo-mode-btn span{font-size:10px}}
 
 /* Conversion-focused hero and CTA refinements */
 .hero-demo-note{margin-top:13px!important;font-size:13px!important;color:#ffe08a!important;font-weight:750;letter-spacing:.1px}
@@ -197,7 +202,7 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 <div class="wrap" style="padding-top:22px;padding-bottom:0">
 <div class="exam-choice" id="exam-choice">
   <div class="exam-educator"><span class="exam-educator-photo"><img src="madhusudan-vashishtha.png" alt="Madhusudan Vashishtha, Physics educator" width="64" height="64"></span><div><strong>Madhusudan Vashishtha</strong><span>Physics Educator · 15+ Years Experience</span><span>Ex-Unacademy · Ex-Narayana</span></div></div><p class="exam-choice-heading">Which exam are you preparing for? Choose your target to enquire on WhatsApp.</p>
-  <div class="free-demo-highlight" role="note"><span class="demo-tag">FREE DEMO</span><strong>BOOK YOUR FREE DEMO CLASS</strong><span>Your first class is a free demo. Choose JEE or NEET below to book.</span></div>
+  <div class="free-demo-highlight" aria-label="Book your free demo class"><span class="demo-tag">FREE DEMO</span><strong>BOOK YOUR FREE DEMO CLASS</strong><span>First, choose your preferred class format:</span><div class="demo-mode-options"><a class="demo-mode-btn" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20I%20would%20like%20to%20book%20a%20FREE%20demo%20for%20your%20ONLINE%20GROUP%20CLASSES.%20Please%20share%20the%20JEE%2FNEET%20options%20and%20available%20demo%20slots.">Group Classes<span>Learn with a group</span></a><a class="demo-mode-btn" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20I%20would%20like%20to%20book%20a%20FREE%20demo%20for%20ONE-TO-ONE%20MENTORING.%20Please%20share%20the%20JEE%2FNEET%20options%20and%20available%20demo%20slots.">One-to-One Mentoring<span>Personal attention</span></a></div></div>
   <div class="exam-choice-buttons">
     <a class="exam-choice-btn" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20I%20am%20enquiring%20for%20JEE%202027%20Physics%20at%20Rankers%20Nest.%20I%20want%20to%20book%20my%20FREE%20demo%20class.%20Please%20share%20available%20slots%20and%20course%20details.">For JEE 2027 <span>JEE Main / JEE Advanced Physics · Book Free Demo →</span></a>
     <a class="exam-choice-btn neet" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20I%20am%20enquiring%20for%20NEET%202027%20Physics%20at%20Rankers%20Nest.%20I%20want%20to%20book%20my%20FREE%20demo%20class.%20Please%20share%20available%20slots%20and%20course%20details.">For NEET 2027 <span>NEET Physics · Book Free Demo →</span></a>
