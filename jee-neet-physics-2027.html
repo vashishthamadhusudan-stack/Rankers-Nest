@@ -106,10 +106,10 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 .exam-choice{margin:27px 0 0;padding:19px;border:1px solid rgba(244,200,75,.3);border-radius:18px;background:linear-gradient(145deg,rgba(17,39,70,.92),rgba(7,21,42,.96));box-shadow:0 14px 38px rgba(0,0,0,.16)}
 .exam-choice-heading{margin:0 0 13px;color:#f7f9ff;font-size:14px;font-weight:850;letter-spacing:.1px}
 .exam-choice-buttons{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-.exam-choice-btn{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;min-height:68px;padding:13px 16px;border:1px solid #e7c65c;border-radius:11px;background:linear-gradient(135deg,#ffe08a,#f4c84b);color:#101b2b;font-weight:900;line-height:1.25;transition:transform .18s,box-shadow .18s}
+.exam-choice-btn{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;min-height:68px;padding:13px 16px;border:1px solid #e7c65c;border-radius:11px;background:linear-gradient(135deg,#ffe08a,#f4c84b);color:#101b2b;font-weight:900;line-height:1.25;transition:transform .18s,box-shadow .18s,outline-color .18s}
 .exam-choice-btn span{font-size:11px;font-weight:700;opacity:.78;letter-spacing:.3px}
 .exam-choice-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(244,200,75,.18)}
-.exam-choice-btn.neet{background:linear-gradient(135deg,#f6f8ff,#d9e5f5);border-color:#a9bfdc}
+/* JEE and NEET share the same premium gold base; only selected state is emphasized */
 .exam-choice-note{margin:10px 0 0;color:#aebed4;font-size:11px;line-height:1.5}
 .fee-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
 .fee-card{padding:17px 18px;border:1px solid rgba(244,200,75,.28);border-radius:13px;background:rgba(4,15,31,.6)}
@@ -127,8 +127,7 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 .exam-choice{margin:18px 0 0;padding:22px 24px;border-color:rgba(244,200,75,.42);background:linear-gradient(110deg,rgba(20,43,77,.98),rgba(8,22,43,.98));box-shadow:0 18px 48px rgba(0,0,0,.24)}
 .exam-choice-heading{font-size:15px;letter-spacing:.15px;margin-bottom:15px}
 .exam-choice-buttons{gap:14px}
-.exam-choice-btn{min-height:74px;padding:15px 20px;border-radius:12px;font-size:16px;box-shadow:inset 0 1px rgba(255,255,255,.32),0 9px 20px rgba(0,0,0,.15)}
-.exam-choice-btn.neet{background:linear-gradient(135deg,#ffe08a,#f4c84b);color:#101b2b;border-color:#e7c65c}
+.exam-choice-btn{min-height:74px;padding:15px 20px;border-radius:12px;font-size:16px;box-shadow:inset 0 1px rgba(255,255,255,.32),0 9px 20px rgba(0,0,0,.15);border:1px solid #e7c65c;background:linear-gradient(135deg,#ffe08a,#f4c84b);color:#101b2b}
 .exam-choice-note{font-size:12px;margin-top:12px}
 .hero{padding-top:clamp(40px,5.5vw,70px)}
 .hero h1{max-width:750px;font-size:clamp(46px,6.4vw,76px);line-height:1.02}
