@@ -31,6 +31,74 @@ footer{border-top:1px solid #263d5a;padding:28px 0 38px;color:var(--muted);font-
 @media(max-width:800px){.hero,.about{grid-template-columns:1fr}.hero{padding-top:42px}.mentor-card{max-width:560px;width:100%;margin-inline:auto;min-height:440px}.proof-strip{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.links{display:none}.cta{align-items:flex-start;flex-direction:column}.about{gap:22px}section{padding:48px 0}}
 @media(max-width:540px){.wrap{width:min(100% - 30px,1120px)}.hero h1{font-size:clamp(39px,11.5vw,54px);letter-spacing:-1.6px}.hero{gap:25px}.mentor-card{min-height:430px}.actions{display:grid;grid-template-columns:1fr 1fr}.actions .btn:first-child{grid-column:1/-1}.grid,.feature-grid,.faq{grid-template-columns:1fr}.card{padding:21px}.section-head h2{font-size:31px}.profile-box{padding:18px}.profile-box img{max-height:420px}.foot{flex-direction:column;align-items:flex-start}.sticky-cta{display:block;position:fixed;z-index:30;bottom:12px;left:12px;right:12px}.sticky-cta .btn{width:100%;box-shadow:0 8px 28px #0008}body{padding-bottom:70px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* Editorial premium finish — aligned with the Rankers Nest flagship site */
+:root{--line:#314968}
+body{background:radial-gradient(ellipse at 82% 7%,rgba(42,75,122,.38),transparent 31%),radial-gradient(ellipse at 8% 45%,rgba(20,43,77,.28),transparent 34%),#061126}
+header{background:rgba(6,17,38,.9);border-bottom:1px solid rgba(244,200,75,.18)}
+.nav{padding:17px 0}
+.mark{border-radius:12px;box-shadow:inset 0 0 0 1px rgba(244,200,75,.15),0 8px 25px #0004}
+.btn{border-radius:9px;box-shadow:0 10px 26px rgba(244,200,75,.11)}
+.btn.secondary{background:rgba(12,30,56,.7);border-color:#425a7a}
+.hero{position:relative;padding-top:clamp(56px,8vw,105px);padding-bottom:62px;gap:clamp(36px,6vw,82px)}
+.hero:before{content:"";position:absolute;inset:25px -2vw auto auto;width:48%;height:90%;border:1px solid rgba(244,200,75,.08);border-radius:42% 58% 58% 42%;pointer-events:none;z-index:-1}
+.hero h1{font-size:clamp(44px,6.6vw,78px);letter-spacing:-3.2px;line-height:.99;margin:21px 0 24px}
+.hero h1 span{background:linear-gradient(105deg,#ffe9a3 0%,#f4c84b 52%,#c99527 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:600px;line-height:1.8;color:#c5d0e1}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;letter-spacing:2.4px}
+.eyebrow:before{content:"";display:inline-block;width:25px;height:1px;background:var(--gold);opacity:.8}
+.actions{margin-top:32px}
+.mentor-card{min-height:485px;border-radius:30px;border-color:rgba(244,200,75,.36);background:#0c1d36;box-shadow:0 28px 80px rgba(0,0,0,.42),inset 0 0 0 7px rgba(255,255,255,.018)}
+.mentor-card:after{content:"";position:absolute;inset:12px;border:1px solid rgba(255,224,138,.18);border-radius:21px;pointer-events:none}
+.mentor-card img{object-position:center 19%;transform:scale(1.015)}
+.mentor-shade{inset:25% 0 0;background:linear-gradient(180deg,rgba(7,21,45,0) 8%,rgba(7,21,45,.22) 40%,rgba(7,21,45,.97) 100%)}
+.experience{top:26px;right:26px;border-radius:12px;background:rgba(6,17,38,.88);box-shadow:0 8px 25px #0003}
+.mentor-info{left:30px;right:30px;bottom:31px}
+.mentor-info h2{font-size:clamp(25px,3vw,34px);letter-spacing:-.8px}
+.mentor-info p{line-height:1.7}
+.proof-strip{gap:14px;padding-bottom:12px}
+.proof{position:relative;padding:20px 22px;border-radius:13px;background:linear-gradient(145deg,rgba(17,39,70,.9),rgba(9,25,48,.95));border-color:rgba(135,160,196,.2)}
+.proof:before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;background:linear-gradient(var(--gold),transparent);opacity:.7}
+.proof strong{font-size:14px;letter-spacing:.1px}
+.proof span{margin-top:3px;line-height:1.5}
+section{padding:76px 0}
+.section-head{margin-bottom:34px}
+.section-head h2{font-size:clamp(31px,4.4vw,48px);letter-spacing:-1.6px}
+.section-head p{line-height:1.8;color:#c1ccdd}
+#programs{position:relative}
+#programs:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,35,64,.25),transparent);pointer-events:none}
+.grid{gap:17px}
+.card{position:relative;overflow:hidden;padding:27px;border-radius:20px;background:linear-gradient(150deg,rgba(17,40,72,.95),rgba(8,23,44,.98));border-color:rgba(132,157,190,.22);box-shadow:0 14px 35px rgba(0,0,0,.12);transition:transform .22s,border-color .22s,box-shadow .22s}
+.card:before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(244,200,75,.9),transparent 75%);opacity:.6}
+.card:hover{transform:translateY(-5px);border-color:rgba(244,200,75,.48);box-shadow:0 20px 45px rgba(0,0,0,.22)}
+.card .num{letter-spacing:1.8px;color:#ffe08a}
+.card h3{font-size:21px;letter-spacing:-.35px;margin:14px 0 10px}
+.card p{line-height:1.75;color:#bdc9dc;min-height:76px}
+.card .btn{margin-top:15px}
+.feature-grid{gap:16px}
+.feature{position:relative;padding:23px 24px 23px 26px;border-radius:16px;background:linear-gradient(145deg,rgba(16,37,67,.85),rgba(8,24,45,.95));border-color:rgba(132,157,190,.19)}
+.feature:before{content:"✦";position:absolute;left:10px;top:20px;color:var(--gold);font-size:10px}
+.feature h3{font-size:17px;padding-left:7px}
+.feature p{line-height:1.7;padding-left:7px}
+.about{gap:clamp(30px,5vw,62px)}
+.profile-box{padding:24px;border-radius:24px;background:radial-gradient(circle at 100% 0%,rgba(92,70,24,.28),transparent 44%),linear-gradient(145deg,#12294a,#09182f);border-color:rgba(244,200,75,.24);box-shadow:0 20px 55px #0002}
+.profile-box img{border-radius:17px;border-color:rgba(244,200,75,.22);object-position:center 18%}
+.about-copy h2{font-size:clamp(31px,4.3vw,46px);letter-spacing:-1.5px}
+.about-copy p,.about-copy li{line-height:1.85;color:#c2cede}
+.about-copy ul{margin:19px 0 24px}
+.about-copy li::marker{color:var(--gold)}
+.cta{border-radius:25px;padding:clamp(28px,5vw,50px);border-color:rgba(244,200,75,.38);background:radial-gradient(ellipse at 95% 0%,rgba(103,78,26,.3),transparent 48%),linear-gradient(120deg,#112747,#09182f 72%);box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.cta h2{letter-spacing:-1.4px}
+.cta p{line-height:1.8;color:#c3cede}
+.faq{gap:15px}
+.faq details{padding:21px 22px;border-radius:15px;background:linear-gradient(145deg,#102544,#091a32);border-color:rgba(132,157,190,.2)}
+.faq summary{font-size:15px;line-height:1.55}
+.faq summary::marker{color:var(--gold)}
+.faq details p{font-size:14px;line-height:1.75;color:#c0ccde}
+footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
+@media(max-width:800px){.hero{padding-top:54px;gap:32px}.hero:before{width:80%;height:58%;top:10px}.mentor-card{min-height:450px;max-width:600px}.proof-strip{gap:10px}.proof{padding:16px 18px}section{padding:58px 0}}
+@media(max-width:540px){.hero{padding-top:39px;padding-bottom:34px}.hero h1{font-size:clamp(40px,11.8vw,57px);letter-spacing:-1.9px;line-height:1.02}.hero p{font-size:15.5px;line-height:1.75}.actions{gap:10px}.mentor-card{min-height:410px;border-radius:24px}.mentor-card:after{inset:9px;border-radius:17px}.mentor-info{left:22px;right:22px;bottom:23px}.experience{top:19px;right:19px;padding:9px 12px}.proof-strip{grid-template-columns:1fr}.proof{padding:16px 19px}.section-head h2{font-size:32px;letter-spacing:-1px}.card{padding:23px}.card p{min-height:0}.feature{padding:19px 18px 19px 24px}.profile-box{padding:17px}.cta{padding:25px 22px}.faq details{padding:18px}section{padding:49px 0}}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Madhusudan Vashishtha","jobTitle":"Physics Educator and Founder of Rankers Nest","image":"https://vashishthamadhusudan-stack.github.io/Rankers-Nest/madhusudan-vashishtha.png","worksFor":{"@type":"EducationalOrganization","name":"Rankers Nest","url":"https://vashishthamadhusudan-stack.github.io/Rankers-Nest/"},"knowsAbout":["JEE Main Physics","JEE Advanced Physics","NEET Physics"]}
