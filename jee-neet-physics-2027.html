@@ -117,7 +117,7 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 .fee-card .fee-price{display:block;font-size:clamp(24px,3vw,32px);font-weight:900;line-height:1.25;color:#fff;margin:5px 0}
 .fee-card .fee-detail{font-size:12px;color:#c1ccdd;line-height:1.5}
 .fee-heading{margin:18px 0 0;color:#f7f9ff;font-size:13px;font-weight:800}
-@media(max-width:540px){.fee-options{grid-template-columns:1fr}.fee-card{padding:15px 16px}.fee-card .fee-price{font-size:27px}}
+@media(max-width:540px){.fee-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.fee-card{padding:12px 9px;min-width:0}.fee-card .fee-type{font-size:10px;letter-spacing:.45px}.fee-card .fee-price{font-size:clamp(20px,5.7vw,26px);white-space:nowrap}.fee-card .fee-price span{font-size:10px!important}.fee-card .fee-detail{font-size:10px;line-height:1.35}}
 @media(max-width:540px){.exam-choice{padding:15px;margin-top:22px}.exam-choice-buttons{grid-template-columns:1fr}.exam-choice-btn{min-height:62px}}
 
 
@@ -189,6 +189,12 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 .exam-educator strong{display:block;color:#fff;font-size:14px;line-height:1.35}
 .exam-educator span{display:block;color:#c5d0e1;font-size:10px;line-height:1.45}
 @media(max-width:540px){.exam-educator{margin-bottom:12px}.exam-educator-photo{width:58px;height:58px;flex-basis:58px}}
+
+/* Demo selection state and one combined WhatsApp action */
+.demo-mode-btn,.exam-choice-btn{cursor:pointer;text-align:left;font-family:inherit}
+.demo-mode-btn.is-selected,.exam-choice-btn.is-selected{outline:2px solid #ffe08a;outline-offset:2px;box-shadow:0 0 0 4px rgba(244,200,75,.13),0 8px 20px rgba(0,0,0,.18)}
+.demo-submit{display:flex;width:100%;margin-top:13px;min-height:48px}
+.exam-choice-btn{appearance:none}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Madhusudan Vashishtha","jobTitle":"Physics Educator and Founder of Rankers Nest","image":"https://vashishthamadhusudan-stack.github.io/Rankers-Nest/madhusudan-vashishtha.png","worksFor":{"@type":"EducationalOrganization","name":"Rankers Nest","url":"https://vashishthamadhusudan-stack.github.io/Rankers-Nest/"},"knowsAbout":["JEE Main Physics","JEE Advanced Physics","NEET Physics"]}
@@ -204,11 +210,12 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 <div class="wrap" style="padding-top:22px;padding-bottom:0">
 <div class="exam-choice" id="exam-choice">
   <div class="exam-educator"><span class="exam-educator-photo"><img src="madhusudan-vashishtha.png" alt="Madhusudan Vashishtha, Physics educator" width="64" height="64"></span><div><strong>Madhusudan Vashishtha</strong><span>Physics Educator · 15+ Years Experience</span><span>Ex-Unacademy · Ex-Narayana</span></div></div><p class="exam-choice-heading">Which exam are you preparing for? Choose your target to enquire on WhatsApp.</p>
-  <div class="free-demo-highlight" aria-label="Book your free demo class"><span class="demo-tag">FREE DEMO</span><strong>BOOK YOUR FREE DEMO CLASS</strong><span>First, choose your preferred class format:</span><div class="demo-mode-options"><a class="demo-mode-btn" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20I%20would%20like%20to%20book%20a%20FREE%20demo%20for%20your%20ONLINE%20GROUP%20CLASSES.%20Please%20share%20the%20JEE%2FNEET%20options%20and%20available%20demo%20slots.">Group Classes<span>Learn with a group</span></a><a class="demo-mode-btn" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20I%20would%20like%20to%20book%20a%20FREE%20demo%20for%20ONE-TO-ONE%20MENTORING.%20Please%20share%20the%20JEE%2FNEET%20options%20and%20available%20demo%20slots.">One-to-One Mentoring<span>Personal attention</span></a></div></div>
-  <div class="exam-choice-buttons">
-    <a class="exam-choice-btn" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20I%20am%20enquiring%20for%20JEE%202027%20Physics%20at%20Rankers%20Nest.%20I%20want%20to%20book%20my%20FREE%20demo%20class.%20Please%20share%20available%20slots%20and%20course%20details.">For JEE 2027 <span>JEE Main / JEE Advanced Physics · Book Free Demo →</span></a>
-    <a class="exam-choice-btn neet" href="https://wa.me/919731236981?text=Hello%20Sir%2C%20I%20am%20enquiring%20for%20NEET%202027%20Physics%20at%20Rankers%20Nest.%20I%20want%20to%20book%20my%20FREE%20demo%20class.%20Please%20share%20available%20slots%20and%20course%20details.">For NEET 2027 <span>NEET Physics · Book Free Demo →</span></a>
+  <div class="free-demo-highlight" aria-label="Book your free demo class"><span class="demo-tag">FREE DEMO</span><strong>BOOK YOUR FREE DEMO CLASS</strong><span>First, choose your preferred class format:</span><div class="demo-mode-options" role="group" aria-label="Choose class format"><button class="demo-mode-btn is-selected" type="button" data-format="Group Classes" aria-pressed="true">Group Classes<span>Learn with a group</span></button><button class="demo-mode-btn" type="button" data-format="One-to-One Mentoring" aria-pressed="false">One-to-One Mentoring<span>Personal attention</span></button></div></div>
+  <div class="exam-choice-buttons" role="group" aria-label="Choose target exam">
+    <button class="exam-choice-btn is-selected" type="button" data-exam="JEE 2027" aria-pressed="true">For JEE 2027 <span>JEE Main / JEE Advanced Physics</span></button>
+    <button class="exam-choice-btn neet" type="button" data-exam="NEET 2027" aria-pressed="false">For NEET 2027 <span>NEET Physics</span></button>
   </div>
+  <a class="btn demo-submit" id="demo-submit" href="https://wa.me/919731236981?text=Hello" target="_blank" rel="noopener noreferrer">Book Free Demo on WhatsApp →</a>
   <p class="fee-heading">Online Physics Coaching · Monthly Fees</p>
   <div class="fee-options" aria-label="Online Physics class fees">
     <div class="fee-card"><span class="fee-type">Online Group Classes</span><strong class="fee-price">₹4,000 <span style="font-size:13px;font-weight:700;color:#c1ccdd">/ month</span></strong><div class="fee-detail">4 classes per week</div></div>
@@ -243,7 +250,7 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
 </div></div></section>
 <section><div class="wrap"><div class="cta"><div><div class="eyebrow">Your next chapter starts here</div><h2>Ready to Strengthen Your Physics?</h2><p>Choose your target exam and ask about online classes, monthly fees and demo availability. Group: ₹4,000/month · One-to-One: ₹12,000/month · 4 classes per week for both.</p></div><a class="btn" href="#exam-choice">Request Your Free Demo Class</a></div></div></section>
 </main>
-<footer><div class="wrap foot"><span>© Rankers Nest · JEE Main · JEE Advanced · NEET Physics</span><span>Founder &amp; Faculty: Madhusudan Vashishtha</span><span><a href="mailto:vashishthamadhusudan@gmail.com">Email Enquiry</a> · ${privacy}</span></div></footer>
+<footer><div class="wrap foot"><span>© Rankers Nest · JEE Main · JEE Advanced · NEET Physics</span><span>Founder &amp; Faculty: Madhusudan Vashishtha</span><span><a href="mailto:vashishthamadhusudan@gmail.com">Email Enquiry</a></span></div></footer>
 <div class="sticky-cta"><a class="btn" href="https://api.whatsapp.com/send?phone=919731236981&amp;text=Hello%20Rankers%20Nest%2C%20I%20am%20interested%20in%20online%20Physics%20coaching%20for%20JEE%2FNEET%202027.%20Please%20guide%20me%20about%20the%20right%20batch%20and%20demo%20class." target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp to enquire about JEE or NEET Physics">WhatsApp Enquiry · JEE / NEET Physics</a></div>
 
 <script>
@@ -255,6 +262,11 @@ footer{background:#040d1e;border-top-color:rgba(244,200,75,.14)}
     window.dataLayer=window.dataLayer||[];window.dataLayer.push(eventData);
     if(typeof window.gtag==='function'){window.gtag('event','whatsapp_enquiry_click',{exam:exam,cta_text:eventData.cta_text});}
   }
+  var selectedFormat='Group Classes',selectedExam='JEE 2027';
+  function updateDemoLink(){var msg='Hello Sir, I would like to book a FREE demo class for '+selectedExam+' Physics at Rankers Nest. My preferred format is '+selectedFormat+'. Please share available demo slots and course details.';var link=document.getElementById('demo-submit');if(link){link.href='https://wa.me/919731236981?text='+encodeURIComponent(msg);}}
+  document.querySelectorAll('[data-format]').forEach(function(btn){btn.addEventListener('click',function(){selectedFormat=btn.getAttribute('data-format');document.querySelectorAll('[data-format]').forEach(function(b){var yes=b===btn;b.classList.toggle('is-selected',yes);b.setAttribute('aria-pressed',yes?'true':'false');});updateDemoLink();});});
+  document.querySelectorAll('[data-exam]').forEach(function(btn){btn.addEventListener('click',function(){selectedExam=btn.getAttribute('data-exam');document.querySelectorAll('[data-exam]').forEach(function(b){var yes=b===btn;b.classList.toggle('is-selected',yes);b.setAttribute('aria-pressed',yes?'true':'false');});updateDemoLink();});});
+  updateDemoLink();
   document.addEventListener('click',function(e){var link=e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"]');if(link){trackEnquiry(link);}});
 })();
 </script>
