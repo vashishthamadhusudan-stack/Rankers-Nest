@@ -1,0 +1,45 @@
+name: Website and PYQ Quality Audit
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  website-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Generate full website PYQ inventory
+        run: node scripts/website-pyq-audit.cjs
+      - name: Run four critical quiz regression tests
+        run: node scripts/quiz-browser-qa.cjs
+      - name: Run JEE Advanced Newton's Laws browser regression
+        env:
+          LIVE_BASE: https://vashishthamadhusudan-stack.github.io/Rankers-Nest
+        run: node scripts/newtons-laws-e2e-regression.cjs
+      - name: Run whole-site live Chromium and link audit
+        env:
+          LIVE_BASE: https://vashishthamadhusudan-stack.github.io/Rankers-Nest
+        run: node scripts/website-browser-audit.cjs
+      - name: Upload audit reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rankers-nest-website-pyq-audit
+          path: |
+            pyq-audit-inventory.json
+            PYQ_AUDIT_REGISTER.md
+            quiz-browser-qa-results.json
+            newtons-laws-regression-results.json
+            website-browser-audit.json
+            pyq-question-export.json
+          if-no-files-found: warn
