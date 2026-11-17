@@ -37,8 +37,35 @@ self.addEventListener("notificationclick", event => {
   }));
 });
 
-const CACHE_NAME = "rankers-nest-v19";
+const CACHE_NAME = "rankers-nest-v20";
 const FILES = [
+  "./archive/daily-physics-challenge-2026-11-17.html",
+  "./archive/daily-physics-challenge-2026-11-16.html",
+  "./archive/daily-physics-challenge-2026-11-15.html",
+  "./archive/daily-physics-challenge-2026-11-14.html",
+  "./archive/daily-physics-challenge-2026-11-13.html",
+  "./archive/daily-physics-challenge-2026-11-12.html",
+  "./archive/daily-physics-challenge-2026-11-11.html",
+  "./archive/daily-physics-challenge-2026-11-10.html",
+  "./archive/daily-physics-challenge-2026-11-09.html",
+  "./archive/daily-physics-challenge-2026-11-08.html",
+  "./archive/daily-physics-challenge-2026-11-07.html",
+  "./archive/daily-physics-challenge-2026-11-06.html",
+  "./archive/daily-physics-challenge-2026-11-05.html",
+  "./archive/daily-physics-challenge-2026-11-04.html",
+  "./archive/daily-physics-challenge-2026-11-03.html",
+  "./archive/daily-physics-challenge-2026-11-02.html",
+  "./archive/daily-physics-challenge-2026-11-01.html",
+  "./archive/daily-physics-challenge-2026-10-31.html",
+  "./archive/daily-physics-challenge-2026-10-30.html",
+  "./archive/daily-physics-challenge-2026-10-29.html",
+  "./archive/daily-physics-challenge-2026-10-28.html",
+  "./archive/daily-physics-challenge-2026-10-27.html",
+  "./archive/daily-physics-challenge-2026-10-26.html",
+  "./archive/daily-physics-challenge-2026-10-25.html",
+  "./archive/daily-physics-challenge-2026-10-24.html",
+  "./archive/daily-physics-challenge-2026-10-23.html",
+  "./archive/daily-physics-challenge-2026-10-22.html",
   "./",
   "./index.html",
   "./neet-physics-online-classes.html",

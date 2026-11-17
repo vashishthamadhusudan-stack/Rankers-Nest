@@ -1,13 +1,229 @@
 {
-  "updatedAt": "2026-10-21",
+  "updatedAt": "2026-11-17",
   "updates": [
+    {
+      "date": "2026-11-17",
+      "dateLabel": "17 NOV 2026",
+      "title": "Daily Physics Challenge — Thermodynamics & KTG — Grand Revision Challenge",
+      "description": "Final consolidation: first law, Carnot limit, kinetic pressure, molecular speeds and heat capacities. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-17.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-16",
+      "dateLabel": "16 NOV 2026",
+      "title": "Daily Physics Challenge — Thermodynamics & KTG — Assertion-Level Concepts",
+      "description": "Conceptual traps involving reversible processes, molecular motion and heat engines. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-16.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-15",
+      "dateLabel": "15 NOV 2026",
+      "title": "Daily Physics Challenge — Thermodynamics + KTG — JEE/NEET Mixed Test",
+      "description": "Integrated challenge on heat capacities, gas laws, molecular speeds and energy. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-15.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-14",
+      "dateLabel": "14 NOV 2026",
+      "title": "Daily Physics Challenge — Kinetic Theory Numerical Applications",
+      "description": "Practice with pressure, density, rms speed and mean kinetic energy. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-14.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-13",
+      "dateLabel": "13 NOV 2026",
+      "title": "Daily Physics Challenge — Temperature Scales and Molecular Speed",
+      "description": "Absolute temperature and speed comparisons across gases. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-13.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-12",
+      "dateLabel": "12 NOV 2026",
+      "title": "Daily Physics Challenge — Avogadro’s Law and Molecular Number Density",
+      "description": "Molecules per unit volume, Avogadro constant and microscopic gas variables. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-12.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-11",
+      "dateLabel": "11 NOV 2026",
+      "title": "Daily Physics Challenge — Gas Mixtures and Partial Pressures",
+      "description": "Dalton’s law, mole fractions and partial pressure calculations. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-11.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-10",
+      "dateLabel": "10 NOV 2026",
+      "title": "Daily Physics Challenge — Ideal Gas Equation from Kinetic Theory",
+      "description": "Connecting molecular kinetic energy, pressure and macroscopic equation of state. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-10.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-09",
+      "dateLabel": "09 NOV 2026",
+      "title": "Daily Physics Challenge — Maxwell Speed Distribution",
+      "description": "Qualitative molecular speed distribution and temperature/mass effects. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-09.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-08",
+      "dateLabel": "08 NOV 2026",
+      "title": "Daily Physics Challenge — Molecular Collision Frequency and Collision Time",
+      "description": "Collision rate, mean speed and molecular density. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-08.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-07",
+      "dateLabel": "07 NOV 2026",
+      "title": "Daily Physics Challenge — Mean Free Path and Molecular Collisions",
+      "description": "Average distance between successive molecular collisions. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-07.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-06",
+      "dateLabel": "06 NOV 2026",
+      "title": "Daily Physics Challenge — Specific Heat of Gases from Degrees of Freedom",
+      "description": "Relating f, Cp, Cv and gamma for monoatomic and diatomic gases. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-06.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-05",
+      "dateLabel": "05 NOV 2026",
+      "title": "Daily Physics Challenge — Law of Equipartition of Energy",
+      "description": "Energy shared among quadratic degrees of freedom and heat capacity. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-05.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-04",
+      "dateLabel": "04 NOV 2026",
+      "title": "Daily Physics Challenge — Degrees of Freedom of Gas Molecules",
+      "description": "Translational, rotational and vibrational modes. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-04.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-03",
+      "dateLabel": "03 NOV 2026",
+      "title": "Daily Physics Challenge — Average Translational Kinetic Energy",
+      "description": "Equipartition link between molecular kinetic energy and temperature. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-03.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-02",
+      "dateLabel": "02 NOV 2026",
+      "title": "Daily Physics Challenge — RMS, Average and Most Probable Speeds",
+      "description": "Three characteristic molecular speeds and temperature dependence. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-02.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-11-01",
+      "dateLabel": "01 NOV 2026",
+      "title": "Daily Physics Challenge — Kinetic Theory — Pressure of an Ideal Gas",
+      "description": "Molecular collisions, momentum transfer and microscopic pressure. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-11-01.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-10-31",
+      "dateLabel": "31 OCT 2026",
+      "title": "Daily Physics Challenge — Thermodynamics Mixed Revision Challenge",
+      "description": "First law, process identification, engines and gas heat capacities. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-10-31.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-10-30",
+      "dateLabel": "30 OCT 2026",
+      "title": "Daily Physics Challenge — Entropy and Second Law — Concept Check",
+      "description": "Entropy change, reversible heat transfer and direction of natural processes. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-10-30.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-10-29",
+      "dateLabel": "29 OCT 2026",
+      "title": "Daily Physics Challenge — Carnot Engine and Carnot Cycle",
+      "description": "Two reversible isothermals, two adiabatics and maximum theoretical efficiency. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-10-29.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-10-28",
+      "dateLabel": "28 OCT 2026",
+      "title": "Daily Physics Challenge — Refrigerators, Heat Pumps and COP",
+      "description": "Coefficient of performance and heat transfer against its natural direction. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-10-28.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-10-27",
+      "dateLabel": "27 OCT 2026",
+      "title": "Daily Physics Challenge — Heat Engines and Thermal Efficiency",
+      "description": "Energy flow, work output and thermal efficiency. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-10-27.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-10-26",
+      "dateLabel": "26 OCT 2026",
+      "title": "Daily Physics Challenge — Cyclic Processes and First-Law Applications",
+      "description": "State functions, net work and heat over a complete cycle. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-10-26.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-10-25",
+      "dateLabel": "25 OCT 2026",
+      "title": "Daily Physics Challenge — Isobaric and Isochoric Processes",
+      "description": "Heat capacities, work and internal energy at fixed pressure or volume. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-10-25.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-10-24",
+      "dateLabel": "24 OCT 2026",
+      "title": "Daily Physics Challenge — Isothermal Process — Ideal Gas",
+      "description": "Constant-temperature changes, Boyle’s law and logarithmic work. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-10-24.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-10-23",
+      "dateLabel": "23 OCT 2026",
+      "title": "Daily Physics Challenge — Work Done in Thermodynamic Processes",
+      "description": "Work as signed area under a P–V curve; isobaric and isochoric cases. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-10-23.html",
+      "linkLabel": "View challenge →"
+    },
+    {
+      "date": "2026-10-22",
+      "dateLabel": "22 OCT 2026",
+      "title": "Daily Physics Challenge — Adiabatic Process — P–V Relations",
+      "description": "Reversible adiabatic change, Poisson equations and work. Includes formulas, worked example and 5 concept-check MCQs.",
+      "url": "archive/daily-physics-challenge-2026-10-22.html",
+      "linkLabel": "View challenge →"
+    },
     {
       "date": "2026-10-21",
       "dateLabel": "21 OCT 2026",
       "title": "Daily Physics Challenge — Specific Heat Capacities of Gases",
       "description": "Day 3: Cp, Cv, Mayer's relation, gamma, worked example and 5 MCQs with explanations.",
-      "url": "todays-physics-challenge.html",
-      "linkLabel": "Open today's challenge →"
+      "url": "archive/daily-physics-challenge-2026-10-21.html",
+      "linkLabel": "View archive →"
     },
     {
       "date": "2026-10-20",
