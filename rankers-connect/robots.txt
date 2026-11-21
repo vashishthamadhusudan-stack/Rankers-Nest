@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vashishthamadhusudan-stack.github.io/Rankers-Nest/rankers-connect/sitemap.xml
